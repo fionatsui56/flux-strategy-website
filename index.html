@@ -210,25 +210,6 @@
         .offerings-section {
             padding: 80px 32px;
             position: relative;
-            overflow: hidden;
-        }
-
-        .offerings-section::before {
-            content: '';
-            position: absolute;
-            left: -200px;
-            top: 30%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(148, 185, 255, 0.1) 0%, rgba(205, 255, 216, 0.04) 100%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .offerings-section > .container {
-            position: relative;
-            z-index: 1;
         }
 
         .section-header {
@@ -788,7 +769,7 @@
 
             .hero {
                 flex-direction: column;
-                padding: 120px 24px 60px;
+                padding: 180px 24px 60px;
                 text-align: center;
             }
 
@@ -903,17 +884,17 @@
                 <div class="offering-card scroll-reveal">
                     <span class="offering-icon">🎯</span>
                     <h3>Strategic Advisory</h3>
-                    <p>Brand positioning. Marketing strategy. Team alignment. We deconstruct what's broken, define what matters, and translate strategy into roadmaps your team can actually follow.</p>
+                    <p><strong>For:</strong> Founders & marketing leaders unsure of direction<br><strong>Outcome:</strong> Aligned strategy, clear roadmap, faster execution</p>
                 </div>
                 <div class="offering-card scroll-reveal">
                     <span class="offering-icon">🧠</span>
                     <h3>Team Building</h3>
-                    <p>Alignment isn't fun. It's foundational. We design how your team communicates, decides, and executes together — so you move faster without fracturing.</p>
+                    <p><strong>For:</strong> Teams that communicate but don't decide well<br><strong>Outcome:</strong> Faster decisions, better alignment, clearer roles</p>
                 </div>
                 <div class="offering-card scroll-reveal">
                     <span class="offering-icon">⚡</span>
                     <h3>Content Engine</h3>
-                    <p>Strategy-driven content at scale. Our AI-powered platform lets you produce consistent, on-brand content across channels without the weekly scramble.</p>
+                    <p><strong>For:</strong> Brands needing consistent, on-strategy content fast<br><strong>Outcome:</strong> Multi-platform, multi-language content at scale</p>
                 </div>
             </div>
         </div>
@@ -930,22 +911,22 @@
             <div class="methodology-steps">
                 <div class="step-item">
                     <div class="step-name">Understand</div>
-                    <div class="step-description">Listen deeply. Ask hard questions. Uncover the real challenge.</div>
+                    <div class="step-description">Interview stakeholders, map tensions, find the core problem.</div>
                 </div>
 
                 <div class="step-item">
                     <div class="step-name">Clarify</div>
-                    <div class="step-description">Synthesize insights. Name the tension. Define what matters.</div>
+                    <div class="step-description">Name the real issue, align on what matters most.</div>
                 </div>
 
                 <div class="step-item">
                     <div class="step-name">Define</div>
-                    <div class="step-description">Build the framework. Create clarity. Align your team.</div>
+                    <div class="step-description">Build the strategic direction, test with your team.</div>
                 </div>
 
                 <div class="step-item">
                     <div class="step-name">Translate</div>
-                    <div class="step-description">Execute with precision. Measure outcomes. Move forward.</div>
+                    <div class="step-description">Turn strategy into actionable roadmap and next steps.</div>
                 </div>
             </div>
 
@@ -955,15 +936,22 @@
         </div>
     </section>
 
-    <!-- CREDIBILITY SECTION -->
+    <!-- ABOUT FLUX STRATEGY -->
     <section class="credibility-section">
         <div class="container">
             <div class="credibility-content">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 48px;">About Flux Strategy</h2>
+                
                 <p class="credibility-text">
-                    Flux Strategy is led by a <span class="credibility-highlight">strategist with 10+ years</span> working across Hong Kong and the Greater Bay Area — spanning advertising, digital, exhibitions, and cross-border markets.
+                    Founded by strategists with 10+ years in Hong Kong and Greater Bay Area markets — advising startups on GTM, helping scaleups align teams, and guiding enterprise innovation teams.
                 </p>
+                
                 <p class="credibility-text" style="margin-top: 24px;">
-                    We've worked with startups, local enterprises, and growing brands. <span class="credibility-highlight">Same rigour. Same thinking. Regardless of scale.</span>
+                    Experience spans: <span class="credibility-highlight">advertising, digital platforms, exhibitions, cross-border strategy, and startup go-to-market.</span>
+                </p>
+                
+                <p class="credibility-text" style="margin-top: 24px;">
+                    We work with founders and leaders who want clarity fast, without the consulting overhead.
                 </p>
             </div>
         </div>
@@ -973,11 +961,18 @@
     <section class="final-cta" id="cta">
         <div class="container">
             <h2>Ready to build clarity?</h2>
+            <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 40px;">Pick your next step — we'll handle the rest.</p>
             <div class="cta-buttons">
-                <button class="btn btn-primary" onclick="openModal('strategy')">Book a 30mins FREE Session</button>
-                <button class="btn btn-primary" onclick="openModal('content')">Join Content Engine Beta</button>
+                <div style="text-align: center;">
+                    <button class="btn btn-primary" onclick="openModal('strategy')">Book a 30mins FREE Session</button>
+                    <p style="color: var(--text-tertiary); font-size: 0.85rem; margin-top: 12px;">30-min discovery call to map your core tension</p>
+                </div>
+                <div style="text-align: center;">
+                    <button class="btn btn-primary" onclick="openModal('content')">Join Content Engine Beta</button>
+                    <p style="color: var(--text-tertiary); font-size: 0.85rem; margin-top: 12px;">Early access to AI-powered, strategy-driven content</p>
+                </div>
             </div>
-            <p style="color: var(--text-tertiary); font-size: 0.9rem;">Or reach out directly at <span style="color: var(--accent-start);">hello@flux-strategy.com</span></p>
+            <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-top: 32px;">Or reach out directly at <span style="color: var(--accent-start);">hello@flux-strategy.com</span></p>
         </div>
     </section>
 
