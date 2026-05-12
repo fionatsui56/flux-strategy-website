@@ -49,7 +49,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 24px 32px;
+            padding: 24px 0;
             backdrop-filter: blur(10px);
             background: rgba(13, 21, 33, 0.7);
             border-bottom: 1px solid var(--border-light);
@@ -61,9 +61,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 0;
+            padding: 0 32px;
             width: 100%;
-            padding-left: 32px;
         }
 
         .logo {
@@ -288,6 +287,14 @@
             font-size: 0.95rem;
             color: var(--text-secondary);
             line-height: 1.75;
+        }
+
+        .outcome-highlight {
+            color: var(--accent-start);
+            display: inline-block;
+            margin-top: 12px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
         }
 
         /* ==================== METHODOLOGY SECTION ==================== */
@@ -853,17 +860,17 @@
                 <div class="offering-card scroll-reveal">
                     <span class="offering-icon">🎯</span>
                     <h3>Strategic Advisory</h3>
-                    <p><strong>For:</strong> Founders & marketing leaders unsure of direction<br><strong>Outcome:</strong> Aligned strategy, clear roadmap, faster execution</p>
+                    <p><strong>For:</strong> Founders & marketing leaders unsure of direction<br><span class="outcome-highlight"><strong>✓ Outcome:</strong> Aligned strategy, clear roadmap, faster execution</span></p>
                 </div>
                 <div class="offering-card scroll-reveal">
                     <span class="offering-icon">🧠</span>
                     <h3>Team Building</h3>
-                    <p><strong>For:</strong> Teams that communicate but don't decide well<br><strong>Outcome:</strong> Faster decisions, better alignment, clearer roles</p>
+                    <p><strong>For:</strong> Teams that communicate but don't decide well<br><span class="outcome-highlight"><strong>✓ Outcome:</strong> Faster decisions, better alignment, clearer roles</span></p>
                 </div>
                 <div class="offering-card scroll-reveal">
                     <span class="offering-icon">⚡</span>
                     <h3>Content Engine</h3>
-                    <p><strong>For:</strong> Brands needing consistent, on-strategy content fast<br><strong>Outcome:</strong> Multi-platform, multi-language content at scale</p>
+                    <p><strong>For:</strong> Brands needing consistent, on-strategy content fast<br><span class="outcome-highlight"><strong>✓ Outcome:</strong> Multi-platform, multi-language content at scale</span></p>
                 </div>
             </div>
         </div>
