@@ -551,6 +551,7 @@
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
+            text-align: center;
         }
 
         .footer-contact {
@@ -574,6 +575,89 @@
             margin-top: 24px;
             font-style: italic;
             letter-spacing: 0.5px;
+        }
+
+        footer {
+            padding: 64px 32px;
+            border-top: 1px solid var(--border-light);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .footer-main {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .footer-email {
+            font-size: 1rem;
+            color: var(--accent-start);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-email:hover {
+            color: var(--accent-end);
+        }
+
+        .footer-meta {
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            margin: 32px 0;
+        }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1.5px solid var(--border-light);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: rgba(205, 255, 216, 0.1);
+            border-color: var(--accent-start);
+            color: var(--accent-start);
+        }
+
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                padding: 48px 24px;
+            }
+
+            .footer-social {
+                gap: 12px;
+            }
+
+            .social-icon {
+                width: 40px;
+                height: 40px;
+            }
         }
 
         /* ==================== ANIMATIONS ==================== */
@@ -748,7 +832,7 @@
     <!-- NAVIGATION -->
     <nav>
         <div class="nav-content">
-            <div class="logo">Flux</div>
+            <img src="FS Logo-Transparent White.png" alt="Flux Strategy" class="logo" style="height: 32px; width: auto;">
             <a href="#contact" class="nav-cta">Get in Touch</a>
         </div>
     </nav>
@@ -860,13 +944,24 @@
     <!-- FOOTER -->
     <footer id="contact">
         <div class="footer-content">
-            <div class="footer-contact">
-                <a href="mailto:hello@flux-strategy.com">hello@flux-strategy.com</a>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/company/hkfluxstrategy" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/flux_hongkong/" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+                        <circle cx="17.5" cy="6.5" r="1.5"></circle>
+                    </svg>
+                </a>
             </div>
-            <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 8px;">
-                Flux Strategy | Hong Kong
-            </div>
+
             <div class="footer-tagline">Strategic Clarity. Real Execution.</div>
+            <div class="footer-copyright">© 2026 Flux Strategy. All rights reserved.</div>
         </div>
     </footer>
 
