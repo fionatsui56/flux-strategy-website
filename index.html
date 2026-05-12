@@ -106,20 +106,6 @@
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            right: -200px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(205, 255, 216, 0.15) 0%, rgba(148, 185, 255, 0.08) 100%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
         .hero-content {
             flex: 1;
             max-width: 900px;
@@ -401,26 +387,6 @@
             padding: 100px 32px;
             text-align: center;
             animation: fadeInUp 0.8s ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .final-cta::after {
-            content: '';
-            position: absolute;
-            right: -250px;
-            bottom: -100px;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(205, 255, 216, 0.1) 0%, rgba(148, 185, 255, 0.04) 100%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .final-cta > * {
-            position: relative;
-            z-index: 1;
         }
 
         .final-cta h2 {
