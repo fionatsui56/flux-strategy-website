@@ -61,6 +61,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 0;
+            width: 100%;
         }
 
         .logo {
@@ -208,6 +210,25 @@
         .offerings-section {
             padding: 80px 32px;
             position: relative;
+            overflow: hidden;
+        }
+
+        .offerings-section::before {
+            content: '';
+            position: absolute;
+            left: -200px;
+            top: 30%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(148, 185, 255, 0.1) 0%, rgba(205, 255, 216, 0.04) 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .offerings-section > .container {
+            position: relative;
+            z-index: 1;
         }
 
         .section-header {
@@ -399,6 +420,26 @@
             padding: 100px 32px;
             text-align: center;
             animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::after {
+            content: '';
+            position: absolute;
+            right: -250px;
+            bottom: -100px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(205, 255, 216, 0.1) 0%, rgba(148, 185, 255, 0.04) 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .final-cta > * {
+            position: relative;
+            z-index: 1;
         }
 
         .final-cta h2 {
@@ -843,7 +884,7 @@
             <h1>Strategy without execution is philosophy.</h1>
             <p class="hero-description">We help founders and marketing leaders move from scattered priorities to clear direction — and from clear direction to measurable execution.</p>
             <div class="hero-cta-group">
-                <button class="btn btn-primary" onclick="openModal('strategy')">Book a Session</button>
+                <button class="btn btn-primary" onclick="openModal('strategy')">Book a 30mins FREE Session</button>
                 <button class="btn btn-secondary" onclick="scrollToSection('offerings')">Our Services</button>
             </div>
         </div>
@@ -933,7 +974,7 @@
         <div class="container">
             <h2>Ready to build clarity?</h2>
             <div class="cta-buttons">
-                <button class="btn btn-primary" onclick="openModal('strategy')">Book Strategy Session</button>
+                <button class="btn btn-primary" onclick="openModal('strategy')">Book a 30mins FREE Session</button>
                 <button class="btn btn-primary" onclick="openModal('content')">Join Content Engine Beta</button>
             </div>
             <p style="color: var(--text-tertiary); font-size: 0.9rem;">Or reach out directly at <span style="color: var(--accent-start);">hello@flux-strategy.com</span></p>
