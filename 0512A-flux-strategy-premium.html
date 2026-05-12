@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flux Strategy - Strategic Clarity. Real Execution.</title>
+    <meta name="description" content="Strategy without execution is philosophy. Execution without clarity is noise. Flux Strategy helps founders and marketing leaders achieve strategic clarity and measurable execution.">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0d1521;
+            --accent-start: #cdffd8;
+            --accent-end: #94b9ff;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.65);
+            --text-tertiary: rgba(255, 255, 255, 0.4);
+            --border-light: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0d1521 0%, #111a2e 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            letter-spacing: -0.3px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* ==================== NAVIGATION ==================== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 24px 32px;
+            backdrop-filter: blur(10px);
+            background: rgba(13, 21, 33, 0.7);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-cta {
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 10px 20px;
+            background: rgba(205, 255, 216, 0.1);
+            border: 1px solid rgba(205, 255, 216, 0.2);
+            border-radius: 6px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            background: rgba(205, 255, 216, 0.15);
+            border-color: rgba(205, 255, 216, 0.4);
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 140px 32px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            right: -200px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(205, 255, 216, 0.15) 0%, rgba(148, 185, 255, 0.08) 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 900px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent-start);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 40px;
+            letter-spacing: -2px;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+            max-width: 950px;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 48px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+            max-width: 700px;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .hero-image-container {
+            display: none;
+        }
+
+        /* ==================== BUTTONS ==================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            font-family: 'Sora', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-start) 0%, var(--accent-end) 100%);
+            color: var(--primary-dark);
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(205, 255, 216, 0.15);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(205, 255, 216, 0.25);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-primary);
+            border: 1.5px solid var(--border-light);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ==================== OFFERINGS SECTION ==================== */
+        .offerings-section {
+            padding: 80px 32px;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-start);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .offerings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .offering-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 40px 32px;
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offering-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-start), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .offering-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .offering-card:hover::before {
+            opacity: 1;
+        }
+
+        .offering-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .offering-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .offering-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        /* ==================== METHODOLOGY SECTION ==================== */
+        .methodology-section {
+            padding: 80px 32px;
+            background: rgba(205, 255, 216, 0.02);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .methodology-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .methodology-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .methodology-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin: 0;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .step-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 32px 24px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .step-item:nth-child(1) { animation-delay: 0.1s; }
+        .step-item:nth-child(2) { animation-delay: 0.2s; }
+        .step-item:nth-child(3) { animation-delay: 0.3s; }
+        .step-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .step-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .step-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .step-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .methodology-footer {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.5s both;
+        }
+
+        /* ==================== CREDIBILITY SECTION ==================== */
+        .credibility-section {
+            padding: 80px 32px;
+        }
+
+        .credibility-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .credibility-text {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .credibility-highlight {
+            color: var(--accent-start);
+            font-weight: 600;
+        }
+
+        /* ==================== CTA FINAL SECTION ==================== */
+        .final-cta {
+            padding: 100px 32px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .final-cta h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            line-height: 1.3;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        /* ==================== FORMS & MODALS ==================== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--primary-dark);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 480px;
+            width: 90%;
+            position: relative;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .modal-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            border: 1.5px solid var(--border-light);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            font-family: 'Sora', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-input::placeholder {
+            color: var(--text-tertiary);
+        }
+
+        .form-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-start);
+            box-shadow: 0 0 0 3px rgba(205, 255, 216, 0.1);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 14px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Sora', sans-serif;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(205, 255, 216, 0.2);
+        }
+
+        .form-submit:active {
+            transform: translateY(0);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-contact {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .footer-contact a {
+            color: var(--accent-start);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            opacity: 0.8;
+        }
+
+        .footer-tagline {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            margin-top: 24px;
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+
+        /* ==================== ANIMATIONS ==================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==================== FORMS ==================== */
+        .email-input {
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            border: 1.5px solid var(--border-light);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            font-family: 'Sora', sans-serif;
+            transition: all 0.3s ease;
+            min-width: 280px;
+        }
+
+        .email-input::placeholder {
+            color: var(--text-tertiary);
+        }
+
+        .email-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-start);
+            box-shadow: 0 0 0 3px rgba(205, 255, 216, 0.1);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .methodology-steps {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            nav {
+                padding: 20px 24px;
+            }
+
+            .nav-content {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .hero {
+                flex-direction: column;
+                padding: 120px 24px 60px;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 24px;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+                margin-bottom: 32px;
+            }
+
+            .hero-cta-group {
+                justify-content: center;
+            }
+
+            .hero-image-container {
+                height: 300px;
+                margin-top: 40px;
+            }
+
+            .offerings-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .offering-card {
+                padding: 32px 24px;
+            }
+
+            .methodology-section {
+                padding: 60px 24px;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .methodology-steps {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .credibility-section {
+                padding: 60px 24px;
+            }
+
+            .credibility-text {
+                font-size: 1rem;
+            }
+
+            .final-cta {
+                padding: 60px 24px;
+            }
+
+            .final-cta h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* ==================== ACCESSIBILITY ==================== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">Flux</div>
+            <a href="#contact" class="nav-cta">Get in Touch</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">Strategic Clarity Consulting</div>
+            <h1>Strategy without execution is philosophy.</h1>
+            <p class="hero-description">We help founders and marketing leaders move from scattered priorities to clear direction — and from clear direction to measurable execution.</p>
+            <div class="hero-cta-group">
+                <button class="btn btn-primary" onclick="openModal('strategy')">Book a Session</button>
+                <button class="btn btn-secondary" onclick="scrollToSection('offerings')">Our Services</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFFERINGS SECTION -->
+    <section class="offerings-section" id="offerings">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Core Services</div>
+                <h2 class="section-title">Three Ways We Create Clarity</h2>
+                <p class="section-description">Each service is built on the same foundation: understanding your challenges, defining what matters, and translating strategy into action.</p>
+            </div>
+
+            <div class="offerings-grid">
+                <div class="offering-card scroll-reveal">
+                    <span class="offering-icon">🎯</span>
+                    <h3>Strategic Advisory</h3>
+                    <p>Brand positioning. Marketing strategy. Team alignment. We deconstruct what's broken, define what matters, and translate strategy into roadmaps your team can actually follow.</p>
+                </div>
+                <div class="offering-card scroll-reveal">
+                    <span class="offering-icon">🧠</span>
+                    <h3>Team Building</h3>
+                    <p>Alignment isn't fun. It's foundational. We design how your team communicates, decides, and executes together — so you move faster without fracturing.</p>
+                </div>
+                <div class="offering-card scroll-reveal">
+                    <span class="offering-icon">⚡</span>
+                    <h3>Content Engine</h3>
+                    <p>Strategy-driven content at scale. Our AI-powered platform lets you produce consistent, on-brand content across channels without the weekly scramble.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METHODOLOGY SECTION -->
+    <section class="methodology-section">
+        <div class="container">
+            <div class="methodology-header">
+                <div class="section-label" style="justify-content: center; display: flex;">Our Approach</div>
+                <h2 class="section-title">How We Work</h2>
+            </div>
+            
+            <div class="methodology-steps">
+                <div class="step-item">
+                    <div class="step-name">Understand</div>
+                    <div class="step-description">Listen deeply. Ask hard questions. Uncover the real challenge.</div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-name">Clarify</div>
+                    <div class="step-description">Synthesize insights. Name the tension. Define what matters.</div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-name">Define</div>
+                    <div class="step-description">Build the framework. Create clarity. Align your team.</div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-name">Translate</div>
+                    <div class="step-description">Execute with precision. Measure outcomes. Move forward.</div>
+                </div>
+            </div>
+
+            <div class="methodology-footer">
+                Every engagement follows this rigor. From initial discovery to full execution support, we ensure direction is clear before action begins.
+            </div>
+        </div>
+    </section>
+
+    <!-- CREDIBILITY SECTION -->
+    <section class="credibility-section">
+        <div class="container">
+            <div class="credibility-content">
+                <p class="credibility-text">
+                    Flux Strategy is led by a <span class="credibility-highlight">strategist with 10+ years</span> working across Hong Kong and the Greater Bay Area — spanning advertising, digital, exhibitions, and cross-border markets.
+                </p>
+                <p class="credibility-text" style="margin-top: 24px;">
+                    We've worked with startups, local enterprises, and growing brands. <span class="credibility-highlight">Same rigour. Same thinking. Regardless of scale.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA SECTION -->
+    <section class="final-cta" id="cta">
+        <div class="container">
+            <h2>Ready to build clarity?</h2>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="openModal('strategy')">Book Strategy Session</button>
+                <button class="btn btn-primary" onclick="openModal('content')">Join Content Engine Beta</button>
+            </div>
+            <p style="color: var(--text-tertiary); font-size: 0.9rem;">Or reach out directly at <span style="color: var(--accent-start);">hello@flux-strategy.com</span></p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-contact">
+                <a href="mailto:hello@flux-strategy.com">hello@flux-strategy.com</a>
+            </div>
+            <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 8px;">
+                Flux Strategy | Hong Kong
+            </div>
+            <div class="footer-tagline">Strategic Clarity. Real Execution.</div>
+        </div>
+    </footer>
+
+    <!-- MODALS -->
+    <!-- Strategy Session Modal -->
+    <div class="modal" id="strategyModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('strategy')">&times;</button>
+            <h3 class="modal-title">Book a Strategy Session</h3>
+            <p class="modal-subtitle">Let's explore how we can clarify your direction and accelerate execution.</p>
+            <form action="https://formsubmit.co/hello@flux-strategy.com" method="POST">
+                <input type="hidden" name="_subject" value="New Strategy Session Inquiry">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" name="name" placeholder="Your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Company</label>
+                    <input type="text" class="form-input" name="company" placeholder="Your company" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" name="email" placeholder="your@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Mobile Number</label>
+                    <input type="tel" class="form-input" name="mobile" placeholder="+852 XXXX XXXX" required>
+                </div>
+                
+                <button type="submit" class="form-submit">Send Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Content Engine Beta Modal -->
+    <div class="modal" id="contentModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('content')">&times;</button>
+            <h3 class="modal-title">Join Content Engine Beta</h3>
+            <p class="modal-subtitle">Be among the first to experience AI-powered, strategy-driven content production.</p>
+            <form action="https://formsubmit.co/hello@flux-strategy.com" method="POST">
+                <input type="hidden" name="_subject" value="New Content Engine Beta Application">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" name="name" placeholder="Your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Company</label>
+                    <input type="text" class="form-input" name="company" placeholder="Your company" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" name="email" placeholder="your@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Mobile Number</label>
+                    <input type="tel" class="form-input" name="mobile" placeholder="+852 XXXX XXXX" required>
+                </div>
+                
+                <button type="submit" class="form-submit">Apply for Beta</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Scroll to section function
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Modal functions
+        function openModal(type) {
+            if (type === 'strategy') {
+                document.getElementById('strategyModal').classList.add('active');
+            } else if (type === 'content') {
+                document.getElementById('contentModal').classList.add('active');
+            }
+        }
+
+        function closeModal(type) {
+            if (type === 'strategy') {
+                document.getElementById('strategyModal').classList.remove('active');
+            } else if (type === 'content') {
+                document.getElementById('contentModal').classList.remove('active');
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const strategyModal = document.getElementById('strategyModal');
+            const contentModal = document.getElementById('contentModal');
+            if (event.target === strategyModal) {
+                strategyModal.classList.remove('active');
+            }
+            if (event.target === contentModal) {
+                contentModal.classList.remove('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
