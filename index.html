@@ -128,7 +128,7 @@
         .hero-image-container {
             width: 600px;
             height: 800px;
-            display: none;
+            display: block !important;
             flex-shrink: 0;
             z-index: 10;
         }
@@ -142,21 +142,15 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        /* Show hero image on desktop (1024px+) */
+        /* Desktop layout */
         @media (min-width: 1024px) {
             .hero-wrapper {
                 flex-direction: row;
             }
-            .hero-image-container {
-                display: block;
-            }
         }
 
-        /* Hide hero image on tablet and mobile */
+        /* Mobile layout */
         @media (max-width: 1023px) {
-            .hero-wrapper {
-                flex-direction: column;
-            }
             .hero-image-container {
                 display: none !important;
             }
