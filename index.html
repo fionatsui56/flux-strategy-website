@@ -105,7 +105,7 @@
             align-items: flex-start;
             padding: 140px 32px 80px;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
             border-left: 4px solid;
             border-image: linear-gradient(180deg, rgba(205, 255, 216, 0.4) 0%, rgba(148, 185, 255, 0.2) 100%) 1;
             background: linear-gradient(90deg, transparent 0%, transparent 60%, rgba(205, 255, 216, 0.03) 85%, rgba(148, 185, 255, 0.02) 100%);
@@ -120,13 +120,13 @@
 
         .hero-image-container {
             position: absolute;
-            right: 32px;
+            right: 40px;
             top: 50%;
             transform: translateY(-50%);
             width: 600px;
             height: 800px;
             display: none;
-            z-index: 1;
+            z-index: 10;
         }
 
         .hero-image {
@@ -135,6 +135,7 @@
             object-fit: cover;
             border-radius: 8px;
             animation: fadeInUp 0.8s ease-out 0.2s both;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         /* Show hero image on desktop (1024px+) */
