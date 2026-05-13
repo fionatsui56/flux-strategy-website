@@ -102,30 +102,34 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
+            align-items: stretch;
             padding: 140px 32px 80px;
             position: relative;
-            overflow: visible;
             border-left: 4px solid;
             border-image: linear-gradient(180deg, rgba(205, 255, 216, 0.4) 0%, rgba(148, 185, 255, 0.2) 100%) 1;
             background: linear-gradient(90deg, transparent 0%, transparent 60%, rgba(205, 255, 216, 0.03) 85%, rgba(148, 185, 255, 0.02) 100%);
         }
 
+        .hero-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex: 1;
+        }
+
         .hero-content {
             flex: 1;
-            max-width: 900px;
+            max-width: 700px;
             z-index: 2;
             position: relative;
+            min-width: 0;
         }
 
         .hero-image-container {
-            position: absolute;
-            right: 40px;
-            top: 50%;
-            transform: translateY(-50%);
             width: 600px;
             height: 800px;
             display: none;
+            flex-shrink: 0;
             z-index: 10;
         }
 
@@ -140,6 +144,9 @@
 
         /* Show hero image on desktop (1024px+) */
         @media (min-width: 1024px) {
+            .hero-wrapper {
+                flex-direction: row;
+            }
             .hero-image-container {
                 display: block;
             }
@@ -147,6 +154,9 @@
 
         /* Hide hero image on tablet and mobile */
         @media (max-width: 1023px) {
+            .hero-wrapper {
+                flex-direction: column;
+            }
             .hero-image-container {
                 display: none !important;
             }
@@ -883,17 +893,19 @@
 
     <!-- HERO SECTION -->
     <section class="hero">
-        <div class="hero-content">
-            <div class="hero-subtitle">Strategic Clarity Consulting</div>
-            <h1>Everyone's chasing the same trends.<br>What if your strategy was different?</h1>
-            <p class="hero-description">Strategy without execution is philosophy. But execution without clarity is just expensive following. We help founders and marketing leaders move from scattered priorities to clear direction — and from clear direction to measurable execution.</p>
-            <div class="hero-cta-group">
-                <button class="btn btn-primary" onclick="openModal('strategy')">Book a 30mins FREE Session</button>
-                <button class="btn btn-secondary" onclick="scrollToSection('offerings')">Our Services</button>
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <div class="hero-subtitle">Strategic Clarity Consulting</div>
+                <h1>Everyone's chasing the same trends.<br>What if your strategy was different?</h1>
+                <p class="hero-description">Strategy without execution is philosophy. But execution without clarity is just expensive following. We help founders and marketing leaders move from scattered priorities to clear direction — and from clear direction to measurable execution.</p>
+                <div class="hero-cta-group">
+                    <button class="btn btn-primary" onclick="openModal('strategy')">Book a 30mins FREE Session</button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('offerings')">Our Services</button>
+                </div>
             </div>
-        </div>
-        <div class="hero-image-container">
-            <img src="Flux Website Hero Image.png" alt="Flux Strategy" class="hero-image">
+            <div class="hero-image-container">
+                <img src="Flux Website Hero Image.png" alt="Flux Strategy" class="hero-image">
+            </div>
         </div>
     </section>
 
