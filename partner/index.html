@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flux Strategy — Partner Referral Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d1521;
+  --bg-card: #111c2e;
+  --border-light: rgba(255,255,255,0.07);
+  --text-primary: #ffffff;
+  --text-secondary: #b0b8c1;
+  --mint: #cdffd8;
+  --blue: #94b9ff;
+  --font: 'Sora', -apple-system, sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: #060912;
+  font-family: var(--font);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 48px 20px;
+}
+.page {
+  width: 100%;
+  max-width: 960px;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+}
+.top-bar { height: 3px; background: linear-gradient(90deg, var(--mint), var(--blue)); }
+
+.lang-row {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 56px 0;
+  gap: 8px;
+}
+.lang-btn {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  padding: 7px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.lang-btn.active {
+  background: linear-gradient(135deg, var(--mint), var(--blue));
+  border-color: transparent;
+  color: #0d1521;
+}
+
+.inner { padding: 36px 56px 0; }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+  border-bottom: 0.5px solid var(--border-light);
+  gap: 24px;
+}
+.logo-name {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+.logo-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--text-secondary);
+}
+.header-right { text-align: right; flex-shrink: 0; }
+.doc-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--mint);
+  margin-bottom: 6px;
+}
+.doc-title { font-size: 24px; font-weight: 700; line-height: 1.2; }
+
+.sec-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 8px 22px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, var(--mint), var(--blue));
+  color: #0d1521;
+  margin-bottom: 20px;
+}
+
+.about {
+  margin-bottom: 32px;
+  padding: 24px 28px;
+  background: linear-gradient(135deg, rgba(205,255,216,0.06), rgba(148,185,255,0.06));
+  border: 1px solid rgba(205,255,216,0.15);
+  border-radius: 8px;
+}
+.about p { font-size: 15px; color: var(--text-secondary); line-height: 1.85; }
+.about strong { color: var(--text-primary); font-weight: 600; }
+
+.scenarios { margin-bottom: 32px; }
+.scenarios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.scenario {
+  padding: 20px 22px;
+  background: rgba(255,255,255,0.02);
+  border: 0.5px solid var(--border-light);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.scenario-top { display: flex; align-items: flex-start; gap: 14px; }
+.scenario-num {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--mint), var(--blue));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; color: #0d1521;
+  flex-shrink: 0;
+}
+.scenario-title { font-size: 15px; font-weight: 700; line-height: 1.4; margin-bottom: 4px; }
+.scenario-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+.scenario-tag {
+  font-size: 10px; font-weight: 600; letter-spacing: 1px;
+  padding: 5px 14px; border-radius: 20px;
+  background: rgba(148,185,255,0.1);
+  border: 0.5px solid rgba(148,185,255,0.25);
+  color: rgba(148,185,255,0.85);
+  display: inline-flex; align-items: center; gap: 6px;
+  align-self: flex-start;
+}
+.scenario-tag::before { content: '→'; color: var(--mint); opacity: 0.7; }
+
+.messages { margin-bottom: 32px; }
+.messages-sub { font-size: 14px; color: var(--text-secondary); margin-bottom: 18px; }
+.messages-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.msg-card {
+  background: var(--bg-card);
+  border: 0.5px solid var(--border-light);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.msg-top { height: 3px; background: linear-gradient(90deg, var(--mint), var(--blue)); }
+.msg-inner { padding: 20px 22px; }
+.msg-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.msg-badge {
+  display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
+  padding: 5px 14px; border-radius: 20px;
+  background: linear-gradient(135deg, rgba(205,255,216,0.12), rgba(148,185,255,0.12));
+  border: 0.5px solid rgba(205,255,216,0.25);
+  color: var(--mint);
+}
+.copy-btn {
+  font-family: var(--font); font-size: 11px; font-weight: 600;
+  padding: 6px 16px; border-radius: 20px;
+  border: 0.5px solid rgba(205,255,216,0.25);
+  background: rgba(205,255,216,0.06);
+  color: var(--mint); cursor: pointer;
+  transition: all 0.2s; white-space: nowrap;
+}
+.copy-btn:hover { background: rgba(205,255,216,0.12); }
+.copy-btn.copied {
+  color: #0d1521;
+  background: linear-gradient(135deg, var(--mint), var(--blue));
+  border-color: transparent;
+}
+.msg-body { font-size: 13.5px; color: var(--text-secondary); line-height: 1.85; font-style: italic; }
+.msg-body em { font-style: normal; color: var(--text-primary); font-weight: 600; }
+
+.network {
+  margin-bottom: 28px; padding: 20px 26px;
+  background: rgba(255,255,255,0.02);
+  border: 0.5px solid var(--border-light);
+  border-radius: 8px;
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+}
+.network-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--text-secondary); white-space: nowrap; }
+.network-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.ntag {
+  font-size: 12px; font-weight: 600; padding: 7px 18px; border-radius: 20px;
+  background: linear-gradient(135deg, rgba(148,185,255,0.1), rgba(148,185,255,0.05));
+  border: 0.5px solid rgba(148,185,255,0.2);
+  color: rgba(148,185,255,0.8);
+}
+
+.contact {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 30px 0 38px; border-top: 0.5px solid var(--border-light); gap: 24px;
+}
+.contact-how { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: var(--mint); margin-bottom: 10px; }
+.contact-text { font-size: 14px; color: var(--text-secondary); line-height: 1.85; }
+.contact-text strong { color: var(--text-primary); font-weight: 600; }
+.contact-right { text-align: right; flex-shrink: 0; }
+.c-name { font-size: 17px; font-weight: 700; }
+.c-role { font-size: 10px; letter-spacing: 1px; color: var(--text-secondary); margin: 5px 0 10px; }
+.c-email {
+  font-size: 14px; font-weight: 600;
+  background: linear-gradient(135deg, var(--mint), var(--blue));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.footer {
+  background: rgba(0,0,0,0.25); border-top: 0.5px solid var(--border-light);
+  padding: 15px 56px; display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.22); }
+.footer-web { font-size: 11px; font-weight: 600; color: rgba(205,255,216,0.35); }
+
+@media (max-width: 680px) {
+  body { padding: 0; }
+  .page { border: none; }
+  .lang-row { padding: 16px 24px 0; }
+  .inner { padding: 24px 24px 0; }
+  .header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .header-right { text-align: left; }
+  .scenarios-grid, .messages-grid { grid-template-columns: 1fr; }
+  .contact { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .contact-right { text-align: left; }
+  .network { flex-direction: column; align-items: flex-start; }
+  .footer { flex-direction: column; gap: 5px; padding: 14px 24px; text-align: center; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top-bar"></div>
+
+  <div class="lang-row">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('zh')">中文</button>
+  </div>
+
+  <div class="inner">
+
+    <div class="header">
+      <div>
+        <div class="logo-name">FLUX STRATEGY</div>
+        <div class="logo-tag" id="logo-tag">CLARITY · CHOICE · DIRECTION</div>
+      </div>
+      <div class="header-right">
+        <div class="doc-label" id="doc-label">PARTNER REFERRAL GUIDE</div>
+        <div class="doc-title" id="doc-title">When to Refer<br>Flux Strategy</div>
+      </div>
+    </div>
+
+    <div class="about">
+      <p id="about-text"><strong>Flux Strategy</strong> is a Hong Kong-based strategic clarity consultancy. We help brands, organisations and marketing teams turn scattered priorities into clear direction — so campaigns, content and execution can move with purpose. Strategy first. Marketing follows.</p>
+    </div>
+
+    <div class="scenarios">
+      <div class="sec-label" id="sec-scenarios">WHEN TO REFER FLUX STRATEGY</div>
+      <div class="scenarios-grid">
+
+        <div class="scenario">
+          <div class="scenario-top">
+            <div class="scenario-num">01</div>
+            <div>
+              <div class="scenario-title" id="s1-title">The brief keeps changing.</div>
+              <div class="scenario-desc" id="s1-desc">They want a campaign or more content, but cannot define the actual problem they are solving.</div>
+            </div>
+          </div>
+          <div class="scenario-tag" id="s1-tag">STRATEGIC ADVISORY</div>
+        </div>
+
+        <div class="scenario">
+          <div class="scenario-top">
+            <div class="scenario-num">02</div>
+            <div>
+              <div class="scenario-title" id="s2-title">Brand message is scattered.</div>
+              <div class="scenario-desc" id="s2-desc">Website, deck and social content each say something different. Nothing lands.</div>
+            </div>
+          </div>
+          <div class="scenario-tag" id="s2-tag">STRATEGIC ADVISORY</div>
+        </div>
+
+        <div class="scenario">
+          <div class="scenario-top">
+            <div class="scenario-num">03</div>
+            <div>
+              <div class="scenario-title" id="s3-title">Proposal needs a strategy layer.</div>
+              <div class="scenario-desc" id="s3-desc">Sharper positioning and narrative before creative or PR moves forward.</div>
+            </div>
+          </div>
+          <div class="scenario-tag" id="s3-tag">STRATEGIC ADVISORY</div>
+        </div>
+
+        <div class="scenario">
+          <div class="scenario-top">
+            <div class="scenario-num">04</div>
+            <div>
+              <div class="scenario-title" id="s4-title">Entering HK, China or GBA.</div>
+              <div class="scenario-desc" id="s4-desc">Clear entry strategy needed before budget is committed to platforms or campaigns.</div>
+            </div>
+          </div>
+          <div class="scenario-tag" id="s4-tag">STRATEGIC ADVISORY</div>
+        </div>
+
+        <div class="scenario">
+          <div class="scenario-top">
+            <div class="scenario-num">05</div>
+            <div>
+              <div class="scenario-title" id="s5-title">Content without direction.</div>
+              <div class="scenario-desc" id="s5-desc">Regular output but no consistent voice, no message house, no strategic thread.</div>
+            </div>
+          </div>
+          <div class="scenario-tag" id="s5-tag">STRATEGIC ADVISORY</div>
+        </div>
+
+        <div class="scenario">
+          <div class="scenario-top">
+            <div class="scenario-num">06</div>
+            <div>
+              <div class="scenario-title" id="s6-title">Team misalignment.</div>
+              <div class="scenario-desc" id="s6-desc">Meetings end with nodding. Execution goes in different directions. Decisions are slow.</div>
+            </div>
+          </div>
+          <div class="scenario-tag" id="s6-tag">TEAM BUILDING</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="messages">
+      <div class="sec-label" id="sec-messages">READY TO SEND</div>
+      <div class="messages-sub" id="msg-sub">Copy and use as is. Flux Strategy will take it from there.</div>
+      <div class="messages-grid">
+
+        <div class="msg-card">
+          <div class="msg-top"></div>
+          <div class="msg-inner">
+            <div class="msg-header">
+              <div class="msg-badge" id="msg1-badge">EMAIL / LINKEDIN</div>
+              <button class="copy-btn" id="copy1-btn" onclick="copyMsg('msg1-body', 'copy1-btn')">Copy</button>
+            </div>
+            <div class="msg-body" id="msg1-body"></div>
+          </div>
+        </div>
+
+        <div class="msg-card">
+          <div class="msg-top"></div>
+          <div class="msg-inner">
+            <div class="msg-header">
+              <div class="msg-badge" id="msg2-badge">WHATSAPP / CASUAL</div>
+              <button class="copy-btn" id="copy2-btn" onclick="copyMsg('msg2-body', 'copy2-btn')">Copy</button>
+            </div>
+            <div class="msg-body" id="msg2-body"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="network">
+      <div class="network-label" id="network-label">FLUX STRATEGY WORKS WITH TRUSTED PARTNERS FOR</div>
+      <div class="network-tags">
+        <div class="ntag" id="nt1">Creative & Design</div>
+        <div class="ntag" id="nt2">PR & Media Relations</div>
+        <div class="ntag" id="nt3">Events & Experiential</div>
+        <div class="ntag" id="nt4">Photography & Video</div>
+      </div>
+    </div>
+
+    <div class="contact">
+      <div>
+        <div class="contact-how" id="contact-how">HOW TO REFER</div>
+        <div class="contact-text" id="contact-text">A quick intro email or WhatsApp is all it takes.<br><strong>Flux Strategy will handle it from there.</strong><br>Always honest if it is not the right fit.</div>
+      </div>
+      <div class="contact-right">
+        <div class="c-name">Fiona Tsui</div>
+        <div class="c-role" id="c-role">FOUNDER & PRINCIPAL CONSULTANT</div>
+        <div class="c-email">fiona@flux-strategy.com</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-copy">© 2026 Flux Strategy. All rights reserved.</div>
+    <div class="footer-web">www.flux-strategy.com</div>
+  </div>
+
+</div>
+<script>
+var content = {
+  en: {
+    logoTag: 'CLARITY · CHOICE · DIRECTION',
+    docLabel: 'PARTNER REFERRAL GUIDE',
+    docTitle: 'When to Refer<br>Flux Strategy',
+    about: '<strong>Flux Strategy</strong> is a Hong Kong-based strategic clarity consultancy. We help brands, organisations and marketing teams turn scattered priorities into clear direction — so campaigns, content and execution can move with purpose. Strategy first. Marketing follows.',
+    secScenarios: 'WHEN TO REFER FLUX STRATEGY',
+    s1t: 'The brief keeps changing.',
+    s1d: 'They want a campaign or more content, but cannot define the actual problem they are solving.',
+    s1g: 'STRATEGIC ADVISORY',
+    s2t: 'Brand message is scattered.',
+    s2d: 'Website, deck and social content each say something different. Nothing lands.',
+    s2g: 'STRATEGIC ADVISORY',
+    s3t: 'Proposal needs a strategy layer.',
+    s3d: 'Sharper positioning and narrative before creative or PR moves forward.',
+    s3g: 'STRATEGIC ADVISORY',
+    s4t: 'Entering HK, China or GBA.',
+    s4d: 'Clear entry strategy needed before budget is committed to platforms or campaigns.',
+    s4g: 'STRATEGIC ADVISORY',
+    s5t: 'Content without direction.',
+    s5d: 'Regular output but no consistent voice, no message house, no strategic thread.',
+    s5g: 'STRATEGIC ADVISORY',
+    s6t: 'Team misalignment.',
+    s6d: 'Meetings end with nodding. Execution goes in different directions. Decisions are slow.',
+    s6g: 'TEAM BUILDING',
+    secMessages: 'READY TO SEND',
+    msgSub: 'Copy and use as is. Flux Strategy will take it from there.',
+    msg1badge: 'EMAIL / LINKEDIN',
+    msg1: '"I\'d like to introduce someone who may be useful. <em>Fiona Tsui runs Flux Strategy</em>, a strategic clarity consultancy in Hong Kong. She helps brands, agencies and marketing teams sharpen their direction — whether that\'s a message house, campaign positioning, team alignment or cross-market entry. Happy to connect you both if the timing is right."',
+    msg1plain: '"I\'d like to introduce someone who may be useful. Fiona Tsui runs Flux Strategy, a strategic clarity consultancy in Hong Kong. She helps brands, agencies and marketing teams sharpen their direction — whether that\'s a message house, campaign positioning, team alignment or cross-market entry. Happy to connect you both if the timing is right."',
+    msg2badge: 'WHATSAPP / CASUAL',
+    msg2: '"Hey — think <em>Fiona from Flux Strategy</em> can help here. She\'s good at turning unclear briefs and scattered messages into actual strategic direction. She\'s worked across FMCG, media and corporate comms. Want me to intro you both?"',
+    msg2plain: '"Hey — think Fiona from Flux Strategy can help here. She\'s good at turning unclear briefs and scattered messages into actual strategic direction. She\'s worked across FMCG, media and corporate comms. Want me to intro you both?"',
+    copyBtn: 'Copy',
+    copiedBtn: 'Copied ✓',
+    networkLabel: 'FLUX STRATEGY WORKS WITH TRUSTED PARTNERS FOR',
+    nt1: 'Creative & Design', nt2: 'PR & Media Relations', nt3: 'Events & Experiential', nt4: 'Photography & Video',
+    contactHow: 'HOW TO REFER',
+    contactText: 'A quick intro email or WhatsApp is all it takes.<br><strong>Flux Strategy will handle it from there.</strong><br>Always honest if it is not the right fit.',
+    cRole: 'FOUNDER & PRINCIPAL CONSULTANT'
+  },
+  zh: {
+    logoTag: '清晰 · 方向 · 行動',
+    docLabel: '合作夥伴介紹指南',
+    docTitle: '何時介紹<br>Flux Strategy',
+    about: '<strong>Flux Strategy</strong> 是香港策略顧問公司，協助品牌、機構及市場行銷團隊將散亂的優先事項轉化為清晰方向，讓 campaign、內容及執行工作能夠有目標地推進。策略先行，行銷跟隨。',
+    secScenarios: '何時介紹 FLUX STRATEGY',
+    s1t: '方向不斷改變。',
+    s1d: '想做 campaign 或更多內容，卻說不清楚真正要解決的業務問題。',
+    s1g: '策略顧問服務',
+    s2t: '品牌訊息散亂。',
+    s2d: '網站、Deck 及社交內容各說各話，沒有一句能清楚說明品牌定位。',
+    s2g: '策略顧問服務',
+    s3t: 'Proposal 需要策略支撐。',
+    s3d: '創意或公關推進前，需要更清晰的定位邏輯和敘事方向。',
+    s3g: '策略顧問服務',
+    s4t: '進入香港、中國或大灣區。',
+    s4d: '投入預算前，需要清晰的市場進入策略和方向。',
+    s4g: '策略顧問服務',
+    s5t: '內容缺乏方向。',
+    s5d: '持續輸出內容，但缺乏一致聲音、訊息框架及策略主軸。',
+    s5g: '策略顧問服務',
+    s6t: '團隊方向不一致。',
+    s6d: '開會時大家點頭，執行時卻各走各路。決策緩慢，責任不清。',
+    s6g: '團隊建設',
+    secMessages: '即時可發送',
+    msgSub: '直接複製使用。Flux Strategy 會跟進處理。',
+    msg1badge: '電郵 / LINKEDIN',
+    msg1: '"我想介紹一位可能對你有幫助的人。<em>Fiona Tsui 創辦了 Flux Strategy</em>，一間香港策略顧問公司。她協助品牌、代理公司及市場行銷團隊梳理方向——無論是訊息框架、campaign 定位、團隊協調或跨市場進入策略。如你有興趣，我很樂意為你們牽線。"',
+    msg1plain: '"我想介紹一位可能對你有幫助的人。Fiona Tsui 創辦了 Flux Strategy，一間香港策略顧問公司。她協助品牌、代理公司及市場行銷團隊梳理方向——無論是訊息框架、campaign 定位、團隊協調或跨市場進入策略。如你有興趣，我很樂意為你們牽線。"',
+    msg2badge: 'WHATSAPP / 輕鬆版',
+    msg2: '"我覺得 <em>Flux Strategy 的 Fiona</em> 可以幫到你。她很擅長將不清晰的 Brief 和散亂的品牌訊息轉化為實際策略方向。她曾服務快消品、媒體及企業傳訊行業。你想我幫你介紹嗎？"',
+    msg2plain: '"我覺得 Flux Strategy 的 Fiona 可以幫到你。她很擅長將不清晰的 Brief 和散亂的品牌訊息轉化為實際策略方向。她曾服務快消品、媒體及企業傳訊行業。你想我幫你介紹嗎？"',
+    copyBtn: '複製',
+    copiedBtn: '已複製 ✓',
+    networkLabel: 'FLUX STRATEGY 與可信賴的夥伴合作處理',
+    nt1: '創意設計', nt2: '公關及媒體關係', nt3: '活動及體驗', nt4: '攝影及影片',
+    contactHow: '如何介紹',
+    contactText: '一封簡短的電郵或 WhatsApp 已足夠。<br><strong>Flux Strategy 會跟進處理。</strong><br>如不合適，我們會直接告知。',
+    cRole: '創辦人及首席顧問'
+  }
+};
+
+var lang = 'en';
+
+function setLang(l) {
+  lang = l;
+  var c = content[l];
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.remove('active');
+    if ((l === 'en' && btn.textContent.trim() === 'EN') || (l === 'zh' && btn.textContent.trim() === '中文')) {
+      btn.classList.add('active');
+    }
+  });
+  document.getElementById('logo-tag').textContent = c.logoTag;
+  document.getElementById('doc-label').textContent = c.docLabel;
+  document.getElementById('doc-title').innerHTML = c.docTitle;
+  document.getElementById('about-text').innerHTML = c.about;
+  document.getElementById('sec-scenarios').textContent = c.secScenarios;
+  document.getElementById('s1-title').textContent = c.s1t;
+  document.getElementById('s1-desc').textContent = c.s1d;
+  document.getElementById('s1-tag').textContent = c.s1g;
+  document.getElementById('s2-title').textContent = c.s2t;
+  document.getElementById('s2-desc').textContent = c.s2d;
+  document.getElementById('s2-tag').textContent = c.s2g;
+  document.getElementById('s3-title').textContent = c.s3t;
+  document.getElementById('s3-desc').textContent = c.s3d;
+  document.getElementById('s3-tag').textContent = c.s3g;
+  document.getElementById('s4-title').textContent = c.s4t;
+  document.getElementById('s4-desc').textContent = c.s4d;
+  document.getElementById('s4-tag').textContent = c.s4g;
+  document.getElementById('s5-title').textContent = c.s5t;
+  document.getElementById('s5-desc').textContent = c.s5d;
+  document.getElementById('s5-tag').textContent = c.s5g;
+  document.getElementById('s6-title').textContent = c.s6t;
+  document.getElementById('s6-desc').textContent = c.s6d;
+  document.getElementById('s6-tag').textContent = c.s6g;
+  document.getElementById('sec-messages').textContent = c.secMessages;
+  document.getElementById('msg-sub').textContent = c.msgSub;
+  document.getElementById('msg1-badge').textContent = c.msg1badge;
+  document.getElementById('msg1-body').innerHTML = c.msg1;
+  document.getElementById('msg2-badge').textContent = c.msg2badge;
+  document.getElementById('msg2-body').innerHTML = c.msg2;
+  document.getElementById('copy1-btn').textContent = c.copyBtn;
+  document.getElementById('copy2-btn').textContent = c.copyBtn;
+  document.getElementById('network-label').textContent = c.networkLabel;
+  document.getElementById('nt1').textContent = c.nt1;
+  document.getElementById('nt2').textContent = c.nt2;
+  document.getElementById('nt3').textContent = c.nt3;
+  document.getElementById('nt4').textContent = c.nt4;
+  document.getElementById('contact-how').textContent = c.contactHow;
+  document.getElementById('contact-text').innerHTML = c.contactText;
+  document.getElementById('c-role').textContent = c.cRole;
+}
+
+function copyMsg(bodyId, btnId) {
+  var c = content[lang];
+  var text = bodyId === 'msg1-body' ? c.msg1plain : c.msg2plain;
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = document.getElementById(btnId);
+    btn.textContent = c.copiedBtn;
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.textContent = c.copyBtn;
+    }, 2000);
+  });
+}
+
+setLang('en');
+</script>
+</body>
+</html>
