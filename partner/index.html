@@ -154,6 +154,13 @@ body {
   align-self: flex-start;
 }
 .scenario-tag::before { content: '→'; color: var(--mint); opacity: 0.7; }
+.scenario-delivers {
+  font-size: 11px;
+  color: rgba(205,255,216,0.5);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  margin-top: 2px;
+}
 
 .messages { margin-bottom: 32px; }
 .messages-sub { font-size: 14px; color: var(--text-secondary); margin-bottom: 18px; }
@@ -284,6 +291,7 @@ body {
             </div>
           </div>
           <div class="scenario-tag" id="s1-tag">STRATEGIC ADVISORY</div>
+          <div class="scenario-delivers" id="s1-del">Delivers: Strategic direction + 90-day action roadmap</div>
         </div>
 
         <div class="scenario">
@@ -295,6 +303,7 @@ body {
             </div>
           </div>
           <div class="scenario-tag" id="s2-tag">STRATEGIC ADVISORY</div>
+          <div class="scenario-delivers" id="s2-del">Delivers: Message house + content pillars</div>
         </div>
 
         <div class="scenario">
@@ -306,6 +315,7 @@ body {
             </div>
           </div>
           <div class="scenario-tag" id="s3-tag">STRATEGIC ADVISORY</div>
+          <div class="scenario-delivers" id="s3-del">Delivers: Positioning narrative + proposal framework</div>
         </div>
 
         <div class="scenario">
@@ -317,6 +327,7 @@ body {
             </div>
           </div>
           <div class="scenario-tag" id="s4-tag">STRATEGIC ADVISORY</div>
+          <div class="scenario-delivers" id="s4-del">Delivers: Market entry framework + platform direction</div>
         </div>
 
         <div class="scenario">
@@ -328,6 +339,7 @@ body {
             </div>
           </div>
           <div class="scenario-tag" id="s5-tag">STRATEGIC ADVISORY</div>
+          <div class="scenario-delivers" id="s5-del">Delivers: Content strategy + editorial framework</div>
         </div>
 
         <div class="scenario">
@@ -339,6 +351,7 @@ body {
             </div>
           </div>
           <div class="scenario-tag" id="s6-tag">TEAM BUILDING</div>
+          <div class="scenario-delivers" id="s6-del">Delivers: Decision framework + aligned action plan</div>
         </div>
 
       </div>
@@ -415,21 +428,27 @@ var content = {
     s1t: 'The brief keeps changing.',
     s1d: 'They want a campaign or more content, but cannot define the actual problem they are solving.',
     s1g: 'STRATEGIC ADVISORY',
+    s1del: 'Delivers: Strategic direction + 90-day action roadmap',
     s2t: 'Brand message is scattered.',
     s2d: 'Website, deck and social content each say something different. Nothing lands.',
     s2g: 'STRATEGIC ADVISORY',
+    s2del: 'Delivers: Message house + content pillars',
     s3t: 'Proposal needs a strategy layer.',
     s3d: 'Sharper positioning and narrative before creative or PR moves forward.',
     s3g: 'STRATEGIC ADVISORY',
+    s3del: 'Delivers: Positioning narrative + proposal framework',
     s4t: 'Entering HK, China or GBA.',
     s4d: 'Clear entry strategy needed before budget is committed to platforms or campaigns.',
     s4g: 'STRATEGIC ADVISORY',
+    s4del: 'Delivers: Market entry framework + platform direction',
     s5t: 'Content without direction.',
     s5d: 'Regular output but no consistent voice, no message house, no strategic thread.',
     s5g: 'STRATEGIC ADVISORY',
+    s5del: 'Delivers: Content strategy + editorial framework',
     s6t: 'Team misalignment.',
     s6d: 'Meetings end with nodding. Execution goes in different directions. Decisions are slow.',
     s6g: 'TEAM BUILDING',
+    s6del: 'Delivers: Decision framework + aligned action plan',
     secMessages: 'READY TO SEND',
     msgSub: 'Copy and use as is. Flux Strategy will take it from there.',
     msg1badge: 'EMAIL / LINKEDIN',
@@ -455,21 +474,27 @@ var content = {
     s1t: '方向不斷改變。',
     s1d: '想做 campaign 或更多內容，卻說不清楚真正要解決的業務問題。',
     s1g: '策略顧問服務',
+    s1del: '交付：策略方向 + 90天行動路線圖',
     s2t: '品牌訊息散亂。',
     s2d: '網站、Deck 及社交內容各說各話，沒有一句能清楚說明品牌定位。',
     s2g: '策略顧問服務',
+    s2del: '交付：品牌訊息框架 + 內容支柱',
     s3t: 'Proposal 需要策略支撐。',
     s3d: '創意或公關推進前，需要更清晰的定位邏輯和敘事方向。',
     s3g: '策略顧問服務',
+    s3del: '交付：定位敘事 + Proposal 框架',
     s4t: '進入香港、中國或大灣區。',
     s4d: '投入預算前，需要清晰的市場進入策略和方向。',
     s4g: '策略顧問服務',
+    s4del: '交付：市場進入框架 + 平台方向',
     s5t: '內容缺乏方向。',
     s5d: '持續輸出內容，但缺乏一致聲音、訊息框架及策略主軸。',
     s5g: '策略顧問服務',
+    s5del: '交付：內容策略 + 編輯框架',
     s6t: '團隊方向不一致。',
     s6d: '開會時大家點頭，執行時卻各走各路。決策緩慢，責任不清。',
     s6g: '團隊建設',
+    s6del: '交付：決策框架 + 一致行動計劃',
     secMessages: '即時可發送',
     msgSub: '直接複製使用。Flux Strategy 會跟進處理。',
     msg1badge: '電郵 / LINKEDIN',
@@ -507,21 +532,27 @@ function setLang(l) {
   document.getElementById('s1-title').textContent = c.s1t;
   document.getElementById('s1-desc').textContent = c.s1d;
   document.getElementById('s1-tag').textContent = c.s1g;
+  document.getElementById('s1-del').textContent = c.s1del;
   document.getElementById('s2-title').textContent = c.s2t;
   document.getElementById('s2-desc').textContent = c.s2d;
   document.getElementById('s2-tag').textContent = c.s2g;
+  document.getElementById('s2-del').textContent = c.s2del;
   document.getElementById('s3-title').textContent = c.s3t;
   document.getElementById('s3-desc').textContent = c.s3d;
   document.getElementById('s3-tag').textContent = c.s3g;
+  document.getElementById('s3-del').textContent = c.s3del;
   document.getElementById('s4-title').textContent = c.s4t;
   document.getElementById('s4-desc').textContent = c.s4d;
   document.getElementById('s4-tag').textContent = c.s4g;
+  document.getElementById('s4-del').textContent = c.s4del;
   document.getElementById('s5-title').textContent = c.s5t;
   document.getElementById('s5-desc').textContent = c.s5d;
   document.getElementById('s5-tag').textContent = c.s5g;
+  document.getElementById('s5-del').textContent = c.s5del;
   document.getElementById('s6-title').textContent = c.s6t;
   document.getElementById('s6-desc').textContent = c.s6d;
   document.getElementById('s6-tag').textContent = c.s6g;
+  document.getElementById('s6-del').textContent = c.s6del;
   document.getElementById('sec-messages').textContent = c.secMessages;
   document.getElementById('msg-sub').textContent = c.msgSub;
   document.getElementById('msg1-badge').textContent = c.msg1badge;
