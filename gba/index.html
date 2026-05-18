@@ -239,6 +239,7 @@ footer { padding: 20px 48px; border-top: 0.5px solid var(--border); display: fle
   </div>
   <h1 class="reveal" id="hero-h1"></h1>
   <p class="hero-sub reveal" id="hero-sub"></p>
+  <div class="reveal" id="hero-questions" style="margin-bottom:40px; display:flex; flex-direction:column; gap:10px; max-width:560px;"></div>
   <div class="hero-ctas reveal">
     <button class="btn-primary" id="hero-btn1" onclick="openModal()"></button>
     <button class="btn-outline" id="hero-btn2" onclick="document.getElementById('delivers').scrollIntoView({behavior:'smooth'})"></button>
@@ -293,14 +294,7 @@ footer { padding: 20px 48px; border-top: 0.5px solid var(--border); display: fle
   <div class="platforms-inner">
     <div class="section-label" id="plat-label"></div>
     <h2 class="section-title reveal" id="plat-title"></h2>
-    <div class="platforms-grid">
-      <div class="platform-card reveal"><div class="platform-zh">小紅書</div><div class="platform-en">Xiaohongshu (RED)</div><div class="platform-role" id="pr1"></div></div>
-      <div class="platform-card reveal"><div class="platform-zh">微信</div><div class="platform-en">WeChat</div><div class="platform-role" id="pr2"></div></div>
-      <div class="platform-card reveal"><div class="platform-zh">抖音</div><div class="platform-en">Douyin</div><div class="platform-role" id="pr3"></div></div>
-      <div class="platform-card reveal"><div class="platform-zh" style="font-size:1.1rem;">美團/大眾點評</div><div class="platform-en">Meituan / Dianping</div><div class="platform-role" id="pr4"></div></div>
-      <div class="platform-card reveal"><div class="platform-zh">高德</div><div class="platform-en">Amap</div><div class="platform-role" id="pr5"></div></div>
-      <div class="platform-card reveal"><div class="platform-zh">LinkedIn</div><div class="platform-en">LinkedIn</div><div class="platform-role" id="pr6"></div></div>
-    </div>
+    <div class="platforms-grid" id="plat-table" style="display:block; margin-top:40px;"></div>
   </div>
 </section>
 
@@ -372,8 +366,9 @@ var C = {
     navCta: 'Book a call',
     heroEyebrow: 'CROSS-BORDER MARKET STRATEGY',
     heroH1: 'What does it really take to enter<br>the <span class="gradient">Greater Bay Area?</span>',
-    heroSub: 'Not a translation exercise. Not a platform checklist. A complete strategic repositioning — before the first dollar is spent.',
-    heroBtn1: 'Book a strategy call',
+    heroSub: 'Entering GBA is not about opening every channel. It is about knowing where your brand should play first — and why.',
+    heroQuestions: ['Should we enter GBA now, or are we not ready yet?', 'Which platform should come first — and why?', 'What needs to change in our message for China audiences?'],
+    heroBtn1: 'Book a GBA Clarity Call',
     heroBtn2: 'See what we deliver',
     enemyLabel: 'THE TRUTH',
     enemyQuote: '"Most brands don\'t fail in GBA because of <strong>bad products</strong>.<br>They fail because they applied an <strong>HK strategy</strong><br>to a <strong>mainland market</strong>."',
@@ -395,14 +390,17 @@ var C = {
     d2Items: ['HK messaging adapted for GBA','Tone & language direction','Cultural nuance guidelines','Platform-specific voice adjustments','Content pillar framework'],
     d3Name: '90-Day Entry Roadmap',
     d3Items: ['Phase 1: Foundation & positioning','Phase 2: Platform activation','Phase 3: Optimise & scale','KPIs & success markers','Resource & budget guidance'],
-    platLabel: 'PLATFORM EXPERTISE',
-    platTitle: 'We know where your audience is.<br>And what they expect.',
-    pr1: 'Discovery & lifestyle',
-    pr2: 'Relationship & conversion',
-    pr3: 'Reach & awareness',
-    pr4: 'F&B & local commerce',
-    pr5: 'Location & navigation',
-    pr6: 'B2B & corporate comms',
+    platLabel: 'PLATFORM ROLE MAPPING',
+    platTitle: 'Not every platform is right for every brand.<br>Start with the one that fits your first move.',
+    platRoleHeader: ['If your brand needs', 'Start with'],
+    platRoles: [
+      ['Build lifestyle discovery & brand awareness', 'Xiaohongshu (RED)'],
+      ['Build owned CRM & official brand presence', 'WeChat'],
+      ['Reach mass audience via short video', 'Douyin'],
+      ['Drive F&B, retail & local service discovery', '美團 / 大眾點評'],
+      ['Support offline location & foot traffic', '高德 Amap'],
+      ['Reach B2B & professional decision-makers', 'LinkedIn']
+    ],
     mlLabel: 'OUR APPROACH',
     mlTitle: 'What this is —<br>and what it isn\'t',
     doHead: 'We do this.',
@@ -418,13 +416,13 @@ var C = {
     wt5:'THE INBOUND ACTIVATOR', wh5:'Your audience is traveling to HK.', wd5:'Your brand is in HK — and mainland China travelers are your target. You need a strategy to reach them on the platforms they use before and during their trip.',
     wt6:'THE NEW HK CONNECTOR', wh6:'You\'re targeting New Hongkongers.', wd6:'Your brand serves Hong Kong — including the growing community of new residents from mainland China. You need to reach them on the platforms they actually use: Xiaohongshu, WeChat and beyond.',
     ctaLabel: 'GET STARTED',
-    ctaTitle: 'Ready to enter GBA<br>with a clear strategy?',
-    ctaSub: 'Book a 30-minute strategy call. We\'ll map where you are, where you want to go, and what needs to be true before you commit a single dollar to the market.',
-    ctaBtn: 'Book a strategy call',
+    ctaTitle: 'Not sure where to start?<br>That\'s exactly what the call is for.',
+    ctaSub: 'Book a 30-minute GBA Clarity Call. We\'ll map where your brand is now, which questions need answering first, and whether Flux Strategy is the right fit for your next step.',
+    ctaBtn: 'Book a GBA Clarity Call',
     ctaEmail: 'Or email us at <a href="mailto:hello@flux-strategy.com">hello@flux-strategy.com</a>',
     footerBack: '← flux-strategy.com',
-    modalTitle: 'Book a GBA Strategy Call',
-    modalDesc: '30 minutes. We\'ll map your entry point and tell you honestly what needs to happen first.',
+    modalTitle: 'Book a GBA Clarity Call',
+    modalDesc: '30 minutes to clarify where your brand is now, what market questions need answering, and whether Flux Strategy can support your next step.',
     modalName: 'Your name',
     modalEmail: 'Email address',
     modalCo: 'Company / brand',
@@ -436,8 +434,9 @@ var C = {
     navCta: '預約通話',
     heroEyebrow: '跨境市場策略',
     heroH1: '進入大灣區，<br>真正需要的是什麼？',
-    heroSub: '不是翻譯練習。不是平台清單。而是一次完整的策略重新定位——在投入第一分錢之前。',
-    heroBtn1: '預約策略通話',
+    heroSub: '進入大灣區，不是把所有平台都開一遍。而是先知道品牌應該從哪裡開始，以及為什麼。',
+    heroQuestions: ['我們現在應該進入大灣區嗎？還是時機未到？', '應該先從哪個平台入手——為什麼？', '品牌訊息需要如何調整，才能打動內地受眾？'],
+    heroBtn1: '預約大灣區釐清通話',
     heroBtn2: '了解交付成果',
     enemyLabel: '實情',
     enemyQuote: '「大多數品牌在大灣區失敗，不是因為<strong>產品差</strong>。<br>而是因為他們將<strong>香港策略</strong>，<br>直接套用到<strong>內地市場</strong>。」',
@@ -459,14 +458,17 @@ var C = {
     d2Items: ['香港訊息調整為大灣區版本','語氣與語言方向','文化細節指引','各平台聲音調整','內容支柱框架'],
     d3Name: '90天入場路線圖',
     d3Items: ['第一階段：基礎與定位','第二階段：平台啟動','第三階段：優化與擴展','關鍵績效指標','資源與預算指引'],
-    platLabel: '平台專業知識',
-    platTitle: '我們知道你的受眾在哪裡，<br>以及他們的期望。',
-    pr1: '發現與生活方式',
-    pr2: '關係與轉化',
-    pr3: '觸達與品牌意識',
-    pr4: '餐飲及本地商業',
-    pr5: '位置與導航',
-    pr6: '企業對企業及企業傳訊',
+    platLabel: '平台角色定位',
+    platTitle: '不是每個平台都適合每個品牌。<br>先從最配合你第一步的平台開始。',
+    platRoleHeader: ['如果你的品牌需要', '建議先從這裡開始'],
+    platRoles: [
+      ['建立生活方式發現及品牌意識', '小紅書 Xiaohongshu (RED)'],
+      ['建立品牌官方陣地及用戶關係', '微信 WeChat'],
+      ['透過短影音觸達大量受眾', '抖音 Douyin'],
+      ['推動餐飲、零售及本地服務發現', '美團 / 大眾點評'],
+      ['支援線下導流及到店流量', '高德 Amap'],
+      ['觸達企業及專業決策者', 'LinkedIn'],
+    ],
     mlLabel: '我們的做法',
     mlTitle: '這是什麼——<br>以及這不是什麼',
     doHead: '我們做的。',
@@ -482,13 +484,13 @@ var C = {
     wt5:'入境客活化者', wh5:'你的受眾正在來港。', wd5:'你的品牌在香港——而大陸旅客是你的目標受眾。你需要一套策略，在他們旅程前後，透過他們使用的平台接觸他們。',
     wt6:'新香港人連結者', wh6:'你的目標是新香港人。', wd6:'你的品牌服務香港——包括日益增長的內地新居民社群。你需要透過他們實際使用的平台接觸他們：小紅書、微信及更多。',
     ctaLabel: '立即開始',
-    ctaTitle: '準備好以清晰策略<br>進入大灣區？',
-    ctaSub: '預約30分鐘策略通話。我們會為你分析現況、目標方向，以及在投入任何預算前需要確認的事。',
-    ctaBtn: '預約策略通話',
+    ctaTitle: '不確定從哪裡開始？<br>這正是這通電話的用途。',
+    ctaSub: '預約30分鐘大灣區釐清通話。我們會幫你分析品牌現況、釐清需要優先回答的問題，以及 Flux Strategy 是否適合你的下一步。',
+    ctaBtn: '預約大灣區釐清通話',
     ctaEmail: '或電郵至 <a href="mailto:hello@flux-strategy.com">hello@flux-strategy.com</a>',
     footerBack: '← flux-strategy.com',
-    modalTitle: '預約大灣區策略通話',
-    modalDesc: '30分鐘。我們會為你分析入場點，並坦誠告知需要優先處理的事。',
+    modalTitle: '預約大灣區釐清通話',
+    modalDesc: '30分鐘，釐清你的品牌現況、需要回答的市場問題，以及 Flux Strategy 能否支援你的下一步。',
     modalName: '你的姓名',
     modalEmail: '電郵地址',
     modalCo: '公司 / 品牌',
@@ -513,6 +515,15 @@ function setLang(lang) {
   set('hero-eyebrow', c.heroEyebrow);
   set('hero-h1', c.heroH1);
   set('hero-sub', c.heroSub);
+
+  // Hero questions
+  var qEl = document.getElementById('hero-questions');
+  if (qEl && c.heroQuestions) {
+    qEl.innerHTML = c.heroQuestions.map(function(q) {
+      return '<div style="display:flex;align-items:flex-start;gap:10px;"><span style="color:var(--mint);font-size:0.9rem;margin-top:2px;flex-shrink:0;">→</span><span style="font-size:0.9rem;color:rgba(255,255,255,0.55);line-height:1.6;">' + q + '</span></div>';
+    }).join('');
+  }
+
   set('hero-btn1', c.heroBtn1);
   set('hero-btn2', c.heroBtn2);
   set('enemy-label', c.enemyLabel);
@@ -530,8 +541,25 @@ function setLang(lang) {
   set('d3-name', c.d3Name); setList('d3-items', c.d3Items);
   set('plat-label', c.platLabel);
   set('plat-title', c.platTitle);
-  set('pr1',c.pr1); set('pr2',c.pr2); set('pr3',c.pr3);
-  set('pr4',c.pr4); set('pr5',c.pr5); set('pr6',c.pr6);
+
+  // Platform role mapping table
+  var tbl = document.getElementById('plat-table');
+  if (tbl && c.platRoles) {
+    var h = c.platRoleHeader;
+    var rows = c.platRoles.map(function(r, i) {
+      var bg = i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'rgba(255,255,255,0.01)';
+      return '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;background:' + bg + ';border:0.5px solid rgba(255,255,255,0.06);border-top:none;padding:16px 24px;align-items:center;">' +
+        '<div style="font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.55;padding-right:16px;">' + r[0] + '</div>' +
+        '<div style="font-size:0.9rem;font-weight:700;color:var(--mint);">' + r[1] + '</div>' +
+        '</div>';
+    }).join('');
+    tbl.innerHTML =
+      '<div style="display:grid;grid-template-columns:1fr 1fr;background:linear-gradient(135deg,rgba(205,255,216,0.1),rgba(148,185,255,0.1));border:0.5px solid rgba(205,255,216,0.2);padding:14px 24px;border-radius:8px 8px 0 0;">' +
+      '<div style="font-size:9px;font-weight:700;letter-spacing:2px;color:var(--mint);">' + h[0] + '</div>' +
+      '<div style="font-size:9px;font-weight:700;letter-spacing:2px;color:var(--mint);">' + h[1] + '</div>' +
+      '</div>' + rows +
+      '<div style="border:0.5px solid rgba(255,255,255,0.06);border-top:none;border-radius:0 0 8px 8px;height:4px;background:linear-gradient(90deg,var(--mint),var(--blue));"></div>';
+  }
   set('ml-label', c.mlLabel);
   set('ml-title', c.mlTitle);
   set('do-head', c.doHead); setList('do-list', c.doItems);
