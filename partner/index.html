@@ -321,16 +321,17 @@ body {
           <div class="scenario-delivers" id="s3-del">Delivers: Positioning narrative + proposal framework</div>
         </div>
 
-        <div class="scenario">
+        <div class="scenario" style="background: rgba(205,255,216,0.04); border: 0.5px solid rgba(205,255,216,0.2); border-left: 3px solid rgba(205,255,216,0.6);">
           <div class="scenario-top">
             <div class="scenario-num">04</div>
             <div>
+              <div style="display:inline-block; font-size:8px; font-weight:700; letter-spacing:1.5px; padding:3px 10px; border-radius:20px; background:rgba(205,255,216,0.12); border:0.5px solid rgba(205,255,216,0.3); color:var(--mint); margin-bottom:8px;" id="s4-badge">FLUX STRATEGY SPECIALITY</div>
               <div class="scenario-title" id="s4-title">Entering HK, China or GBA.</div>
               <div class="scenario-desc" id="s4-desc">Clear entry strategy needed before budget is committed to platforms or campaigns.</div>
             </div>
           </div>
           <div class="scenario-tag" id="s4-tag">STRATEGIC ADVISORY</div>
-          <div class="scenario-delivers" id="s4-del">Delivers: Market entry framework + platform direction</div>
+          <div class="scenario-delivers" id="s4-del">Delivers: Market Entry Strategy Document + Platform Recommendation</div>
         </div>
 
         <div class="scenario">
@@ -390,6 +391,15 @@ body {
       </div>
     </div>
 
+    <div style="margin-bottom:28px; padding:20px 24px; background:linear-gradient(135deg, rgba(205,255,216,0.05), rgba(148,185,255,0.05)); border:1px solid rgba(205,255,216,0.15); border-radius:8px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <div>
+        <div style="font-size:8.5px; font-weight:700; letter-spacing:2px; color:var(--mint); margin-bottom:6px;" id="gba-callout-label">FEATURED SPECIALTY</div>
+        <div style="font-size:13px; font-weight:600; color:var(--text-primary); margin-bottom:4px;" id="gba-callout-title">Greater Bay Area & China Market Entry</div>
+        <div style="font-size:11.5px; color:var(--text-secondary);" id="gba-callout-desc">For clients exploring GBA — share this dedicated page.</div>
+      </div>
+      <a href="https://www.flux-strategy.com/gba" target="_blank" style="font-family:var(--font); font-size:11px; font-weight:700; letter-spacing:0.5px; padding:9px 20px; border-radius:20px; background:linear-gradient(135deg, var(--mint), var(--blue)); color:#0d1521; text-decoration:none; white-space:nowrap;" id="gba-callout-btn">flux-strategy.com/gba →</a>
+    </div>
+
     <div class="network">
       <div class="network-label" id="network-label">FLUX STRATEGY WORKS WITH TRUSTED PARTNERS FOR</div>
       <div class="network-tags">
@@ -444,6 +454,11 @@ var content = {
     s4d: 'Clear entry strategy needed before budget is committed to platforms or campaigns.',
     s4g: 'STRATEGIC ADVISORY',
     s4del: 'Delivers: Market Entry Strategy Document + Platform Recommendation',
+    s4badge: 'FLUX STRATEGY SPECIALITY',
+    gbaLabel: 'FEATURED SPECIALTY',
+    gbaTitle: 'Greater Bay Area & China Market Entry',
+    gbaDesc: 'For clients exploring GBA — share this dedicated page.',
+    gbaBtn: 'flux-strategy.com/gba →',
     s5t: 'Content without direction.',
     s5d: 'Regular output but no consistent voice, no message house, no strategic thread.',
     s5g: 'STRATEGIC ADVISORY',
@@ -490,6 +505,11 @@ var content = {
     s4d: '投入預算前，需要清晰的市場進入策略和方向。',
     s4g: '策略顧問服務',
     s4del: '交付：市場進入策略文件 + 平台建議書',
+    s4badge: 'FLUX STRATEGY 特色專長',
+    gbaLabel: '特色專長',
+    gbaTitle: '大灣區及中國市場進入策略',
+    gbaDesc: '如有客戶有意探索大灣區——可分享此專頁。',
+    gbaBtn: 'flux-strategy.com/gba →',
     s5t: '內容缺乏方向。',
     s5d: '持續輸出內容，但缺乏一致聲音、訊息框架及策略主軸。',
     s5g: '策略顧問服務',
@@ -548,6 +568,11 @@ function setLang(l) {
   document.getElementById('s4-desc').textContent = c.s4d;
   document.getElementById('s4-tag').textContent = c.s4g;
   document.getElementById('s4-del').textContent = c.s4del;
+  document.getElementById('s4-badge').textContent = c.s4badge;
+  document.getElementById('gba-callout-label').textContent = c.gbaLabel;
+  document.getElementById('gba-callout-title').textContent = c.gbaTitle;
+  document.getElementById('gba-callout-desc').textContent = c.gbaDesc;
+  document.getElementById('gba-callout-btn').textContent = c.gbaBtn;
   document.getElementById('s5-title').textContent = c.s5t;
   document.getElementById('s5-desc').textContent = c.s5d;
   document.getElementById('s5-tag').textContent = c.s5g;
