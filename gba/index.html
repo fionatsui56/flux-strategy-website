@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greater Bay Area & China Market Entry — Flux Strategy</title>
+<meta name="description" content="Flux Strategy helps HK and international brands enter the Greater Bay Area and mainland China — with a clear strategy before the first dollar is spent.">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QW4YSGZRW6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QW4YSGZRW6');
+</script>
+<style>
+:root {
+  --bg: #0d1521;
+  --bg-2: #0a1018;
+  --mint: #cdffd8;
+  --blue: #94b9ff;
+  --text: #ffffff;
+  --muted: #b0b8c1;
+  --border: rgba(255,255,255,0.07);
+  --border-mint: rgba(205,255,216,0.15);
+  --font: 'Sora', -apple-system, sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg-2); color: var(--text); overflow-x: hidden; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(10,16,24,0.9); backdrop-filter: blur(16px);
+  border-bottom: 0.5px solid var(--border);
+  gap: 16px;
+}
+.nav-logo { font-size: 14px; font-weight: 700; letter-spacing: 3px; color: var(--text); text-decoration: none; flex-shrink: 0; }
+.nav-right { display: flex; align-items: center; gap: 10px; }
+.lang-btn {
+  font-family: var(--font); font-size: 10px; font-weight: 600; letter-spacing: 1.5px;
+  padding: 6px 14px; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent; color: var(--muted); cursor: pointer; transition: all 0.2s;
+}
+.lang-btn.active {
+  background: linear-gradient(135deg, var(--mint), var(--blue));
+  border-color: transparent; color: #0d1521;
+}
+.nav-back-btn {
+  font-family: var(--font); font-size: 11px; font-weight: 600;
+  padding: 7px 16px; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent; color: var(--muted);
+  text-decoration: none; transition: all 0.2s; white-space: nowrap;
+}
+.nav-back-btn:hover { border-color: rgba(205,255,216,0.3); color: var(--mint); }
+.nav-cta-btn {
+  font-family: var(--font); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.5px; padding: 9px 22px; border: none; border-radius: 30px;
+  background: linear-gradient(135deg, var(--mint), var(--blue));
+  color: #0d1521; cursor: pointer; transition: opacity 0.2s; white-space: nowrap;
+}
+.nav-cta-btn:hover { opacity: 0.85; }
+
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 120px 48px 80px; position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(205,255,216,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(148,185,255,0.05) 0%, transparent 70%);
+}
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, transparent 75%);
+}
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+.eyebrow-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--mint), var(--blue));
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(1.3);opacity:0.7;} }
+.eyebrow-text { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--mint); }
+.hero h1 { font-size: clamp(2.4rem, 5vw, 4.2rem); font-weight: 700; line-height: 1.1; max-width: 820px; margin-bottom: 32px; }
+.gradient { background: linear-gradient(135deg, var(--mint), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 560px; line-height: 1.8; margin-bottom: 48px; }
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  font-family: var(--font); font-size: 13px; font-weight: 700;
+  letter-spacing: 0.5px; padding: 14px 28px; border: none; border-radius: 30px;
+  background: linear-gradient(135deg, var(--mint), var(--blue));
+  color: #0d1521; cursor: pointer; transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.85; }
+.btn-outline {
+  font-family: var(--font); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.5px; padding: 14px 28px; border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: transparent; color: var(--muted); cursor: pointer; transition: all 0.2s;
+}
+.btn-outline:hover { border-color: rgba(205,255,216,0.35); color: var(--mint); }
+
+.enemy-section { padding: 80px 48px; border-top: 0.5px solid var(--border); background: var(--bg); }
+.enemy-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: start; }
+.enemy-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: var(--mint); padding-top: 6px; white-space: nowrap; }
+.enemy-quote {
+  font-size: clamp(1.2rem, 2.2vw, 1.75rem); font-weight: 300; line-height: 1.65;
+  color: rgba(255,255,255,0.85); font-style: italic;
+  border-left: 2px solid; border-image: linear-gradient(180deg, var(--mint), var(--blue)) 1;
+  padding-left: 32px;
+}
+.enemy-quote strong { font-weight: 700; color: var(--text); font-style: normal; }
+
+.section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: var(--mint); margin-bottom: 16px; }
+.section-title { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; line-height: 1.2; margin-bottom: 48px; }
+
+.wrong-section { padding: 80px 48px; background: var(--bg-2); border-top: 0.5px solid var(--border); }
+.wrong-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2px; max-width: 1100px; margin: 0 auto; }
+.wrong-item { padding: 28px 24px; background: rgba(255,255,255,0.02); border: 0.5px solid var(--border); transition: background 0.2s; }
+.wrong-item:hover { background: rgba(255,255,255,0.04); }
+.wrong-num { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: rgba(205,255,216,0.4); margin-bottom: 12px; }
+.wrong-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.4; }
+.wrong-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+
+.delivers-section { padding: 80px 48px; background: var(--bg); border-top: 0.5px solid var(--border); }
+.delivers-inner { max-width: 1100px; margin: 0 auto; }
+.delivers-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; border: 1px solid var(--border-mint); overflow: hidden; border-radius: 12px; }
+.deliver-card { padding: 36px 32px; background: rgba(255,255,255,0.02); transition: background 0.2s; position: relative; }
+.deliver-card::before { content:''; position:absolute; top:0;left:0;right:0; height:2px; background: linear-gradient(90deg, var(--mint), var(--blue)); opacity:0; transition:opacity 0.2s; }
+.deliver-card:hover::before { opacity:1; }
+.deliver-card:hover { background: rgba(205,255,216,0.03); }
+.deliver-num { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--mint); margin-bottom: 16px; opacity: 0.6; }
+.deliver-name { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 14px; line-height: 1.3; }
+.deliver-items { list-style: none; }
+.deliver-items li { font-size: 0.85rem; color: var(--muted); padding: 5px 0; border-bottom: 0.5px solid rgba(255,255,255,0.04); display: flex; align-items: center; gap: 8px; line-height: 1.5; }
+.deliver-items li::before { content:'·'; color: var(--mint); font-size: 1.2rem; }
+.deliver-items li:last-child { border-bottom: none; }
+
+.platforms-section { padding: 80px 48px; background: var(--bg-2); border-top: 0.5px solid var(--border); }
+.platforms-inner { max-width: 1100px; margin: 0 auto; }
+.platforms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 12px; margin-top: 40px; }
+.platform-card { padding: 24px 20px; background: rgba(255,255,255,0.02); border: 0.5px solid rgba(205,255,216,0.1); border-radius: 10px; text-align: center; transition: all 0.25s; }
+.platform-card:hover { background: rgba(205,255,216,0.05); border-color: rgba(205,255,216,0.25); transform: translateY(-2px); }
+.platform-zh { font-size: 1.5rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.platform-en { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.5px; }
+.platform-role { font-size: 0.75rem; color: rgba(205,255,216,0.5); margin-top: 6px; font-weight: 600; }
+
+.moreless-section { padding: 80px 48px; background: var(--bg); border-top: 0.5px solid var(--border); }
+.moreless-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+.moreless-card { padding: 40px 36px; border-radius: 12px; }
+.moreless-card.more { background: rgba(205,255,216,0.04); border: 1px solid rgba(205,255,216,0.15); }
+.moreless-card.less { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); }
+.moreless-head { font-size: 1.4rem; font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.more .moreless-head { color: var(--mint); }
+.less .moreless-head { color: rgba(255,255,255,0.3); }
+.moreless-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.moreless-list li { font-size: 1rem; }
+.more .moreless-list li { color: rgba(255,255,255,0.8); }
+.less .moreless-list li { color: rgba(255,255,255,0.3); text-decoration: line-through; text-decoration-color: rgba(255,255,255,0.15); }
+
+.who-section { padding: 80px 48px; background: var(--bg-2); border-top: 0.5px solid var(--border); }
+.who-inner { max-width: 1100px; margin: 0 auto; }
+.who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 16px; margin-top: 40px; }
+.who-card { padding: 28px 26px; background: rgba(255,255,255,0.02); border: 0.5px solid var(--border); border-radius: 10px; transition: all 0.2s; }
+.who-card:hover { border-color: rgba(205,255,216,0.2); background: rgba(205,255,216,0.03); }
+.who-tag { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 2px; padding: 4px 12px; border-radius: 20px; background: rgba(205,255,216,0.08); border: 0.5px solid rgba(205,255,216,0.2); color: var(--mint); margin-bottom: 14px; }
+.who-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.who-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+
+.cta-section { padding: 100px 48px; background: linear-gradient(135deg, rgba(205,255,216,0.05), rgba(148,185,255,0.05)); border-top: 1px solid rgba(205,255,216,0.12); text-align: center; }
+.cta-label-text { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: var(--mint); margin-bottom: 16px; }
+.cta-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; margin-bottom: 20px; line-height: 1.2; }
+.cta-sub { font-size: 1rem; color: var(--muted); margin-bottom: 40px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.75; }
+.cta-email { font-size: 0.9rem; color: rgba(255,255,255,0.35); margin-top: 20px; }
+.cta-email a { color: var(--mint); text-decoration: none; font-weight: 600; }
+
+footer { padding: 20px 48px; border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.3); }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.22); }
+.footer-back { font-size: 11px; font-weight: 600; color: rgba(205,255,216,0.35); text-decoration: none; }
+.footer-back:hover { color: var(--mint); }
+
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal { background: #0d1521; border: 1px solid rgba(205,255,216,0.2); border-radius: 16px; padding: 48px; max-width: 480px; width: 90%; transform: translateY(20px); transition: transform 0.25s; position: relative; }
+.modal-overlay.open .modal { transform: translateY(0); }
+.modal-top { height: 3px; background: linear-gradient(90deg, var(--mint), var(--blue)); border-radius: 2px; margin-bottom: 28px; }
+.modal h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; }
+.modal p { font-size: 0.9rem; color: var(--muted); margin-bottom: 24px; line-height: 1.7; }
+.modal-form { display: flex; flex-direction: column; gap: 12px; }
+.modal-form input, .modal-form textarea { font-family: var(--font); font-size: 13px; padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04); color: var(--text); outline: none; transition: border-color 0.2s; }
+.modal-form input:focus, .modal-form textarea:focus { border-color: rgba(205,255,216,0.3); }
+.modal-form input::placeholder, .modal-form textarea::placeholder { color: rgba(255,255,255,0.3); }
+.modal-form textarea { resize: vertical; min-height: 100px; }
+.modal-submit { font-family: var(--font); font-size: 13px; font-weight: 700; padding: 14px; border: none; border-radius: 30px; background: linear-gradient(135deg, var(--mint), var(--blue)); color: #0d1521; cursor: pointer; margin-top: 4px; }
+.modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; gap: 8px; }
+  .nav-logo { font-size: 12px; }
+  .hero { padding: 100px 24px 60px; }
+  .enemy-section, .wrong-section, .delivers-section, .platforms-section, .moreless-section, .who-section, .cta-section { padding: 56px 24px; }
+  .enemy-inner { grid-template-columns: 1fr; gap: 20px; }
+  .delivers-grid { grid-template-columns: 1fr; }
+  .moreless-grid { grid-template-columns: 1fr; }
+  footer { padding: 16px 24px; flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">FLUX STRATEGY</a>
+  <div class="nav-right">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('zh')">中文</button>
+    <a href="/" class="nav-back-btn" id="nav-back">← Main Site</a>
+    <button class="nav-cta-btn" id="nav-cta" onclick="openModal()">Book a call</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-eyebrow">
+    <div class="eyebrow-dot"></div>
+    <div class="eyebrow-text" id="hero-eyebrow"></div>
+  </div>
+  <h1 class="reveal" id="hero-h1"></h1>
+  <p class="hero-sub reveal" id="hero-sub"></p>
+  <div class="hero-ctas reveal">
+    <button class="btn-primary" id="hero-btn1" onclick="openModal()"></button>
+    <button class="btn-outline" id="hero-btn2" onclick="document.getElementById('delivers').scrollIntoView({behavior:'smooth'})"></button>
+  </div>
+</section>
+
+<section class="enemy-section">
+  <div class="enemy-inner">
+    <div class="enemy-label" id="enemy-label"></div>
+    <blockquote class="enemy-quote reveal" id="enemy-quote"></blockquote>
+  </div>
+</section>
+
+<section class="wrong-section">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label" id="wrong-label"></div>
+    <h2 class="section-title reveal" id="wrong-title"></h2>
+    <div class="wrong-grid">
+      <div class="wrong-item reveal"><div class="wrong-num">01</div><div class="wrong-title" id="w1t"></div><div class="wrong-desc" id="w1d"></div></div>
+      <div class="wrong-item reveal"><div class="wrong-num">02</div><div class="wrong-title" id="w2t"></div><div class="wrong-desc" id="w2d"></div></div>
+      <div class="wrong-item reveal"><div class="wrong-num">03</div><div class="wrong-title" id="w3t"></div><div class="wrong-desc" id="w3d"></div></div>
+      <div class="wrong-item reveal"><div class="wrong-num">04</div><div class="wrong-title" id="w4t"></div><div class="wrong-desc" id="w4d"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="delivers-section" id="delivers">
+  <div class="delivers-inner">
+    <div class="section-label" id="del-label"></div>
+    <h2 class="section-title reveal" id="del-title"></h2>
+    <div class="delivers-grid reveal">
+      <div class="deliver-card">
+        <div class="deliver-num">01</div>
+        <div class="deliver-name" id="d1-name"></div>
+        <ul class="deliver-items" id="d1-items"></ul>
+      </div>
+      <div class="deliver-card">
+        <div class="deliver-num">02</div>
+        <div class="deliver-name" id="d2-name"></div>
+        <ul class="deliver-items" id="d2-items"></ul>
+      </div>
+      <div class="deliver-card">
+        <div class="deliver-num">03</div>
+        <div class="deliver-name" id="d3-name"></div>
+        <ul class="deliver-items" id="d3-items"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="platforms-section">
+  <div class="platforms-inner">
+    <div class="section-label" id="plat-label"></div>
+    <h2 class="section-title reveal" id="plat-title"></h2>
+    <div class="platforms-grid">
+      <div class="platform-card reveal"><div class="platform-zh">小紅書</div><div class="platform-en">Xiaohongshu (RED)</div><div class="platform-role" id="pr1"></div></div>
+      <div class="platform-card reveal"><div class="platform-zh">微信</div><div class="platform-en">WeChat</div><div class="platform-role" id="pr2"></div></div>
+      <div class="platform-card reveal"><div class="platform-zh">抖音</div><div class="platform-en">Douyin</div><div class="platform-role" id="pr3"></div></div>
+      <div class="platform-card reveal"><div class="platform-zh" style="font-size:1.1rem;">美團/大眾點評</div><div class="platform-en">Meituan / Dianping</div><div class="platform-role" id="pr4"></div></div>
+      <div class="platform-card reveal"><div class="platform-zh">高德</div><div class="platform-en">Amap</div><div class="platform-role" id="pr5"></div></div>
+      <div class="platform-card reveal"><div class="platform-zh">LinkedIn</div><div class="platform-en">LinkedIn</div><div class="platform-role" id="pr6"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="moreless-section">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label" id="ml-label"></div>
+    <h2 class="section-title reveal" id="ml-title"></h2>
+    <div class="moreless-grid">
+      <div class="moreless-card more reveal">
+        <div class="moreless-head"><span>✓</span><span id="do-head"></span></div>
+        <ul class="moreless-list" id="do-list"></ul>
+      </div>
+      <div class="moreless-card less reveal">
+        <div class="moreless-head"><span>×</span><span id="dont-head"></span></div>
+        <ul class="moreless-list" id="dont-list"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="who-section">
+  <div class="who-inner">
+    <div class="section-label" id="who-label"></div>
+    <h2 class="section-title reveal" id="who-title"></h2>
+    <div class="who-grid">
+      <div class="who-card reveal"><div class="who-tag" id="wt1"></div><div class="who-title" id="wh1"></div><div class="who-desc" id="wd1"></div></div>
+      <div class="who-card reveal"><div class="who-tag" id="wt2"></div><div class="who-title" id="wh2"></div><div class="who-desc" id="wd2"></div></div>
+      <div class="who-card reveal"><div class="who-tag" id="wt3"></div><div class="who-title" id="wh3"></div><div class="who-desc" id="wd3"></div></div>
+      <div class="who-card reveal"><div class="who-tag" id="wt4"></div><div class="who-title" id="wh4"></div><div class="who-desc" id="wd4"></div></div>
+      <div class="who-card reveal"><div class="who-tag" id="wt5"></div><div class="who-title" id="wh5"></div><div class="who-desc" id="wd5"></div></div>
+      <div class="who-card reveal"><div class="who-tag" id="wt6"></div><div class="who-title" id="wh6"></div><div class="who-desc" id="wd6"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-label-text" id="cta-label"></div>
+  <h2 class="cta-title reveal" id="cta-title"></h2>
+  <p class="cta-sub" id="cta-sub"></p>
+  <button class="btn-primary" id="cta-btn" onclick="openModal()" style="font-size:14px;padding:16px 36px;"></button>
+  <p class="cta-email" id="cta-email"></p>
+</section>
+
+<footer>
+  <div class="footer-copy">© 2026 Flux Strategy. All rights reserved.</div>
+  <a href="/" class="footer-back" id="footer-back"></a>
+</footer>
+
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal-top"></div>
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <h3 id="modal-title"></h3>
+    <p id="modal-desc"></p>
+    <form class="modal-form" onsubmit="handleSubmit(event)">
+      <input type="text" id="modal-name-input" required>
+      <input type="email" id="modal-email-input" required>
+      <input type="text" id="modal-co-input">
+      <textarea id="modal-msg-input"></textarea>
+      <button type="submit" class="modal-submit" id="modal-submit"></button>
+    </form>
+  </div>
+</div>
+
+<script>
+var C = {
+  en: {
+    navBack: '← Main Site',
+    navCta: 'Book a call',
+    heroEyebrow: 'CROSS-BORDER MARKET STRATEGY',
+    heroH1: 'What does it really take to enter<br>the <span class="gradient">Greater Bay Area?</span>',
+    heroSub: 'Not a translation exercise. Not a platform checklist. A complete strategic repositioning — before the first dollar is spent.',
+    heroBtn1: 'Book a strategy call',
+    heroBtn2: 'See what we deliver',
+    enemyLabel: 'THE TRUTH',
+    enemyQuote: '"Most brands don\'t fail in GBA because of <strong>bad products</strong>.<br>They fail because they applied an <strong>HK strategy</strong><br>to a <strong>mainland market</strong>."',
+    wrongLabel: 'WHAT WE SEE',
+    wrongTitle: 'Where GBA entry goes wrong',
+    w1t: 'Platform without strategy',
+    w1d: 'Opening a Xiaohongshu account before knowing what story to tell — or who you\'re telling it to.',
+    w2t: 'Translation, not adaptation',
+    w2d: 'Translating HK campaigns into Simplified Chinese without adapting the message, tone or cultural logic.',
+    w3t: 'Execution before direction',
+    w3d: 'Hiring content creators or media agencies before the positioning is clear. Budget spent. Direction unclear.',
+    w4t: 'Copying competitors',
+    w4d: 'Benchmarking what other brands do on mainland platforms — without asking whether that strategy fits yours.',
+    delLabel: 'WHAT FLUX STRATEGY DELIVERS',
+    delTitle: 'Three documents.<br>One clear entry.',
+    d1Name: 'GBA Market Entry Strategy Document',
+    d1Items: ['Target audience mapping','Platform role definition','Brand localisation direction','Competitive landscape overview','Entry priority recommendation'],
+    d2Name: 'Cross-Border Message House',
+    d2Items: ['HK messaging adapted for GBA','Tone & language direction','Cultural nuance guidelines','Platform-specific voice adjustments','Content pillar framework'],
+    d3Name: '90-Day Entry Roadmap',
+    d3Items: ['Phase 1: Foundation & positioning','Phase 2: Platform activation','Phase 3: Optimise & scale','KPIs & success markers','Resource & budget guidance'],
+    platLabel: 'PLATFORM EXPERTISE',
+    platTitle: 'We know where your audience is.<br>And what they expect.',
+    pr1: 'Discovery & lifestyle',
+    pr2: 'Relationship & conversion',
+    pr3: 'Reach & awareness',
+    pr4: 'F&B & local commerce',
+    pr5: 'Location & navigation',
+    pr6: 'B2B & corporate comms',
+    mlLabel: 'OUR APPROACH',
+    mlTitle: 'What this is —<br>and what it isn\'t',
+    doHead: 'We do this.',
+    doItems: ['Strategy before execution','Cross-border fluent','Grounded in real market behaviour','Built for HK & international brands','Clear deliverables, defined scope'],
+    dontHead: 'We don\'t do this.',
+    dontItems: ['Execution-only agency','One-size-fits-all playbook','Platform activation without direction','Translation without adaptation','Generic market entry templates'],
+    whoLabel: 'WHO IS THIS FOR',
+    whoTitle: 'You might be ready for GBA if...',
+    wt1:'THE READY EXPANDER', wh1:'You have a strong HK presence.', wd1:'Your brand works in Hong Kong. Now you want GBA — but you want to do it right, not just replicate what you\'ve been doing.',
+    wt2:'THE INTERNATIONAL ENTRANT', wh2:'You\'re using HK as a gateway.', wd2:'Your brand is established globally. You want to use HK as a strategic base to enter mainland China and the GBA market.',
+    wt3:'THE MARKET CONFUSED', wh3:'You\'ve tried. It didn\'t land.', wd3:'You\'ve spent budget on platforms or campaigns in mainland China. The results were underwhelming. You\'re not sure why.',
+    wt4:'THE GBA CURIOUS', wh4:'You\'re exploring before committing.', wd4:'GBA is on your roadmap but you\'re not ready to commit budget yet. You need a clear picture before the first decision is made.',
+    wt5:'THE INBOUND ACTIVATOR', wh5:'Your audience is traveling to HK.', wd5:'Your brand is in HK — and mainland China travelers are your target. You need a strategy to reach them on the platforms they use before and during their trip.',
+    wt6:'THE NEW HK CONNECTOR', wh6:'You\'re targeting New Hongkongers.', wd6:'Your brand serves Hong Kong — including the growing community of new residents from mainland China. You need to reach them on the platforms they actually use: Xiaohongshu, WeChat and beyond.',
+    ctaLabel: 'GET STARTED',
+    ctaTitle: 'Ready to enter GBA<br>with a clear strategy?',
+    ctaSub: 'Book a 30-minute strategy call. We\'ll map where you are, where you want to go, and what needs to be true before you commit a single dollar to the market.',
+    ctaBtn: 'Book a strategy call',
+    ctaEmail: 'Or email us at <a href="mailto:hello@flux-strategy.com">hello@flux-strategy.com</a>',
+    footerBack: '← flux-strategy.com',
+    modalTitle: 'Book a GBA Strategy Call',
+    modalDesc: '30 minutes. We\'ll map your entry point and tell you honestly what needs to happen first.',
+    modalName: 'Your name',
+    modalEmail: 'Email address',
+    modalCo: 'Company / brand',
+    modalMsg: 'Tell us briefly: where do you want to take your brand in GBA?',
+    modalSubmit: 'Send enquiry'
+  },
+  zh: {
+    navBack: '← 返回主頁',
+    navCta: '預約通話',
+    heroEyebrow: '跨境市場策略',
+    heroH1: '進入大灣區，<br>真正需要的是什麼？',
+    heroSub: '不是翻譯練習。不是平台清單。而是一次完整的策略重新定位——在投入第一分錢之前。',
+    heroBtn1: '預約策略通話',
+    heroBtn2: '了解交付成果',
+    enemyLabel: '實情',
+    enemyQuote: '「大多數品牌在大灣區失敗，不是因為<strong>產品差</strong>。<br>而是因為他們將<strong>香港策略</strong>，<br>直接套用到<strong>內地市場</strong>。」',
+    wrongLabel: '我們常見的問題',
+    wrongTitle: '進入大灣區，常走錯的路',
+    w1t: '先有平台，後有策略',
+    w1d: '在未知道說什麼故事、對誰說之前，就開了小紅書帳號。',
+    w2t: '翻譯，而非本地化',
+    w2d: '把香港 campaign 直接翻譯成簡體中文，卻沒有調整訊息、語氣或文化邏輯。',
+    w3t: '先執行，後方向',
+    w3d: '在定位未清晰前，已聘請內容創作者或媒體代理。預算花了，方向仍不清。',
+    w4t: '跟隨競爭對手',
+    w4d: '參考其他品牌在內地平台的做法——卻沒有問過這策略是否適合自己。',
+    delLabel: 'FLUX STRATEGY 的交付成果',
+    delTitle: '三份文件。<br>一條清晰入場路。',
+    d1Name: '大灣區市場進入策略文件',
+    d1Items: ['目標受眾分析','平台角色定義','品牌本地化方向','競爭環境概覽','入場優先建議'],
+    d2Name: '跨境品牌訊息框架',
+    d2Items: ['香港訊息調整為大灣區版本','語氣與語言方向','文化細節指引','各平台聲音調整','內容支柱框架'],
+    d3Name: '90天入場路線圖',
+    d3Items: ['第一階段：基礎與定位','第二階段：平台啟動','第三階段：優化與擴展','關鍵績效指標','資源與預算指引'],
+    platLabel: '平台專業知識',
+    platTitle: '我們知道你的受眾在哪裡，<br>以及他們的期望。',
+    pr1: '發現與生活方式',
+    pr2: '關係與轉化',
+    pr3: '觸達與品牌意識',
+    pr4: '餐飲及本地商業',
+    pr5: '位置與導航',
+    pr6: '企業對企業及企業傳訊',
+    mlLabel: '我們的做法',
+    mlTitle: '這是什麼——<br>以及這不是什麼',
+    doHead: '我們做的。',
+    doItems: ['先策略，後執行','精通跨境市場','植根於真實市場行為','專為香港及國際品牌而設','清晰交付物，明確範圍'],
+    dontHead: '我們不做的。',
+    dontItems: ['純執行代理','一套通用方案','無方向的平台啟動','只翻譯，不本地化','通用市場進入模板'],
+    whoLabel: '這適合誰',
+    whoTitle: '如果你有以下情況...',
+    wt1:'準備擴張者', wh1:'你在香港已有穩固基礎。', wd1:'你的品牌在香港運作良好。現在你想進入大灣區——但你希望做得正確，而不只是複製現有做法。',
+    wt2:'國際品牌進入者', wh2:'你以香港作為進入點。', wd2:'你的品牌在全球已有基礎。你想以香港作為策略基地，進入中國內地及大灣區市場。',
+    wt3:'市場迷失者', wh3:'你試過，但效果未如預期。', wd3:'你已在內地平台或 campaign 上投入預算，但成效未如理想。你不確定問題出在哪裡。',
+    wt4:'大灣區探索者', wh4:'你在決策前先作探索。', wd4:'大灣區已在你的計劃中，但你尚未準備好投入預算。你需要在首個決策前，先建立清晰的方向。',
+    wt5:'入境客活化者', wh5:'你的受眾正在來港。', wd5:'你的品牌在香港——而大陸旅客是你的目標受眾。你需要一套策略，在他們旅程前後，透過他們使用的平台接觸他們。',
+    wt6:'新香港人連結者', wh6:'你的目標是新香港人。', wd6:'你的品牌服務香港——包括日益增長的內地新居民社群。你需要透過他們實際使用的平台接觸他們：小紅書、微信及更多。',
+    ctaLabel: '立即開始',
+    ctaTitle: '準備好以清晰策略<br>進入大灣區？',
+    ctaSub: '預約30分鐘策略通話。我們會為你分析現況、目標方向，以及在投入任何預算前需要確認的事。',
+    ctaBtn: '預約策略通話',
+    ctaEmail: '或電郵至 <a href="mailto:hello@flux-strategy.com">hello@flux-strategy.com</a>',
+    footerBack: '← flux-strategy.com',
+    modalTitle: '預約大灣區策略通話',
+    modalDesc: '30分鐘。我們會為你分析入場點，並坦誠告知需要優先處理的事。',
+    modalName: '你的姓名',
+    modalEmail: '電郵地址',
+    modalCo: '公司 / 品牌',
+    modalMsg: '簡短告訴我們：你希望將品牌帶到大灣區的哪個方向？',
+    modalSubmit: '發送查詢'
+  }
+};
+
+function setLang(lang) {
+  var c = C[lang];
+  document.querySelectorAll('.lang-btn').forEach(function(b) {
+    b.classList.remove('active');
+    if ((lang==='en'&&b.textContent==='EN')||(lang==='zh'&&b.textContent==='中文')) b.classList.add('active');
+  });
+  function set(id, html) { var el=document.getElementById(id); if(el) el.innerHTML=html; }
+  function setList(id, items) {
+    var el=document.getElementById(id); if(!el) return;
+    el.innerHTML = items.map(function(i){return '<li>'+i+'</li>';}).join('');
+  }
+  set('nav-back', c.navBack);
+  set('nav-cta', c.navCta);
+  set('hero-eyebrow', c.heroEyebrow);
+  set('hero-h1', c.heroH1);
+  set('hero-sub', c.heroSub);
+  set('hero-btn1', c.heroBtn1);
+  set('hero-btn2', c.heroBtn2);
+  set('enemy-label', c.enemyLabel);
+  set('enemy-quote', c.enemyQuote);
+  set('wrong-label', c.wrongLabel);
+  set('wrong-title', c.wrongTitle);
+  set('w1t', c.w1t); set('w1d', c.w1d);
+  set('w2t', c.w2t); set('w2d', c.w2d);
+  set('w3t', c.w3t); set('w3d', c.w3d);
+  set('w4t', c.w4t); set('w4d', c.w4d);
+  set('del-label', c.delLabel);
+  set('del-title', c.delTitle);
+  set('d1-name', c.d1Name); setList('d1-items', c.d1Items);
+  set('d2-name', c.d2Name); setList('d2-items', c.d2Items);
+  set('d3-name', c.d3Name); setList('d3-items', c.d3Items);
+  set('plat-label', c.platLabel);
+  set('plat-title', c.platTitle);
+  set('pr1',c.pr1); set('pr2',c.pr2); set('pr3',c.pr3);
+  set('pr4',c.pr4); set('pr5',c.pr5); set('pr6',c.pr6);
+  set('ml-label', c.mlLabel);
+  set('ml-title', c.mlTitle);
+  set('do-head', c.doHead); setList('do-list', c.doItems);
+  set('dont-head', c.dontHead); setList('dont-list', c.dontItems);
+  set('who-label', c.whoLabel);
+  set('who-title', c.whoTitle);
+  set('wt1',c.wt1); set('wh1',c.wh1); set('wd1',c.wd1);
+  set('wt2',c.wt2); set('wh2',c.wh2); set('wd2',c.wd2);
+  set('wt3',c.wt3); set('wh3',c.wh3); set('wd3',c.wd3);
+  set('wt4',c.wt4); set('wh4',c.wh4); set('wd4',c.wd4);
+  set('wt5',c.wt5); set('wh5',c.wh5); set('wd5',c.wd5);
+  set('wt6',c.wt6); set('wh6',c.wh6); set('wd6',c.wd6);
+  set('cta-label', c.ctaLabel);
+  set('cta-title', c.ctaTitle);
+  set('cta-sub', c.ctaSub);
+  set('cta-btn', c.ctaBtn);
+  set('cta-email', c.ctaEmail);
+  set('footer-back', c.footerBack);
+  set('modal-title', c.modalTitle);
+  set('modal-desc', c.modalDesc);
+  document.getElementById('modal-name-input').placeholder = c.modalName;
+  document.getElementById('modal-email-input').placeholder = c.modalEmail;
+  document.getElementById('modal-co-input').placeholder = c.modalCo;
+  document.getElementById('modal-msg-input').placeholder = c.modalMsg;
+  set('modal-submit', c.modalSubmit);
+}
+
+function openModal() { document.getElementById('modal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow=''; }
+function closeModalOutside(e) { if(e.target===document.getElementById('modal')) closeModal(); }
+function handleSubmit(e) { e.preventDefault(); window.location.href='mailto:hello@flux-strategy.com?subject=GBA Strategy Call Enquiry'; }
+
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+}, {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+setLang('en');
+</script>
+</body>
+</html>
