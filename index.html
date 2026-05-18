@@ -867,6 +867,10 @@
         }
 
         /* ==================== ACCESSIBILITY ==================== */
+        @media (max-width: 768px) {
+            .gba-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
@@ -986,6 +990,80 @@
                     <p style="font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.65;">Meetings end with nodding. Work goes in different directions. Decisions take too long and no one's sure who owns what.</p>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- GBA SPECIALTY SECTION -->
+    <section style="padding: 72px 32px; background: linear-gradient(135deg, rgba(205,255,216,0.04) 0%, rgba(148,185,255,0.04) 100%); border-top: 1px solid rgba(205,255,216,0.12); border-bottom: 1px solid rgba(205,255,216,0.12);">
+        <div class="container">
+            <div style="max-width: 1100px; margin: 0 auto;">
+
+                <!-- Label + Headline -->
+                <div style="margin-bottom: 48px;">
+                    <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+                        <div style="width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-start), var(--accent-end));"></div>
+                        <div style="font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; color: var(--accent-start);">FEATURED SPECIALTY</div>
+                    </div>
+                    <h2 style="font-size: 2.2rem; font-weight: 700; line-height: 1.2; margin-bottom: 16px;">Cross-Border Market Strategy<br><span style="background: linear-gradient(135deg, var(--accent-start), var(--accent-end)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Greater Bay Area & China Entry</span></h2>
+                    <p style="font-size: 1.05rem; color: rgba(255,255,255,0.5); font-style: italic; max-width: 680px; line-height: 1.75;">
+                        "Going north isn't going local. It's going different — different platforms, different consumer logic, different competitive landscape. Most brands only find out after they've spent the budget."
+                    </p>
+                </div>
+
+                <div class="gba-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
+
+                    <!-- Left: For Who + Deliverables -->
+                    <div>
+                        <p style="font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.85; margin-bottom: 32px;">For HK-based and international brands ready to enter GBA or mainland China — but need a clear strategic entry point before committing to platforms, content or campaigns.</p>
+
+                        <div style="margin-bottom: 24px;">
+                            <p style="font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; color: var(--accent-start); margin-bottom: 14px;">WHAT WE DELIVER</p>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <div style="display: flex; align-items: flex-start; gap: 12px;">
+                                    <span style="color: var(--accent-start); font-size: 0.8rem; margin-top: 3px; flex-shrink: 0;">✦</span>
+                                    <div>
+                                        <p style="font-size: 0.9rem; font-weight: 600; color: #fff; margin-bottom: 2px;">GBA Market Entry Strategy Document</p>
+                                        <p style="font-size: 0.82rem; color: rgba(255,255,255,0.45);">Audience mapping · Platform role definition · Brand localisation direction</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: flex-start; gap: 12px;">
+                                    <span style="color: var(--accent-start); font-size: 0.8rem; margin-top: 3px; flex-shrink: 0;">✦</span>
+                                    <div>
+                                        <p style="font-size: 0.9rem; font-weight: 600; color: #fff; margin-bottom: 2px;">Cross-Border Message House</p>
+                                        <p style="font-size: 0.82rem; color: rgba(255,255,255,0.45);">HK messaging adapted for GBA audiences · Tone, language, cultural nuances</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: flex-start; gap: 12px;">
+                                    <span style="color: var(--accent-start); font-size: 0.8rem; margin-top: 3px; flex-shrink: 0;">✦</span>
+                                    <div>
+                                        <p style="font-size: 0.9rem; font-weight: 600; color: #fff; margin-bottom: 2px;">90-Day Entry Roadmap</p>
+                                        <p style="font-size: 0.82rem; color: rgba(255,255,255,0.45);">Foundation · Platform activation · Optimise & scale</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="openModal('strategy')" style="margin-top: 8px;">Book a call to discuss</button>
+                    </div>
+
+                    <!-- Right: Platform Knowledge + Partner Network -->
+                    <div style="display: flex; flex-direction: column; gap: 24px;">
+
+                        <div style="padding: 24px; background: rgba(255,255,255,0.03); border: 0.5px solid rgba(205,255,216,0.12); border-radius: 10px;">
+                            <p style="font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; color: var(--accent-start); margin-bottom: 14px;">PLATFORM EXPERTISE</p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                <span style="font-size: 0.85rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; background: rgba(205,255,216,0.08); border: 0.5px solid rgba(205,255,216,0.2); color: rgba(205,255,216,0.8);">小紅書</span>
+                                <span style="font-size: 0.85rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; background: rgba(205,255,216,0.08); border: 0.5px solid rgba(205,255,216,0.2); color: rgba(205,255,216,0.8);">WeChat</span>
+                                <span style="font-size: 0.85rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; background: rgba(205,255,216,0.08); border: 0.5px solid rgba(205,255,216,0.2); color: rgba(205,255,216,0.8);">美團</span>
+                                <span style="font-size: 0.85rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; background: rgba(205,255,216,0.08); border: 0.5px solid rgba(205,255,216,0.2); color: rgba(205,255,216,0.8);">高德</span>
+                                <span style="font-size: 0.85rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; background: rgba(148,185,255,0.08); border: 0.5px solid rgba(148,185,255,0.2); color: rgba(148,185,255,0.8);">抖音</span>
+                                <span style="font-size: 0.85rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; background: rgba(148,185,255,0.08); border: 0.5px solid rgba(148,185,255,0.2); color: rgba(148,185,255,0.8);">LinkedIn</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </section>
