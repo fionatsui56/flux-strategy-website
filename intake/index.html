@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clarity Sprint — Pre-Session Form · Flux Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QW4YSGZRW6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QW4YSGZRW6');
+</script>
+<style>
+:root {
+  --bg: #0d1521;
+  --bg-2: #0a1018;
+  --bg-card: #111c2e;
+  --mint: #cdffd8;
+  --blue: #94b9ff;
+  --text: #ffffff;
+  --muted: #b0b8c1;
+  --border: rgba(255,255,255,0.07);
+  --border-mint: rgba(205,255,216,0.15);
+  --font: 'Sora', -apple-system, sans-serif;
+  --radius: 10px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--bg-2);
+  color: var(--text);
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  padding: 18px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(10,16,24,0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 0.5px solid var(--border);
+}
+.nav-logo { font-size: 13px; font-weight: 700; letter-spacing: 3px; color: var(--text); text-decoration: none; }
+.nav-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--mint); }
+
+/* HEADER */
+.header {
+  padding: 64px 48px 48px;
+  max-width: 760px; margin: 0 auto;
+  border-bottom: 0.5px solid var(--border);
+}
+.header-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-bottom: 20px;
+}
+.eyebrow-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--mint), var(--blue));
+}
+.eyebrow-text { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: var(--mint); }
+.header h1 { font-size: 2rem; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+.header p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 12px; }
+.header-note {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.82rem; color: rgba(255,255,255,0.35);
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.03);
+  border: 0.5px solid var(--border);
+  border-radius: 30px;
+  margin-top: 8px;
+}
+
+/* PROGRESS */
+.progress-bar {
+  max-width: 760px; margin: 0 auto;
+  padding: 24px 48px 0;
+  display: flex; align-items: center; gap: 8px;
+}
+.progress-track {
+  flex: 1; height: 3px; background: rgba(255,255,255,0.08);
+  border-radius: 2px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--mint), var(--blue));
+  border-radius: 2px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+.progress-text { font-size: 10px; font-weight: 600; letter-spacing: 1px; color: var(--muted); white-space: nowrap; }
+
+/* FORM LAYOUT */
+.form-wrap { max-width: 760px; margin: 0 auto; padding: 0 48px; }
+
+/* SECTION */
+.form-section {
+  margin-top: 48px;
+  display: none;
+}
+.form-section.active { display: block; }
+
+.section-header { margin-bottom: 32px; }
+.section-num {
+  font-size: 9px; font-weight: 700; letter-spacing: 3px;
+  color: rgba(205,255,216,0.5); margin-bottom: 8px;
+}
+.section-title {
+  font-size: 1.3rem; font-weight: 700; color: var(--text);
+  margin-bottom: 8px;
+}
+.section-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.7; }
+
+/* QUESTION */
+.q-block { margin-bottom: 28px; }
+.q-label {
+  display: block;
+  font-size: 0.9rem; font-weight: 600; color: var(--text);
+  margin-bottom: 6px; line-height: 1.5;
+}
+.q-label .req { color: var(--mint); margin-left: 3px; }
+.q-hint {
+  font-size: 0.8rem; color: rgba(255,255,255,0.35);
+  margin-bottom: 10px; line-height: 1.6; font-style: italic;
+}
+
+/* INPUTS */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+textarea,
+select {
+  width: 100%;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  padding: 13px 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  -webkit-appearance: none;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: rgba(205,255,216,0.35);
+  background: rgba(255,255,255,0.06);
+}
+input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
+textarea { resize: vertical; min-height: 110px; line-height: 1.65; }
+select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b0b8c1' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+select option { background: #0d1521; color: var(--text); }
+
+/* RADIO / CHECKBOX */
+.options-grid {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.options-grid.two-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+}
+.opt-label {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-size: 0.875rem; color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+}
+.opt-label:hover { border-color: rgba(205,255,216,0.2); background: rgba(205,255,216,0.03); }
+.opt-label input { display: none; }
+.opt-label.selected {
+  border-color: rgba(205,255,216,0.4);
+  background: rgba(205,255,216,0.06);
+  color: var(--text);
+}
+.opt-indicator {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  flex-shrink: 0; margin-top: 1px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+}
+.opt-label.selected .opt-indicator {
+  background: linear-gradient(135deg, var(--mint), var(--blue));
+  border-color: transparent;
+}
+.opt-indicator-sq {
+  width: 18px; height: 18px; border-radius: 4px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  flex-shrink: 0; margin-top: 1px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+}
+.opt-label.selected .opt-indicator-sq {
+  background: linear-gradient(135deg, var(--mint), var(--blue));
+  border-color: transparent;
+}
+.check-icon { display: none; }
+.opt-label.selected .check-icon { display: block; }
+
+/* RANK */
+.rank-list { display: flex; flex-direction: column; gap: 6px; }
+.rank-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius);
+  cursor: grab; transition: all 0.15s;
+  font-size: 0.875rem; color: rgba(255,255,255,0.7);
+}
+.rank-item:hover { border-color: rgba(205,255,216,0.2); background: rgba(205,255,216,0.03); }
+.rank-num {
+  width: 24px; height: 24px; border-radius: 6px;
+  background: linear-gradient(135deg, rgba(205,255,216,0.15), rgba(148,185,255,0.15));
+  border: 0.5px solid rgba(205,255,216,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; color: var(--mint);
+  flex-shrink: 0;
+}
+.drag-handle { color: rgba(255,255,255,0.2); font-size: 0.9rem; }
+
+/* NAV BUTTONS */
+.form-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 40px; padding-top: 28px;
+  border-top: 0.5px solid var(--border);
+}
+.btn-back {
+  font-family: var(--font); font-size: 13px; font-weight: 600;
+  padding: 12px 24px; border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent; color: var(--muted); cursor: pointer; transition: all 0.2s;
+}
+.btn-back:hover { border-color: rgba(255,255,255,0.25); color: var(--text); }
+.btn-next {
+  font-family: var(--font); font-size: 13px; font-weight: 700;
+  padding: 12px 28px; border-radius: 30px; border: none;
+  background: linear-gradient(135deg, var(--mint), var(--blue));
+  color: #0d1521; cursor: pointer; transition: opacity 0.2s;
+}
+.btn-next:hover { opacity: 0.85; }
+.btn-submit {
+  font-family: var(--font); font-size: 14px; font-weight: 700;
+  padding: 14px 36px; border-radius: 30px; border: none;
+  background: linear-gradient(135deg, var(--mint), var(--blue));
+  color: #0d1521; cursor: pointer; transition: opacity 0.2s;
+}
+.btn-submit:hover { opacity: 0.85; }
+
+/* DIVIDER */
+.q-divider { height: 0.5px; background: var(--border); margin: 8px 0 28px; }
+
+/* SUCCESS */
+.success-screen {
+  display: none;
+  max-width: 760px; margin: 0 auto;
+  padding: 80px 48px; text-align: center;
+}
+.success-screen.active { display: block; }
+.success-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(205,255,216,0.15), rgba(148,185,255,0.15));
+  border: 1px solid rgba(205,255,216,0.3);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px; font-size: 1.6rem;
+}
+.success-screen h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 16px; }
+.success-screen p { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 480px; margin: 0 auto; }
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  nav { padding: 16px 20px; }
+  .header, .form-wrap { padding-left: 20px; padding-right: 20px; }
+  .progress-bar { padding: 20px 20px 0; }
+  .options-grid.two-col { grid-template-columns: 1fr; }
+  .header h1 { font-size: 1.5rem; }
+  .success-screen { padding: 60px 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">FLUX STRATEGY</a>
+  <div class="nav-label">CLARITY SPRINT · PRE-SESSION FORM</div>
+</nav>
+
+<div class="header">
+  <div class="header-eyebrow">
+    <div class="eyebrow-dot"></div>
+    <div class="eyebrow-text">CLARITY SPRINT</div>
+  </div>
+  <h1>Before we meet,<br>help us understand where you are.</h1>
+  <p>This form helps Flux Strategy prepare for your 90-minute session. The more specific you are, the more focused and useful the session will be.</p>
+  <p>There are no right or wrong answers. Be honest — especially about what isn't working.</p>
+  <div class="header-note">⏱ Estimated time: 15–20 minutes · 7 sections · 24 questions</div>
+</div>
+
+<div class="progress-bar">
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+  <div class="progress-text" id="progress-text">Section 1 of 7</div>
+</div>
+
+<div class="form-wrap">
+<form id="intake-form" action="https://formspree.io/f/mykvzlbd" method="POST">
+
+<!-- ==================== SECTION 1 ==================== -->
+<div class="form-section active" id="section-1">
+  <div class="section-header">
+    <div class="section-num">SECTION 01 OF 07</div>
+    <div class="section-title">About You</div>
+    <div class="section-desc">Quick context to help Flux Strategy understand who you are and where you're coming from.</div>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q1. Your name <span class="req">*</span></label>
+    <input type="text" name="name" placeholder="First and last name" required>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q2. Your role / title <span class="req">*</span></label>
+    <input type="text" name="role" placeholder="e.g. Founder, Marketing Director, Head of Strategy">
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q3. Company / brand name <span class="req">*</span></label>
+    <input type="text" name="company" placeholder="Your organisation's name">
+  </div>
+
+  <div class="q-divider"></div>
+
+  <div class="q-block">
+    <label class="q-label">Q4. What industry are you in? <span class="req">*</span></label>
+    <select name="industry" required>
+      <option value="" disabled selected>Select your industry</option>
+      <option>F&B</option>
+      <option>Retail</option>
+      <option>Financial Services</option>
+      <option>Property & Real Estate</option>
+      <option>Tech & Startups</option>
+      <option>Healthcare</option>
+      <option>Education</option>
+      <option>Events & Hospitality</option>
+      <option>Non-profit & NGO</option>
+      <option>Professional Services</option>
+      <option>Media & Communications</option>
+      <option>Other</option>
+    </select>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q5. How long has your brand or organisation been operating?</label>
+    <div class="options-grid two-col" data-type="radio" data-name="operating_time">
+      <label class="opt-label"><input type="radio" name="operating_time" value="Less than 1 year"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Less than 1 year</label>
+      <label class="opt-label"><input type="radio" name="operating_time" value="1–3 years"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>1–3 years</label>
+      <label class="opt-label"><input type="radio" name="operating_time" value="3–7 years"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>3–7 years</label>
+      <label class="opt-label"><input type="radio" name="operating_time" value="7+ years"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>7+ years</label>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q6. Which markets does your brand currently operate in? <em style="font-size:0.8rem;color:var(--muted);font-weight:400;">(Select all that apply)</em></label>
+    <div class="options-grid two-col" data-type="checkbox" data-name="markets">
+      <label class="opt-label"><input type="checkbox" name="markets" value="Hong Kong"><span class="opt-indicator-sq"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Hong Kong</label>
+      <label class="opt-label"><input type="checkbox" name="markets" value="Greater Bay Area"><span class="opt-indicator-sq"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Greater Bay Area</label>
+      <label class="opt-label"><input type="checkbox" name="markets" value="Mainland China"><span class="opt-indicator-sq"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Mainland China</label>
+      <label class="opt-label"><input type="checkbox" name="markets" value="Southeast Asia"><span class="opt-indicator-sq"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Southeast Asia</label>
+      <label class="opt-label"><input type="checkbox" name="markets" value="International"><span class="opt-indicator-sq"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>International</label>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q7. How large is your marketing or strategy team?</label>
+    <div class="options-grid" data-type="radio" data-name="team_size">
+      <label class="opt-label"><input type="radio" name="team_size" value="Just me"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Just me</label>
+      <label class="opt-label"><input type="radio" name="team_size" value="2–5 people"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>2–5 people</label>
+      <label class="opt-label"><input type="radio" name="team_size" value="6–15 people"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>6–15 people</label>
+      <label class="opt-label"><input type="radio" name="team_size" value="15+ people"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>15+ people</label>
+      <label class="opt-label"><input type="radio" name="team_size" value="We outsource to agencies"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>We outsource to agencies</label>
+    </div>
+  </div>
+
+  <div class="form-nav">
+    <div></div>
+    <button type="button" class="btn-next" onclick="goTo(2)">Next →</button>
+  </div>
+</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<div class="form-section" id="section-2">
+  <div class="section-header">
+    <div class="section-num">SECTION 02 OF 07</div>
+    <div class="section-title">The Situation</div>
+    <div class="section-desc">What's happening right now. Don't overthink — write what first comes to mind.</div>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q8. In one or two sentences, what is the main challenge you want to work on? <span class="req">*</span></label>
+    <div class="q-hint">This is what you think the problem is. We'll work together to find the real tension.</div>
+    <textarea name="main_challenge" placeholder="Be as specific as you can..." required></textarea>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q9. What triggered you to seek outside help now? <em style="font-size:0.8rem;color:var(--muted);font-weight:400;">(Pick up to 2)</em></label>
+    <div class="options-grid" data-type="checkbox" data-name="trigger" data-max="2">
+      <label class="opt-label"><input type="checkbox" name="trigger" value="A specific deadline or campaign coming up"><span class="opt-indicator-sq"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A specific deadline or campaign coming up</label>
+      <label class="opt-label"><input type="checkbox" name="trigger" value="Internal disagreement about direction"><span class="opt-indicator-sq"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Internal disagreement about direction</label>
+      <label class="opt-label"><input type="checkbox" name="trigger" value="Results have been underwhelming"><span class="opt-indicator-sq"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Results have been underwhelming</label>
+      <label class="opt-label"><input type="checkbox" name="trigger" value="The team has grown and alignment is harder"><span class="opt-indicator-sq"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>The team has grown and alignment is harder</label>
+      <label class="opt-label"><input type="checkbox" name="trigger" value="We're entering a new market"><span class="opt-indicator-sq"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>We're entering a new market</label>
+      <label class="opt-label"><input type="checkbox" name="trigger" value="The business has changed but the strategy hasn't"><span class="opt-indicator-sq"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>The business has changed but the strategy hasn't</label>
+      <label class="opt-label"><input type="checkbox" name="trigger" value="I've been thinking about this for a while and finally decided to act"><span class="opt-indicator-sq"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>I've been thinking about this for a while and finally decided to act</label>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q10. How long has this been an issue?</label>
+    <div class="options-grid two-col" data-type="radio" data-name="issue_duration">
+      <label class="opt-label"><input type="radio" name="issue_duration" value="Less than 3 months"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Less than 3 months</label>
+      <label class="opt-label"><input type="radio" name="issue_duration" value="3–6 months"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>3–6 months</label>
+      <label class="opt-label"><input type="radio" name="issue_duration" value="6–12 months"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>6–12 months</label>
+      <label class="opt-label"><input type="radio" name="issue_duration" value="Over a year"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Over a year</label>
+      <label class="opt-label"><input type="radio" name="issue_duration" value="It's always been there"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>It's always been there</label>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q11. What have you already tried to address this?</label>
+    <div class="q-hint">If nothing, write "Nothing yet." This helps Flux Strategy avoid repeating what hasn't worked.</div>
+    <textarea name="already_tried" placeholder="Describe any previous attempts, decisions, or approaches..."></textarea>
+  </div>
+
+  <div class="form-nav">
+    <button type="button" class="btn-back" onclick="goTo(1)">← Back</button>
+    <button type="button" class="btn-next" onclick="goTo(3)">Next →</button>
+  </div>
+</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<div class="form-section" id="section-3">
+  <div class="section-header">
+    <div class="section-num">SECTION 03 OF 07</div>
+    <div class="section-title">The Real Tension</div>
+    <div class="section-desc">These are the harder questions. This is where the session will live. Take your time.</div>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q12. What is the ONE decision your team has been unable to agree on — or keeps avoiding? <span class="req">*</span></label>
+    <div class="q-hint">If you can't answer this, that itself tells us something important.</div>
+    <textarea name="avoided_decision" placeholder="Be as specific as possible. One decision, clearly stated." required></textarea>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q13. Are there different views internally about what the problem actually is?</label>
+    <div class="options-grid" data-type="radio" data-name="internal_views">
+      <label class="opt-label"><input type="radio" name="internal_views" value="Yes — different people define the problem differently"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Yes — different people define the problem differently</label>
+      <label class="opt-label"><input type="radio" name="internal_views" value="Somewhat — we broadly agree but the details differ"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Somewhat — we broadly agree but the details differ</label>
+      <label class="opt-label"><input type="radio" name="internal_views" value="No — we agree on the problem, just not the solution"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>No — we agree on the problem, just not the solution</label>
+      <label class="opt-label"><input type="radio" name="internal_views" value="I'm not sure"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>I'm not sure</label>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q14. Who else needs to be aligned on the direction after our session?</label>
+    <div class="q-hint">e.g. CEO, CFO, Board, Regional HQ, Creative team. This helps Flux Strategy understand what the output needs to look like.</div>
+    <input type="text" name="stakeholders" placeholder="List the key stakeholders...">
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q15. What happens if nothing changes in the next 6 months? <span class="req">*</span></label>
+    <div class="q-hint">Be honest about the stakes. Vague answers usually mean the timing isn't urgent — and that's okay to say.</div>
+    <textarea name="cost_of_inaction" placeholder="What does staying stuck look like for your brand or team?" required></textarea>
+  </div>
+
+  <div class="form-nav">
+    <button type="button" class="btn-back" onclick="goTo(2)">← Back</button>
+    <button type="button" class="btn-next" onclick="goTo(4)">Next →</button>
+  </div>
+</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<div class="form-section" id="section-4">
+  <div class="section-header">
+    <div class="section-num">SECTION 04 OF 07</div>
+    <div class="section-title">Current State</div>
+    <div class="section-desc">Help Flux Strategy understand where to focus — and what to protect.</div>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q16. Where is the biggest source of confusion right now? <em style="font-size:0.8rem;color:var(--muted);font-weight:400;">(Drag to rank your top 3)</em></label>
+    <div class="q-hint">Drag the items to rank them. Put the most pressing at the top.</div>
+    <div class="rank-list" id="rank-list">
+      <div class="rank-item" draggable="true" data-value="Who our audience really is"><span class="drag-handle">⠿</span><span class="rank-num">1</span>Who our audience really is</div>
+      <div class="rank-item" draggable="true" data-value="What we stand for as a brand"><span class="drag-handle">⠿</span><span class="rank-num">2</span>What we stand for as a brand</div>
+      <div class="rank-item" draggable="true" data-value="What message to lead with"><span class="drag-handle">⠿</span><span class="rank-num">3</span>What message to lead with</div>
+      <div class="rank-item" draggable="true" data-value="Which channels to prioritise"><span class="drag-handle">⠿</span><span class="rank-num">4</span>Which channels to prioritise</div>
+      <div class="rank-item" draggable="true" data-value="How to allocate budget"><span class="drag-handle">⠿</span><span class="rank-num">5</span>How to allocate budget</div>
+      <div class="rank-item" draggable="true" data-value="How to align the team"><span class="drag-handle">⠿</span><span class="rank-num">6</span>How to align the team</div>
+      <div class="rank-item" draggable="true" data-value="How to enter a new market"><span class="drag-handle">⠿</span><span class="rank-num">7</span>How to enter a new market</div>
+      <div class="rank-item" draggable="true" data-value="What to stop doing"><span class="drag-handle">⠿</span><span class="rank-num">8</span>What to stop doing</div>
+    </div>
+    <input type="hidden" name="confusion_ranking" id="confusion-ranking-input">
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q17. What is working well that you want to protect?</label>
+    <div class="q-hint">Tell Flux Strategy what NOT to disrupt. This is as important as knowing what to fix.</div>
+    <textarea name="what_works" placeholder="What's going well — even if other things aren't?"></textarea>
+  </div>
+
+  <div class="form-nav">
+    <button type="button" class="btn-back" onclick="goTo(3)">← Back</button>
+    <button type="button" class="btn-next" onclick="goTo(5)">Next →</button>
+  </div>
+</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<div class="form-section" id="section-5">
+  <div class="section-header">
+    <div class="section-num">SECTION 05 OF 07</div>
+    <div class="section-title">What Success Looks Like</div>
+    <div class="section-desc">Making the session accountable — for both sides.</div>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q18. What would a successful 90-minute session look like for you? <span class="req">*</span></label>
+    <textarea name="success_definition" placeholder="What would you walk away with that would make this session worthwhile?" required></textarea>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q19. What would you do differently the day after our session, if you had clarity?</label>
+    <div class="q-hint">This helps Flux Strategy understand whether you're ready to act — and calibrate the session accordingly.</div>
+    <textarea name="day_after" placeholder="What action, decision, or conversation would you have?"></textarea>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q20. Is there anything you need to take back to your team or leadership after this session?</label>
+    <div class="q-hint">e.g. a recommendation, a framework, a direction to present to your board or regional HQ.</div>
+    <input type="text" name="output_needed" placeholder="e.g. A summary to present to the CEO, a framework for the team...">
+  </div>
+
+  <div class="form-nav">
+    <button type="button" class="btn-back" onclick="goTo(4)">← Back</button>
+    <button type="button" class="btn-next" onclick="goTo(6)">Next →</button>
+  </div>
+</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<div class="form-section" id="section-6">
+  <div class="section-header">
+    <div class="section-num">SECTION 06 OF 07</div>
+    <div class="section-title">Constraints</div>
+    <div class="section-desc">What Flux Strategy needs to work within.</div>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q21. Is there a deadline driving this work?</label>
+    <div class="options-grid" data-type="radio" data-name="deadline">
+      <label class="opt-label"><input type="radio" name="deadline" value="Yes — in the next 2 weeks"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Yes — in the next 2 weeks</label>
+      <label class="opt-label"><input type="radio" name="deadline" value="Yes — in the next month"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Yes — in the next month</label>
+      <label class="opt-label"><input type="radio" name="deadline" value="Yes — in the next quarter"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Yes — in the next quarter</label>
+      <label class="opt-label"><input type="radio" name="deadline" value="No hard deadline"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>No hard deadline</label>
+      <label class="opt-label"><input type="radio" name="deadline" value="Not sure"><span class="opt-indicator"><svg class="check-icon" width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#0d1521" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Not sure</label>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q22. Are there any topics, directions, or decisions that are completely off the table?</label>
+    <div class="q-hint">e.g. budget is fixed, we can't change the product, certain partnerships are already confirmed. If none, write "None."</div>
+    <textarea name="constraints" placeholder="Constraints, fixed decisions, or out-of-scope areas..."></textarea>
+  </div>
+
+  <div class="form-nav">
+    <button type="button" class="btn-back" onclick="goTo(5)">← Back</button>
+    <button type="button" class="btn-next" onclick="goTo(7)">Next →</button>
+  </div>
+</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<div class="form-section" id="section-7">
+  <div class="section-header">
+    <div class="section-num">SECTION 07 OF 07</div>
+    <div class="section-title">Supporting Materials</div>
+    <div class="section-desc">Optional — but helpful. The more context Flux Strategy has before the session, the more focused the time together.</div>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q23. Please share any relevant links that will help Flux Strategy prepare.</label>
+    <div class="q-hint">e.g. your website, LinkedIn page, recent campaign links, social channels, or any publicly accessible documents.</div>
+    <textarea name="relevant_links" placeholder="Paste links here, one per line..."></textarea>
+  </div>
+
+  <div class="q-block">
+    <label class="q-label">Q24. Is there anything else you want Flux Strategy to know before the session?</label>
+    <textarea name="anything_else" placeholder="Anything we haven't covered — context, history, sensitivities, or anything that might be useful to know..."></textarea>
+  </div>
+
+  <div style="margin-top: 32px; padding: 24px; background: rgba(205,255,216,0.04); border: 1px solid rgba(205,255,216,0.15); border-radius: 10px;">
+    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.8;">
+      <strong style="color: var(--text);">What happens next:</strong><br>
+      Flux Strategy will review your answers before the session. You'll receive a confirmation email within 24 hours. If we have any clarifying questions, we'll be in touch.
+    </p>
+  </div>
+
+  <div class="form-nav">
+    <button type="button" class="btn-back" onclick="goTo(6)">← Back</button>
+    <button type="submit" class="btn-submit">Submit →</button>
+  </div>
+</div>
+
+</form>
+</div>
+
+<!-- SUCCESS -->
+<div class="success-screen" id="success-screen">
+  <div class="success-icon">✓</div>
+  <h2>Form submitted.<br>See you soon.</h2>
+  <p style="margin-top: 16px;">Flux Strategy will review your answers before the session. Expect a confirmation within 24 hours.</p>
+  <p style="margin-top: 12px; font-size: 0.85rem; color: rgba(255,255,255,0.3);">Questions? Email <a href="mailto:hello@flux-strategy.com" style="color: var(--mint);">hello@flux-strategy.com</a></p>
+</div>
+
+<script>
+var currentSection = 1;
+var totalSections = 7;
+
+function goTo(n) {
+  document.getElementById('section-' + currentSection).classList.remove('active');
+  currentSection = n;
+  document.getElementById('section-' + n).classList.add('active');
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateProgress() {
+  var pct = ((currentSection - 1) / (totalSections - 1)) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = 'Section ' + currentSection + ' of ' + totalSections;
+}
+
+// Radio / checkbox styling
+document.querySelectorAll('.opt-label').forEach(function(label) {
+  label.addEventListener('click', function() {
+    var input = this.querySelector('input');
+    var container = this.closest('[data-type]');
+    var max = container ? parseInt(container.getAttribute('data-max')) : null;
+
+    if (input.type === 'radio') {
+      container.querySelectorAll('.opt-label').forEach(function(l) { l.classList.remove('selected'); });
+      this.classList.add('selected');
+      input.checked = true;
+    } else {
+      var checked = container.querySelectorAll('input:checked').length;
+      if (!input.checked) {
+        if (max && checked >= max) return;
+        input.checked = true;
+        this.classList.add('selected');
+      } else {
+        input.checked = false;
+        this.classList.remove('selected');
+      }
+    }
+  });
+});
+
+// Drag and drop ranking
+var dragSrc = null;
+document.querySelectorAll('.rank-item').forEach(function(item) {
+  item.addEventListener('dragstart', function(e) {
+    dragSrc = this;
+    e.dataTransfer.effectAllowed = 'move';
+    this.style.opacity = '0.5';
+  });
+  item.addEventListener('dragend', function() {
+    this.style.opacity = '';
+    updateRankNumbers();
+    saveRanking();
+  });
+  item.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+  });
+  item.addEventListener('drop', function(e) {
+    e.preventDefault();
+    if (dragSrc !== this) {
+      var list = this.parentNode;
+      var items = Array.from(list.children);
+      var srcIdx = items.indexOf(dragSrc);
+      var tgtIdx = items.indexOf(this);
+      if (srcIdx < tgtIdx) list.insertBefore(dragSrc, this.nextSibling);
+      else list.insertBefore(dragSrc, this);
+    }
+  });
+});
+
+function updateRankNumbers() {
+  document.querySelectorAll('.rank-item').forEach(function(item, i) {
+    item.querySelector('.rank-num').textContent = i + 1;
+  });
+}
+
+function saveRanking() {
+  var values = Array.from(document.querySelectorAll('.rank-item')).map(function(i) { return i.getAttribute('data-value'); });
+  document.getElementById('confusion-ranking-input').value = values.join(' > ');
+}
+
+// Form submit
+document.getElementById('intake-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  saveRanking();
+  var formData = new FormData(this);
+  fetch(this.action, {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  }).then(function(response) {
+    if (response.ok) {
+      document.querySelector('.form-wrap').style.display = 'none';
+      document.querySelector('.progress-bar').style.display = 'none';
+      document.querySelector('.header').style.display = 'none';
+      document.getElementById('success-screen').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+});
+
+updateProgress();
+saveRanking();
+</script>
+</body>
+</html>
