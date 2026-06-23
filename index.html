@@ -1,1385 +1,713 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flux Strategy - Strategic Clarity. Real Execution.</title>
-    <meta name="description" content="Strategy without execution is philosophy. Execution without clarity is noise. Flux Strategy helps founders and marketing leaders achieve strategic clarity and measurable execution.">
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-dark: #0d1521;
-            --accent-start: #cdffd8;
-            --accent-end: #94b9ff;
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.65);
-            --text-tertiary: rgba(255, 255, 255, 0.4);
-            --border-light: rgba(255, 255, 255, 0.08);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #0d1521 0%, #111a2e 100%);
-            color: var(--text-primary);
-            line-height: 1.6;
-            letter-spacing: -0.3px;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
-
-        /* ==================== NAVIGATION ==================== */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 24px 0;
-            backdrop-filter: blur(10px);
-            background: rgba(13, 21, 33, 0.7);
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .nav-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 32px;
-            width: 100%;
-        }
-
-        .logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-cta {
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 10px 20px;
-            background: rgba(205, 255, 216, 0.1);
-            border: 1px solid rgba(205, 255, 216, 0.2);
-            border-radius: 6px;
-            color: var(--text-primary);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .nav-cta:hover {
-            background: rgba(205, 255, 216, 0.15);
-            border-color: rgba(205, 255, 216, 0.4);
-        }
-
-        /* ==================== HERO SECTION ==================== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: stretch;
-            padding: 140px 32px 80px;
-            position: relative;
-            border-left: 4px solid;
-            border-image: linear-gradient(180deg, rgba(205, 255, 216, 0.4) 0%, rgba(148, 185, 255, 0.2) 100%) 1;
-            background: linear-gradient(90deg, transparent 0%, transparent 60%, rgba(205, 255, 216, 0.03) 85%, rgba(148, 185, 255, 0.02) 100%);
-        }
-
-        .hero-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            flex: 1;
-        }
-
-        .hero-content {
-            flex: 1;
-            max-width: 700px;
-            z-index: 2;
-            position: relative;
-            min-width: 0;
-        }
-
-        .hero-image-container {
-            width: 600px;
-            height: 800px;
-            display: block;
-            flex-shrink: 0;
-            z-index: 10;
-        }
-
-        .hero-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-image-container {
-            width: 600px;
-            height: 800px;
-            display: block;
-            flex-shrink: 0;
-            z-index: 10;
-        }
-
-        .hero-wrapper {
-            flex-direction: row;
-        }
-
-        /* Hide image on mobile and tablet */
-        @media (max-width: 1023px) {
-            .hero-wrapper {
-                flex-direction: column;
-            }
-            .hero-image-container {
-                display: none !important;
-            }
-        }
-
-        .hero-subtitle {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--accent-start);
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-bottom: 24px;
-            margin-top: 32px;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        h1 {
-            font-size: clamp(2.2rem, 5.5vw, 3.8rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 40px;
-            letter-spacing: -2px;
-            animation: fadeInUp 0.8s ease-out 0.1s both;
-            max-width: 700px;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 48px;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-            max-width: 700px;
-        }
-
-        .hero-cta-group {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease-out 0.3s both;
-        }
-
-        .hero-image-container {
-            display: none;
-        }
-
-        /* ==================== BUTTONS ==================== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 28px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            font-family: 'Sora', sans-serif;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-start) 0%, var(--accent-end) 100%);
-            color: var(--primary-dark);
-            font-weight: 700;
-            box-shadow: 0 8px 24px rgba(205, 255, 216, 0.15);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 16px 40px rgba(205, 255, 216, 0.25);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--text-primary);
-            border: 1.5px solid var(--border-light);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* ==================== OFFERINGS SECTION ==================== */
-        .offerings-section {
-            padding: 40px 32px;
-            position: relative;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 32px;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .section-label {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--accent-start);
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-bottom: 16px;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
-
-        .section-description {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .offerings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .offering-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-light);
-            border-radius: 12px;
-            padding: 40px 32px;
-            transition: all 0.4s ease;
-            animation: fadeInUp 0.8s ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .offering-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-start), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .offering-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-4px);
-        }
-
-        .offering-card:hover::before {
-            opacity: 1;
-        }
-
-        .offering-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .offering-card h3 {
-            font-size: 1.35rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            line-height: 1.3;
-        }
-
-        .offering-card p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.75;
-        }
-
-        .outcome-highlight {
-            color: var(--accent-start);
-            display: inline-block;
-            margin-top: 12px;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-        }
-
-        /* ==================== METHODOLOGY SECTION ==================== */
-        .methodology-section {
-            padding: 40px 32px;
-            background: rgba(205, 255, 216, 0.02);
-            border-top: 1px solid var(--border-light);
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .methodology-content {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .methodology-header {
-            text-align: center;
-            margin-bottom: 32px;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .methodology-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 16px;
-            margin: 0;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .step-item {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-light);
-            border-radius: 8px;
-            padding: 32px 24px;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .step-item:nth-child(1) { animation-delay: 0.1s; }
-        .step-item:nth-child(2) { animation-delay: 0.2s; }
-        .step-item:nth-child(3) { animation-delay: 0.3s; }
-        .step-item:nth-child(4) { animation-delay: 0.4s; }
-
-        .step-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-4px);
-        }
-
-        .step-name {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-
-        .step-description {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        .methodology-footer {
-            text-align: center;
-            margin-top: 48px;
-            padding-top: 40px;
-            border-top: 1px solid var(--border-light);
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.8;
-            animation: fadeInUp 0.8s ease-out 0.5s both;
-        }
-
-        /* ==================== CREDIBILITY SECTION ==================== */
-        .credibility-section {
-            padding: 40px 32px;
-        }
-
-        .credibility-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .credibility-text {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            line-height: 1.85;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .credibility-highlight {
-            color: var(--accent-start);
-            font-weight: 600;
-        }
-
-        /* ==================== CTA FINAL SECTION ==================== */
-        .final-cta {
-            padding: 50px 32px;
-            text-align: center;
-            animation: fadeInUp 0.8s ease-out;
-            border-top: 1px solid var(--border-light);
-        }
-
-        .final-cta h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 24px;
-            line-height: 1.3;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 32px;
-        }
-
-        /* ==================== FORMS & MODALS ==================== */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: var(--primary-dark);
-            border: 1px solid var(--border-light);
-            border-radius: 12px;
-            padding: 40px;
-            max-width: 480px;
-            width: 90%;
-            position: relative;
-            animation: slideUp 0.3s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-            background: none;
-            border: none;
-            transition: color 0.3s ease;
-        }
-
-        .modal-close:hover {
-            color: var(--text-primary);
-        }
-
-        .modal-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--text-primary);
-        }
-
-        .modal-subtitle {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-            line-height: 1.6;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 12px 16px;
-            font-size: 0.95rem;
-            border: 1.5px solid var(--border-light);
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-primary);
-            font-family: 'Sora', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        .form-input::placeholder {
-            color: var(--text-tertiary);
-        }
-
-        .form-input:focus {
-            outline: none;
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--accent-start);
-            box-shadow: 0 0 0 3px rgba(205, 255, 216, 0.1);
-        }
-
-        .form-submit {
-            width: 100%;
-            padding: 14px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
-            color: var(--primary-dark);
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Sora', sans-serif;
-        }
-
-        .form-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(205, 255, 216, 0.2);
-        }
-
-        .form-submit:active {
-            transform: translateY(0);
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .footer-contact {
-            font-size: 1rem;
-            margin-bottom: 8px;
-        }
-
-        .footer-contact a {
-            color: var(--accent-start);
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .footer-contact a:hover {
-            opacity: 0.8;
-        }
-
-        .footer-tagline {
-            font-size: 0.85rem;
-            color: var(--text-tertiary);
-            margin-top: 24px;
-            font-style: italic;
-            letter-spacing: 0.5px;
-        }
-
-        footer {
-            padding: 64px 32px;
-            border-top: 1px solid var(--border-light);
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .footer-main {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .footer-email {
-            font-size: 1rem;
-            color: var(--accent-start);
-            font-weight: 600;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-email:hover {
-            color: var(--accent-end);
-        }
-
-        .footer-meta {
-            font-size: 0.9rem;
-            color: var(--text-tertiary);
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            align-items: center;
-            margin: 32px 0;
-        }
-
-        .social-icon {
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1.5px solid var(--border-light);
-            border-radius: 8px;
-            color: var(--text-secondary);
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .social-icon:hover {
-            background: rgba(205, 255, 216, 0.1);
-            border-color: var(--accent-start);
-            color: var(--accent-start);
-        }
-
-        .social-icon svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .footer-copyright {
-            font-size: 0.85rem;
-            color: var(--text-tertiary);
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            footer {
-                padding: 48px 24px;
-            }
-
-            .footer-social {
-                gap: 12px;
-            }
-
-            .social-icon {
-                width: 40px;
-                height: 40px;
-            }
-        }
-
-        /* ==================== ANIMATIONS ==================== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .scroll-reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ==================== FORMS ==================== */
-        .email-input {
-            padding: 12px 16px;
-            font-size: 0.95rem;
-            border: 1.5px solid var(--border-light);
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-primary);
-            font-family: 'Sora', sans-serif;
-            transition: all 0.3s ease;
-            min-width: 280px;
-        }
-
-        .email-input::placeholder {
-            color: var(--text-tertiary);
-        }
-
-        .email-input:focus {
-            outline: none;
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--accent-start);
-            box-shadow: 0 0 0 3px rgba(205, 255, 216, 0.1);
-        }
-
-        /* ==================== RESPONSIVE ==================== */
-        @media (max-width: 1024px) {
-            .methodology-steps {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 32px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 24px;
-            }
-
-            nav {
-                padding: 20px 24px;
-            }
-
-            .nav-content {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .hero {
-                flex-direction: column;
-                padding: 180px 24px 60px;
-                text-align: center;
-            }
-
-            h1 {
-                font-size: 2rem;
-                margin-bottom: 24px;
-            }
-
-            .hero-description {
-                font-size: 1rem;
-                margin-bottom: 32px;
-            }
-
-            .hero-cta-group {
-                justify-content: center;
-            }
-
-            .hero-image-container {
-                height: 300px;
-                margin-top: 40px;
-            }
-
-            .offerings-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .offering-card {
-                padding: 32px 24px;
-            }
-
-            .methodology-section {
-                padding: 60px 24px;
-            }
-
-            .section-title {
-                font-size: 1.75rem;
-            }
-
-            .methodology-steps {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .credibility-section {
-                padding: 60px 24px;
-            }
-
-            .credibility-text {
-                font-size: 1rem;
-            }
-
-            .final-cta {
-                padding: 60px 24px;
-            }
-
-            .final-cta h2 {
-                font-size: 1.5rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
-        }
-
-        /* ==================== ACCESSIBILITY ==================== */
-        @media (max-width: 768px) {
-            .gba-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QW4YSGZRW6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-QW4YSGZRW6');
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flux Strategy — Strategic Clarity for founders and brands ready to move.</title>
+<meta name="description" content="Flux Strategy is a Hong Kong-based strategic clarity consultancy helping founders and brands define direction, align teams, and navigate market entry.">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QW4YSGZRW6"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QW4YSGZRW6');</script>
+<style>
+/* ===== TOKENS ===== */
+:root {
+  --bg:       #0d1521;
+  --bg-deep:  #080e18;
+  --bg-alt:   #111c2e;
+  --bg-light: #f2f0eb;
+  --mint:     #cdffd8;
+  --blue:     #94b9ff;
+  --text:     #ffffff;
+  --muted:    #9aa3ae;
+  --dim:      rgba(255,255,255,0.45);
+  --border:   rgba(255,255,255,0.08);
+  --border-m: rgba(205,255,216,0.18);
+  --font:     'Sora', -apple-system, sans-serif;
+  --grad:     linear-gradient(135deg, var(--mint), var(--blue));
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--bg-deep);color:var(--text);overflow-x:hidden;}
+img{display:block;max-width:100%;}
+
+/* ===== NAV ===== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:20px 48px;
+  display:flex;justify-content:space-between;align-items:center;gap:24px;
+  background:rgba(8,14,24,0);
+  backdrop-filter:blur(0px);
+  border-bottom:0.5px solid transparent;
+  transition:background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+}
+nav.scrolled{
+  background:rgba(8,14,24,0.92);
+  backdrop-filter:blur(20px);
+  border-color:var(--border);
+}
+.nav-logo{font-size:13px;font-weight:700;letter-spacing:3px;color:var(--text);text-decoration:none;}
+.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-links a{font-size:12px;font-weight:600;letter-spacing:0.5px;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{
+  font-family:var(--font);font-size:12px;font-weight:700;
+  padding:9px 22px;border:none;border-radius:30px;
+  background:var(--grad);color:#0d1521;cursor:pointer;
+  transition:opacity 0.2s;white-space:nowrap;
+}
+.nav-cta:hover{opacity:0.85;}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 48px 80px;
+  background:url('hero-bg.jpg') center center / cover no-repeat;
+  overflow:hidden;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(8,14,24,0.92) 0%,
+    rgba(8,14,24,0.65) 40%,
+    rgba(8,14,24,0.35) 100%
+  );
+}
+.hero-content{position:relative;z-index:2;max-width:1100px;}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-bottom:28px;
+}
+.eyebrow-line{width:32px;height:1px;background:var(--mint);}
+.eyebrow-text{font-size:10px;font-weight:700;letter-spacing:4px;color:var(--mint);}
+.hero h1{
+  font-size:clamp(2.6rem,6vw,5.4rem);
+  font-weight:800;line-height:1.05;
+  letter-spacing:-0.02em;
+  margin-bottom:28px;
+}
+.hero h1 em{
+  font-style:normal;
+  background:var(--grad);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-sub{
+  font-size:clamp(1rem,1.5vw,1.2rem);
+  font-weight:300;color:rgba(255,255,255,0.7);
+  max-width:560px;line-height:1.8;margin-bottom:44px;
+}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-primary{
+  font-family:var(--font);font-size:13px;font-weight:700;
+  padding:14px 30px;border:none;border-radius:30px;
+  background:var(--grad);color:#0d1521;cursor:pointer;transition:opacity 0.2s;
+}
+.btn-primary:hover{opacity:0.85;}
+.btn-ghost{
+  font-family:var(--font);font-size:13px;font-weight:600;
+  padding:14px 30px;border-radius:30px;
+  border:1px solid rgba(255,255,255,0.2);
+  background:transparent;color:rgba(255,255,255,0.7);cursor:pointer;transition:all 0.2s;
+}
+.btn-ghost:hover{border-color:rgba(205,255,216,0.4);color:var(--mint);}
+.hero-scroll{
+  position:absolute;bottom:32px;right:48px;z-index:2;
+  font-size:10px;font-weight:600;letter-spacing:3px;color:rgba(255,255,255,0.3);
+  display:flex;align-items:center;gap:10px;
+}
+.hero-scroll::after{
+  content:'';display:block;width:40px;height:1px;
+  background:rgba(255,255,255,0.2);
+}
+
+/* ===== STATEMENT ===== */
+.statement{
+  padding:100px 48px;
+  background:var(--bg);
+  border-top:0.5px solid var(--border);
+}
+.statement-inner{max-width:900px;margin:0 auto;}
+.statement-label{
+  font-size:10px;font-weight:700;letter-spacing:3px;color:var(--mint);
+  margin-bottom:24px;
+}
+.statement blockquote{
+  font-size:clamp(1.6rem,3.5vw,2.8rem);
+  font-weight:700;line-height:1.3;
+  color:rgba(255,255,255,0.9);
+  border-left:2px solid;
+  border-image:var(--grad) 1;
+  padding-left:40px;
+}
+.statement blockquote em{
+  font-style:normal;color:var(--mint);
+}
+
+/* ===== SERVICES ===== */
+.services{
+  padding:100px 48px;
+  background:var(--bg-deep);
+  border-top:0.5px solid var(--border);
+}
+.services-inner{max-width:1100px;margin:0 auto;}
+.section-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--mint);margin-bottom:16px;}
+.section-title{
+  font-size:clamp(1.8rem,3.5vw,2.8rem);
+  font-weight:700;line-height:1.15;margin-bottom:56px;
+}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.service-card{
+  padding:48px 40px;background:var(--bg-deep);
+  transition:background 0.25s;position:relative;overflow:hidden;
+}
+.service-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--grad);opacity:0;transition:opacity 0.25s;
+}
+.service-card:hover{background:#0d1521;}
+.service-card:hover::before{opacity:1;}
+.svc-num{
+  font-size:11px;font-weight:700;letter-spacing:2px;
+  color:rgba(205,255,216,0.35);margin-bottom:20px;
+}
+.svc-problem{
+  font-size:0.85rem;font-weight:600;
+  color:var(--mint);letter-spacing:0.5px;
+  margin-bottom:10px;
+  font-style:italic;
+}
+.svc-title{font-size:1.3rem;font-weight:700;margin-bottom:14px;line-height:1.3;}
+.svc-desc{font-size:0.875rem;color:var(--muted);line-height:1.75;}
+.svc-badge{
+  display:inline-block;margin-top:20px;
+  font-size:9px;font-weight:700;letter-spacing:2px;
+  padding:4px 12px;border-radius:20px;
+  background:rgba(205,255,216,0.08);border:0.5px solid var(--border-m);
+  color:var(--mint);
+}
+
+/* ===== HOW I WORK ===== */
+.howork{
+  padding:100px 48px;
+  background:var(--bg);
+  border-top:0.5px solid var(--border);
+}
+.howork-inner{max-width:1100px;margin:0 auto;}
+.howork-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;margin-top:56px;
+  border:0.5px solid var(--border-m);
+  border-radius:12px;overflow:hidden;
+}
+.step{
+  padding:36px 32px;
+  border-right:0.5px solid var(--border-m);
+  background:rgba(255,255,255,0.01);
+  transition:background 0.2s;
+}
+.step:last-child{border-right:none;}
+.step:hover{background:rgba(205,255,216,0.03);}
+.step-num{
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  color:rgba(205,255,216,0.4);margin-bottom:16px;
+}
+.step-title{
+  font-size:1.05rem;font-weight:700;
+  background:var(--grad);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:10px;
+}
+.step-q{font-size:0.85rem;color:var(--muted);line-height:1.7;}
+.howork-note{
+  margin-top:32px;padding:24px 32px;
+  border:0.5px solid var(--border-m);border-radius:10px;
+  background:rgba(205,255,216,0.03);
+  font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.75;
+}
+.howork-note strong{color:var(--text);}
+
+/* ===== CLARITY SPRINT ===== */
+.sprint{
+  padding:100px 48px;
+  background:var(--bg-light);
+  border-top:0.5px solid rgba(0,0,0,0.08);
+}
+.sprint-inner{max-width:1100px;margin:0 auto;}
+.sprint .section-eyebrow{color:#0d1521;opacity:0.45;}
+.sprint .section-title{color:#0d1521;}
+.sprint-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:56px;}
+.sprint-left{}
+.sprint-price-block{margin-bottom:32px;}
+.sprint-price{
+  font-size:3.5rem;font-weight:800;color:#0d1521;
+  letter-spacing:-0.02em;line-height:1;
+}
+.sprint-price span{font-size:1.1rem;font-weight:400;color:rgba(13,21,33,0.45);margin-left:8px;}
+.sprint-duration{font-size:0.9rem;color:rgba(13,21,33,0.5);margin-top:6px;font-weight:600;}
+.sprint-desc{font-size:1.05rem;color:rgba(13,21,33,0.7);line-height:1.8;margin-bottom:28px;}
+.sprint-cta{
+  font-family:var(--font);font-size:14px;font-weight:700;
+  padding:16px 36px;border:none;border-radius:30px;
+  background:linear-gradient(135deg,#0d1521,#1a2d4a);
+  color:#ffffff;cursor:pointer;transition:opacity 0.2s;
+}
+.sprint-cta:hover{opacity:0.8;}
+.sprint-right{}
+.sprint-delivers-title{
+  font-size:10px;font-weight:700;letter-spacing:3px;
+  color:rgba(13,21,33,0.4);margin-bottom:16px;
+}
+.sprint-items{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
+.sprint-items li{
+  display:flex;align-items:flex-start;gap:12px;
+  font-size:0.9rem;color:rgba(13,21,33,0.75);line-height:1.6;
+}
+.sprint-items li::before{
+  content:'→';color:#0d1521;font-weight:700;flex-shrink:0;margin-top:1px;
+}
+.sprint-not{
+  padding:16px 20px;
+  background:rgba(13,21,33,0.05);
+  border-radius:8px;border-left:2px solid rgba(13,21,33,0.15);
+  font-size:0.8rem;color:rgba(13,21,33,0.45);line-height:1.7;
+}
+
+/* ===== ABOUT ===== */
+.about{
+  min-height:600px;
+  display:grid;grid-template-columns:1fr 1fr;
+}
+.about-image{
+  position:relative;overflow:hidden;
+  background:url('about-bg.jpg') center center / cover no-repeat;
+  min-height:500px;
+}
+.about-image-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to right, rgba(8,14,24,0) 0%, rgba(8,14,24,0.3) 100%);
+}
+.about-content{
+  padding:80px 64px;
+  background:var(--bg);
+  display:flex;flex-direction:column;justify-content:center;
+}
+.about-top{display:flex;align-items:flex-start;gap:24px;margin-bottom:36px;}
+.about-portrait{
+  width:80px;height:80px;border-radius:50%;
+  object-fit:cover;flex-shrink:0;
+  border:2px solid rgba(205,255,216,0.3);
+  filter:grayscale(100%);
+}
+.about-id{}
+.about-name{font-size:1rem;font-weight:700;margin-bottom:2px;}
+.about-role{font-size:0.8rem;color:var(--muted);letter-spacing:0.5px;}
+.about-body{font-size:0.95rem;color:rgba(255,255,255,0.65);line-height:1.9;}
+.about-body p{margin-bottom:16px;}
+.about-body p:last-child{margin-bottom:0;}
+.about-body strong{color:var(--text);font-weight:600;}
+
+/* ===== GBA ===== */
+.gba{
+  padding:80px 48px;
+  background:rgba(205,255,216,0.04);
+  border-top:1px solid var(--border-m);border-bottom:1px solid var(--border-m);
+}
+.gba-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px;
+}
+.gba-left{}
+.gba-badge{
+  display:inline-block;font-size:9px;font-weight:700;letter-spacing:2px;
+  padding:4px 14px;border-radius:20px;
+  background:rgba(205,255,216,0.1);border:0.5px solid var(--border-m);
+  color:var(--mint);margin-bottom:14px;
+}
+.gba-title{font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:700;margin-bottom:10px;line-height:1.3;}
+.gba-desc{font-size:0.9rem;color:var(--muted);line-height:1.75;max-width:480px;}
+.gba-btn{
+  font-family:var(--font);font-size:13px;font-weight:700;
+  padding:14px 30px;border-radius:30px;border:1px solid var(--border-m);
+  background:transparent;color:var(--mint);cursor:pointer;transition:all 0.2s;
+  white-space:nowrap;
+}
+.gba-btn:hover{background:rgba(205,255,216,0.08);}
+
+/* ===== CONTACT ===== */
+.contact{
+  padding:120px 48px;
+  background:var(--bg-deep);
+  border-top:0.5px solid var(--border);
+  text-align:center;
+}
+.contact-inner{max-width:640px;margin:0 auto;}
+.contact .section-eyebrow{margin-bottom:16px;}
+.contact-title{
+  font-size:clamp(2rem,4vw,3.4rem);
+  font-weight:800;line-height:1.1;margin-bottom:20px;
+  letter-spacing:-0.02em;
+}
+.contact-sub{font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+.contact-email{
+  display:block;margin-top:20px;
+  font-size:0.875rem;color:var(--dim);
+}
+.contact-email a{color:var(--mint);text-decoration:none;font-weight:600;}
+
+/* ===== FOOTER ===== */
+footer{
+  background:var(--bg-deep);
+  border-top:0.5px solid var(--border);
+  padding:40px 48px 28px;
+}
+.footer-main{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  flex-wrap:wrap;gap:40px;margin-bottom:40px;
+}
+.footer-brand{}
+.footer-logo{font-size:13px;font-weight:700;letter-spacing:3px;color:var(--text);margin-bottom:8px;}
+.footer-tagline{font-size:12px;color:var(--muted);}
+.footer-cols{display:flex;gap:56px;flex-wrap:wrap;}
+.footer-col{}
+.footer-col-title{font-size:9px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.3);margin-bottom:14px;}
+.footer-col a{
+  display:block;font-size:12px;color:var(--muted);
+  text-decoration:none;margin-bottom:8px;transition:color 0.2s;
+}
+.footer-col a:hover{color:var(--mint);}
+.footer-bottom{
+  padding-top:24px;border-top:0.5px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;
+}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.2);}
+.footer-address{font-size:11px;color:rgba(255,255,255,0.18);text-align:right;}
+
+/* ===== MODAL ===== */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.8);
+  backdrop-filter:blur(8px);z-index:1000;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity 0.25s;
+}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal{
+  background:#0d1521;border:1px solid var(--border-m);
+  border-radius:16px;padding:48px;max-width:460px;width:90%;
+  position:relative;transform:translateY(20px);transition:transform 0.25s;
+}
+.modal-overlay.open .modal{transform:translateY(0);}
+.modal-bar{height:3px;background:var(--grad);border-radius:2px;margin-bottom:28px;}
+.modal h3{font-size:1.4rem;font-weight:700;margin-bottom:8px;}
+.modal p{font-size:0.875rem;color:var(--muted);margin-bottom:24px;line-height:1.7;}
+.modal-form{display:flex;flex-direction:column;gap:12px;}
+.modal-form input,.modal-form textarea{
+  font-family:var(--font);font-size:13px;
+  padding:12px 16px;border-radius:8px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.04);color:var(--text);outline:none;
+  transition:border-color 0.2s;
+}
+.modal-form input:focus,.modal-form textarea:focus{border-color:var(--border-m);}
+.modal-form input::placeholder,.modal-form textarea::placeholder{color:rgba(255,255,255,0.25);}
+.modal-form textarea{resize:vertical;min-height:90px;}
+.modal-submit{
+  font-family:var(--font);font-size:13px;font-weight:700;
+  padding:13px;border:none;border-radius:30px;
+  background:var(--grad);color:#0d1521;cursor:pointer;margin-top:4px;
+}
+.modal-close{
+  position:absolute;top:16px;right:18px;
+  background:none;border:none;color:var(--muted);
+  font-size:20px;cursor:pointer;line-height:1;
+}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  nav{padding:16px 24px;}
+  .nav-links{display:none;}
+  .hero,.statement,.services,.howork,.sprint,.gba,.contact{padding-left:24px;padding-right:24px;}
+  .hero{padding-bottom:60px;}
+  .services-grid{grid-template-columns:1fr;}
+  .howork-steps{grid-template-columns:1fr 1fr;}
+  .step{border-right:none;border-bottom:0.5px solid var(--border-m);}
+  .step:nth-child(odd){border-right:0.5px solid var(--border-m);}
+  .sprint-grid{grid-template-columns:1fr;}
+  .about{grid-template-columns:1fr;}
+  .about-image{min-height:300px;}
+  .about-content{padding:56px 28px;}
+  .gba-inner{flex-direction:column;align-items:flex-start;}
+  footer{padding:40px 24px 24px;}
+  .footer-main{flex-direction:column;gap:28px;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+  .footer-address{text-align:center;}
+}
+@media(max-width:600px){
+  .howork-steps{grid-template-columns:1fr;}
+  .step:nth-child(odd){border-right:none;}
+  .hero h1{font-size:2.3rem;}
+  .footer-cols{gap:32px;}
+}
+</style>
 </head>
 <body>
 
-    <!-- NAVIGATION -->
-    <nav>
-        <div class="nav-content">
-            <img src="FS Logo-Transparent White.png" alt="Flux Strategy" class="logo" style="height: 100px; width: auto;">
-        </div>
-    </nav>
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="/" class="nav-logo">FLUX STRATEGY</a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="/gba">GBA</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="nav-cta" onclick="openModal()">Book a Clarity Sprint</button>
+</nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-wrapper">
-            <div class="hero-content">
-                <div class="hero-subtitle">Strategic Clarity Consulting</div>
-                <h1>Everyone's chasing the same trends.<br>What if your strategy was different?</h1>
-                <p class="hero-description">Strategy without execution is philosophy. But execution without clarity is just expensive following. We help founders and marketing leaders move from scattered priorities to clear direction — and from clear direction to measurable execution.</p>
-                <div class="hero-cta-group">
-                    <button class="btn btn-primary" onclick="openModal('strategy')">Book a 30-min Strategy Session</button>
-                    <button class="btn btn-secondary" onclick="scrollToSection('offerings')">Our Services</button>
-                </div>
-            </div>
-            <div class="hero-image-container">
-                <img src="Flux%20Website%20Hero%20Image.png" alt="Flux Strategy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);">
-            </div>
-        </div>
-    </section>
-
-    <!-- OFFERINGS SECTION -->
-    <section class="offerings-section" id="offerings">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">Core Services</div>
-                <h2 class="section-title">Three Ways We Create Clarity</h2>
-                <p class="section-description">Each service is built on the same foundation: understanding your challenges, defining what matters, and translating strategy into action.</p>
-            </div>
-
-            <div class="offerings-grid">
-                <div class="offering-card scroll-reveal">
-                    <span class="offering-icon">🎯</span>
-                    <h3>Strategic Advisory</h3>
-                    <p style="color: var(--text-secondary); font-style: italic; margin-bottom: 16px; font-size: 0.9rem; line-height: 1.65;">"Most strategy fails not because of poor execution — but because the wrong problem was being solved."</p>
-                    <p style="color: var(--text-secondary); line-height: 1.75; font-size: 0.95rem;">For brands and marketing teams whose direction keeps shifting — brief is unclear, message is scattered, or execution is moving without a strategic thread to hold it together.</p>
-                    <span class="outcome-highlight" style="margin-top: 20px; display: block; font-size: 0.9rem;">✓ Delivers: Strategic Clarity Document · Message House · 90-Day Priority Roadmap</span>
-                </div>
-                <div class="offering-card scroll-reveal">
-                    <span class="offering-icon">🧠</span>
-                    <h3>Team Building</h3>
-                    <p style="color: var(--text-secondary); font-style: italic; margin-bottom: 16px; font-size: 0.9rem; line-height: 1.65;">"Your team communicates. That's not the same as being aligned."</p>
-                    <p style="color: var(--text-secondary); line-height: 1.75; font-size: 0.95rem;">For teams that agree in meetings but execute in different directions. Decisions are slow. Priorities shift. No one is sure who owns what — or why it keeps happening.</p>
-                    <span class="outcome-highlight" style="margin-top: 20px; display: block; font-size: 0.9rem;">✓ Delivers: Decision-Making Framework · Team Alignment Playbook · RACI</span>
-                </div>
-                <div class="offering-card scroll-reveal">
-                    <span class="offering-icon">⚡</span>
-                    <h3>Content Engine</h3>
-                    <p style="color: var(--text-secondary); font-style: italic; margin-bottom: 16px; font-size: 0.9rem; line-height: 1.65;">"Most brands don't have a content problem. They have a clarity problem."</p>
-                    <p style="color: var(--text-secondary); line-height: 1.75; font-size: 0.95rem;">An AI-powered content system built on brand strategy — not just prompts. Generate on-brand content across platforms and languages, with your brand voice and direction baked in from the start.</p>
-                    <span class="outcome-highlight" style="margin-top: 20px; display: block; font-size: 0.9rem;">✓ Supports: LinkedIn · Instagram · 小紅書 · WeChat · Traditional & Simplified Chinese · English</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SOUND FAMILIAR SECTION -->
-    <section style="padding: 60px 32px; background: rgba(255,255,255,0.01); border-top: 1px solid rgba(255,255,255,0.06);">
-        <div class="container">
-            <div class="section-header" style="margin-bottom: 40px;">
-                <div class="section-label">Sound Familiar?</div>
-                <h2 class="section-title" style="font-size: 2rem;">You might need Flux Strategy if...</h2>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; max-width: 1100px; margin: 0 auto;">
-
-                <div class="scroll-reveal" style="padding: 22px 24px; background: rgba(255,255,255,0.02); border: 0.5px solid rgba(255,255,255,0.07); border-radius: 8px; border-left: 3px solid rgba(205,255,216,0.25);">
-                    <p style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4;">Your brief keeps changing.</p>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.65;">You want a campaign or more content — but the actual problem you're solving keeps shifting.</p>
-                </div>
-
-                <div class="scroll-reveal" style="padding: 22px 24px; background: rgba(255,255,255,0.02); border: 0.5px solid rgba(255,255,255,0.07); border-radius: 8px; border-left: 3px solid rgba(205,255,216,0.25);">
-                    <p style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4;">Your brand message is scattered.</p>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.65;">Your website, deck and social content each say something different. Nothing lands the way you want it to.</p>
-                </div>
-
-                <div class="scroll-reveal" style="padding: 22px 24px; background: rgba(255,255,255,0.02); border: 0.5px solid rgba(255,255,255,0.07); border-radius: 8px; border-left: 3px solid rgba(205,255,216,0.25);">
-                    <p style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4;">You produce content — but it feels directionless.</p>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.65;">Regular output, no consistent voice. Nothing ties back to a clear message or strategic intent.</p>
-                </div>
-
-                <div class="scroll-reveal" style="padding: 22px 24px; background: rgba(205,255,216,0.04); border: 1px solid rgba(205,255,216,0.2); border-radius: 8px; border-left: 3px solid rgba(205,255,216,0.6);">
-                    <div style="display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; padding: 3px 10px; background: rgba(205,255,216,0.12); border: 0.5px solid rgba(205,255,216,0.3); color: var(--accent-start); border-radius: 20px; margin-bottom: 10px;">FLUX STRATEGY SPECIALITY</div>
-                    <p style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4;">You want to enter HK, China or Greater Bay Area.</p>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.65;">No clear entry point. No platform direction. No one who understands both sides of the border — the strategy, the culture, and the execution.</p>
-                </div>
-
-                <div class="scroll-reveal" style="padding: 22px 24px; background: rgba(255,255,255,0.02); border: 0.5px solid rgba(255,255,255,0.07); border-radius: 8px; border-left: 3px solid rgba(205,255,216,0.25);">
-                    <p style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4;">Your proposal needs a strategy layer.</p>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.65;">The creative or PR idea is there — but the positioning, audience logic or narrative needs sharpening before it goes to the client.</p>
-                </div>
-
-                <div class="scroll-reveal" style="padding: 22px 24px; background: rgba(255,255,255,0.02); border: 0.5px solid rgba(255,255,255,0.07); border-radius: 8px; border-left: 3px solid rgba(148,185,255,0.3);">
-                    <p style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4;">Your team agrees — but executes differently.</p>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.65;">Meetings end with nodding. Work goes in different directions. Decisions take too long and no one's sure who owns what.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- GBA SPECIALTY SECTION -->
-    <section style="padding: 72px 32px; background: linear-gradient(135deg, rgba(205,255,216,0.04) 0%, rgba(148,185,255,0.04) 100%); border-top: 1px solid rgba(205,255,216,0.12); border-bottom: 1px solid rgba(205,255,216,0.12);">
-        <div class="container">
-            <div style="max-width: 1100px; margin: 0 auto;">
-
-                <!-- Label + Headline -->
-                <div style="margin-bottom: 48px;">
-                    <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px;">
-                        <div style="width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-start), var(--accent-end));"></div>
-                        <div style="font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; color: var(--accent-start);">FEATURED SPECIALTY</div>
-                    </div>
-                    <h2 style="font-size: 2.2rem; font-weight: 700; line-height: 1.2; margin-bottom: 16px;">Cross-Border Market Strategy<br><span style="background: linear-gradient(135deg, var(--accent-start), var(--accent-end)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Greater Bay Area & China Entry</span></h2>
-                    <p style="font-size: 1.05rem; color: rgba(255,255,255,0.5); font-style: italic; max-width: 680px; line-height: 1.75;">
-                        "Going north isn't going local. It's going different — different platforms, different consumer logic, different competitive landscape. Most brands only find out after they've spent the budget."
-                    </p>
-                </div>
-
-                <div class="gba-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
-
-                    <!-- Left: For Who + Deliverables -->
-                    <div>
-                        <p style="font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.85; margin-bottom: 32px;">For HK-based and international brands ready to enter GBA or mainland China — but need a clear strategic entry point before committing to platforms, content or campaigns.</p>
-
-                        <div style="margin-bottom: 24px;">
-                            <p style="font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; color: var(--accent-start); margin-bottom: 14px;">WHAT WE DELIVER</p>
-                            <div style="display: flex; flex-direction: column; gap: 10px;">
-                                <div style="display: flex; align-items: flex-start; gap: 12px;">
-                                    <span style="color: var(--accent-start); font-size: 0.8rem; margin-top: 3px; flex-shrink: 0;">✦</span>
-                                    <div>
-                                        <p style="font-size: 0.9rem; font-weight: 600; color: #fff; margin-bottom: 2px;">GBA Market Entry Strategy Document</p>
-                                        <p style="font-size: 0.82rem; color: rgba(255,255,255,0.45);">Audience mapping · Platform role definition · Brand localisation direction</p>
-                                    </div>
-                                </div>
-                                <div style="display: flex; align-items: flex-start; gap: 12px;">
-                                    <span style="color: var(--accent-start); font-size: 0.8rem; margin-top: 3px; flex-shrink: 0;">✦</span>
-                                    <div>
-                                        <p style="font-size: 0.9rem; font-weight: 600; color: #fff; margin-bottom: 2px;">Cross-Border Message House</p>
-                                        <p style="font-size: 0.82rem; color: rgba(255,255,255,0.45);">HK messaging adapted for GBA audiences · Tone, language, cultural nuances</p>
-                                    </div>
-                                </div>
-                                <div style="display: flex; align-items: flex-start; gap: 12px;">
-                                    <span style="color: var(--accent-start); font-size: 0.8rem; margin-top: 3px; flex-shrink: 0;">✦</span>
-                                    <div>
-                                        <p style="font-size: 0.9rem; font-weight: 600; color: #fff; margin-bottom: 2px;">90-Day Entry Roadmap</p>
-                                        <p style="font-size: 0.82rem; color: rgba(255,255,255,0.45);">Foundation · Platform activation · Optimise & scale</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="btn btn-primary" onclick="openModal('strategy')" style="margin-top: 8px;">Book a call to discuss</button>
-                    </div>
-
-                    <!-- Right: Platform Knowledge + Partner Network -->
-                    <div style="display: flex; flex-direction: column; gap: 24px;">
-
-                        <div style="padding: 24px; background: rgba(255,255,255,0.03); border: 0.5px solid rgba(205,255,216,0.12); border-radius: 10px;">
-                            <p style="font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; color: var(--accent-start); margin-bottom: 14px;">PLATFORM EXPERTISE</p>
-                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                <span style="font-size: 0.85rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; background: rgba(205,255,216,0.08); border: 0.5px solid rgba(205,255,216,0.2); color: rgba(205,255,216,0.8);">小紅書</span>
-                                <span style="font-size: 0.85rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; background: rgba(205,255,216,0.08); border: 0.5px solid rgba(205,255,216,0.2); color: rgba(205,255,216,0.8);">WeChat</span>
-                                <span style="font-size: 0.85rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; background: rgba(205,255,216,0.08); border: 0.5px solid rgba(205,255,216,0.2); color: rgba(205,255,216,0.8);">美團</span>
-                                <span style="font-size: 0.85rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; background: rgba(205,255,216,0.08); border: 0.5px solid rgba(205,255,216,0.2); color: rgba(205,255,216,0.8);">高德</span>
-                                <span style="font-size: 0.85rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; background: rgba(148,185,255,0.08); border: 0.5px solid rgba(148,185,255,0.2); color: rgba(148,185,255,0.8);">抖音</span>
-                                <span style="font-size: 0.85rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; background: rgba(148,185,255,0.08); border: 0.5px solid rgba(148,185,255,0.2); color: rgba(148,185,255,0.8);">LinkedIn</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- METHODOLOGY SECTION -->
-    <section class="offerings-section" style="padding-top: 60px;" id="tiers">
-        <div class="container">
-            <div class="section-header" style="margin-bottom: 40px;">
-                <div class="section-label">How to Start</div>
-                <h2 class="section-title" style="font-size: 2rem;">Choose Your Starting Point</h2>
-                <p class="section-description">Every engagement begins where you are. Start small, build trust, expand scope when ready.</p>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; max-width: 1100px; margin: 0 auto;">
-
-                <div class="scroll-reveal" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 32px 28px; position: relative;">
-                    <div style="font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; color: rgba(205,255,216,0.6); margin-bottom: 12px;">ENTRY</div>
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; color: #fff;">Clarity Sprint</h3>
-                    <div style="margin-bottom: 16px;">
-                        <span style="font-size: 1.8rem; font-weight: 700; color: #fff;">HKD 6,800</span>
-                        <span style="font-size: 0.85rem; color: rgba(255,255,255,0.35); margin-left: 8px;">one-off</span>
-                    </div>
-                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.45); margin-bottom: 20px; letter-spacing: 0.3px;">1 × 90-min session</p>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 20px;">For teams with one critical question — direction unclear, priorities scattered, or brief undefined.</p>
-                    <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 16px; margin-bottom: 8px;">
-                        <p style="font-size: 0.8rem; font-weight: 700; color: var(--accent-start); letter-spacing: 0.5px; margin-bottom: 10px;">DELIVERS</p>
-                        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.9;">Strategic Clarity Document (2 pages)<br>Core tension identified<br>3 priority actions<br>1 key risk to address<br>1× async follow-up within 48hrs</p>
-                    </div>
-                    <p style="font-size: 0.78rem; color: rgba(255,255,255,0.25); margin-bottom: 20px; line-height: 1.6;">Does not include: additional sessions, deck production, team workshops, or implementation support.</p>
-                    <button class="btn btn-secondary" onclick="openModal('strategy')" style="width: 100%; font-size: 0.85rem; padding: 12px;">Book a Clarity Sprint</button>
-                </div>
-
-                <div class="scroll-reveal" style="background: rgba(205,255,216,0.04); border: 1px solid rgba(205,255,216,0.15); border-radius: 12px; padding: 32px 28px; position: relative;">
-                    <div style="font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; color: var(--accent-start); margin-bottom: 12px;">CORE</div>
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; color: #fff;">Strategy Defined</h3>
-                    <div style="margin-bottom: 16px;">
-                        <span style="font-size: 1.8rem; font-weight: 700; color: rgba(255,255,255,0.4);">Scoped</span>
-                        <span style="font-size: 0.85rem; color: rgba(255,255,255,0.25); margin-left: 8px;">to your project</span>
-                    </div>
-                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.45); margin-bottom: 20px; letter-spacing: 0.3px;">3 sessions over 3 weeks</p>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 20px;">For teams that need full strategic direction — from problem definition to a roadmap the whole organisation can execute from.</p>
-                    <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 16px; margin-bottom: 24px;">
-                        <p style="font-size: 0.8rem; font-weight: 700; color: var(--accent-start); letter-spacing: 0.5px; margin-bottom: 8px;">DELIVERS</p>
-                        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.8;">Message House Document<br>Strategic Roadmap<br>Stakeholder-ready version</p>
-                    </div>
-                    <button class="btn btn-primary" onclick="openModal('strategy')" style="width: 100%; font-size: 0.85rem; padding: 12px;">Book a call to discuss</button>
-                </div>
-
-                <div class="scroll-reveal" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 32px 28px; position: relative;">
-                    <div style="font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; color: rgba(148,185,255,0.7); margin-bottom: 12px;">PREMIUM</div>
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; color: #fff;">Strategic Retainer</h3>
-                    <div style="margin-bottom: 16px;">
-                        <span style="font-size: 1.8rem; font-weight: 700; color: rgba(255,255,255,0.4);">Scoped</span>
-                        <span style="font-size: 0.85rem; color: rgba(255,255,255,0.25); margin-left: 8px;">monthly retainer</span>
-                    </div>
-                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.45); margin-bottom: 20px; letter-spacing: 0.3px;">Monthly ongoing partnership</p>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 20px;">For leaders who need a strategic partner before every major decision — not just one-off clarity, but ongoing direction as the business evolves.</p>
-                    <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 16px; margin-bottom: 24px;">
-                        <p style="font-size: 0.8rem; font-weight: 700; color: var(--accent-start); letter-spacing: 0.5px; margin-bottom: 8px;">DELIVERS</p>
-                        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.8;">Monthly strategy session<br>Priority async support<br>Quarterly direction review</p>
-                    </div>
-                    <button class="btn btn-secondary" onclick="openModal('strategy')" style="width: 100%; font-size: 0.85rem; padding: 12px;">Book a call to discuss</button>
-                </div>
-
-            </div>
-
-            <p style="text-align: center; color: rgba(255,255,255,0.3); font-size: 0.85rem; margin-top: 32px; margin-bottom: 48px;">Strategy Defined & Strategic Retainer pricing confirmed upon scope discussion. Team Building tiers available on request.</p>
-
-        </div>
-    <section class="methodology-section">
-        <div class="container">
-            <div class="methodology-header">
-                <div class="section-label" style="justify-content: center; display: flex;">Our Approach</div>
-                <h2 class="section-title">How We Work</h2>
-            </div>
-
-            <p class="section-description" style="margin-bottom: 48px; text-align: center;">
-                Most brands execute first, learn second. We reverse it. Clarity comes before action. Every step ensures you move forward with direction, not just activity.
-            </p>
-            
-            <div class="methodology-steps">
-                <div class="step-item">
-                    <div class="step-name">Understand</div>
-                    <div class="step-description">Interview stakeholders, map tensions, find the core problem.</div>
-                </div>
-
-                <div class="step-item">
-                    <div class="step-name">Clarify</div>
-                    <div class="step-description">Name the real issue, align on what matters most.</div>
-                </div>
-
-                <div class="step-item">
-                    <div class="step-name">Define</div>
-                    <div class="step-description">Build the strategic direction, test with your team.</div>
-                </div>
-
-                <div class="step-item">
-                    <div class="step-name">Translate</div>
-                    <div class="step-description">Turn strategy into actionable roadmap and next steps.</div>
-                </div>
-            </div>
-
-            <div class="methodology-footer">
-                Every engagement follows this rigor. From initial discovery to full execution support, we ensure direction is clear before action begins.
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT FLUX STRATEGY -->
-    <section class="credibility-section">
-        <div class="container">
-            <div class="credibility-content">
-                <h2 class="section-title" style="text-align: center; margin-bottom: 48px;">About Flux Strategy</h2>
-                
-                <p class="credibility-text">
-                    Founded by a strategist with 10+ years building GTM strategy, brand positioning, and market entry across Hong Kong and Greater Bay Area. 
-                    <span class="credibility-highlight">Previous: Dentsu. Markets: advertising, digital platforms, exhibitions. Expertise: cross-border strategy, AI implementation, enterprise alignment.</span>
-                </p>
-                
-                <p class="credibility-text" style="margin-top: 32px;">
-                    I built Flux because I got tired of watching brands chase every trend.
-                </p>
-
-                <p class="credibility-text" style="margin-top: 24px; font-style: italic; font-weight: 500;">
-                    "Everyone's talking about Xiaohongshu, so we should be there." <br>
-                    "AI is everywhere, so we need an AI strategy." <br>
-                    "Our competitors did it, so we should too."
-                </p>
-
-                <p class="credibility-text" style="margin-top: 24px;">
-                    This isn't strategy. This is expensive following.
-                </p>
-
-                <p class="credibility-text" style="margin-top: 32px;">
-                    Real strategy asks harder questions first: <span class="credibility-highlight">What actually matters? Where should we focus? What is this *really* solving?</span>
-                </p>
-
-                <p class="credibility-text" style="margin-top: 24px;">
-                    I work with founders and leaders who are ready for clarity before action. Not people looking for execution overhead disguised as strategy.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FINAL CTA SECTION -->
-    <section class="final-cta" id="cta">
-        <div class="container">
-            <p style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 32px; text-align: center;">You know the problem now. Here's how we solve it together.</p>
-            <h2>Ready to build clarity?</h2>
-            <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 40px;">Pick your next step — we'll handle the rest.</p>
-            <div class="cta-buttons">
-                <div style="text-align: center;">
-                    <button class="btn btn-primary" onclick="openModal('strategy')">Book a 30-min Strategy Session</button>
-                    <p style="color: var(--text-tertiary); font-size: 0.85rem; margin-top: 12px;">30-min session to map your core strategic tension</p>
-                </div>
-                <div style="text-align: center;">
-                    <button class="btn btn-primary" onclick="openModal('content')">Join Content Engine Beta</button>
-                    <p style="color: var(--text-tertiary); font-size: 0.85rem; margin-top: 12px;">Early access to AI-powered, strategy-driven content</p>
-                </div>
-            </div>
-            <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-top: 32px;">Or reach out directly at <span style="color: var(--accent-start);">hello@flux-strategy.com</span></p>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-social">
-                <a href="https://www.linkedin.com/company/hkfluxstrategy" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                </a>
-                <a href="https://www.instagram.com/fluxstrategy_hk?igsh=a3phMmVuNmg2bW9n" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
-                        <circle cx="17.5" cy="6.5" r="1.5"></circle>
-                    </svg>
-                </a>
-            </div>
-
-            <div class="footer-tagline">Strategic Clarity. Real Execution.</div>
-            <div class="footer-copyright">© 2026 Flux Strategy. All rights reserved.</div>
-            <div style="font-size: 0.75rem; color: rgba(255,255,255,0.25); margin-top: 8px; text-align: center;">Rm 1505, 15/F., Yu Sung Boon Building, 107-111 Des Voeux Rd Central, Hong Kong &nbsp;·&nbsp; +852 9724 2867 &nbsp;·&nbsp; hello@flux-strategy.com</div>
-        </div>
-    </footer>
-
-    <!-- MODALS -->
-    <!-- Strategy Session Modal -->
-    <div class="modal" id="strategyModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('strategy')">&times;</button>
-            <h3 class="modal-title">Book a Strategy Session</h3>
-            <p class="modal-subtitle">Let's explore how we can clarify your direction and accelerate execution.</p>
-            <form action="https://formsubmit.co/hello@flux-strategy.com" method="POST">
-                <input type="hidden" name="_subject" value="New Strategy Session Inquiry">
-                <input type="hidden" name="_captcha" value="false">
-                
-                <div class="form-group">
-                    <label class="form-label">Full Name</label>
-                    <input type="text" class="form-input" name="name" placeholder="Your name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Company</label>
-                    <input type="text" class="form-input" name="company" placeholder="Your company" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Email Address</label>
-                    <input type="email" class="form-input" name="email" placeholder="your@email.com" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Mobile Number</label>
-                    <input type="tel" class="form-input" name="mobile" placeholder="+852 XXXX XXXX" required>
-                </div>
-                
-                <button type="submit" class="form-submit">Send Inquiry</button>
-            </form>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow reveal">
+      <div class="eyebrow-line"></div>
+      <div class="eyebrow-text">STRATEGIC CLARITY CONSULTANCY · HONG KONG</div>
     </div>
-
-    <!-- Content Engine Beta Modal -->
-    <div class="modal" id="contentModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('content')">&times;</button>
-            <h3 class="modal-title">Join Content Engine Beta</h3>
-            <p class="modal-subtitle">Be among the first to experience AI-powered, strategy-driven content production.</p>
-            <form action="https://formsubmit.co/hello@flux-strategy.com" method="POST">
-                <input type="hidden" name="_subject" value="New Content Engine Beta Application">
-                <input type="hidden" name="_captcha" value="false">
-                
-                <div class="form-group">
-                    <label class="form-label">Full Name</label>
-                    <input type="text" class="form-input" name="name" placeholder="Your name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Company</label>
-                    <input type="text" class="form-input" name="company" placeholder="Your company" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Email Address</label>
-                    <input type="email" class="form-input" name="email" placeholder="your@email.com" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Mobile Number</label>
-                    <input type="tel" class="form-input" name="mobile" placeholder="+852 XXXX XXXX" required>
-                </div>
-                
-                <button type="submit" class="form-submit">Apply for Beta</button>
-            </form>
-        </div>
+    <h1 class="reveal">
+      Strategy that doesn't convert<br>
+      isn't strategy.<br>
+      <em>It's decoration.</em>
+    </h1>
+    <p class="hero-sub reveal">I help founders and brands define direction, align teams, and enter new markets — before the first dollar is wasted.</p>
+    <div class="hero-ctas reveal">
+      <button class="btn-primary" onclick="openModal()">Book a Clarity Sprint — HKD 6,800</button>
+      <button class="btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">See how I work</button>
     </div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
 
-    <script>
-        // Scroll Reveal Animation
-        const revealElements = document.querySelectorAll('.scroll-reveal');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
+<!-- STATEMENT -->
+<section class="statement">
+  <div class="statement-inner">
+    <div class="section-eyebrow reveal">THE PROBLEM</div>
+    <blockquote class="reveal">
+      "Most people brief me on what they want.<br>
+      I work on what they <em>actually need</em>."
+    </blockquote>
+  </div>
+</section>
 
-        revealElements.forEach(el => {
-            observer.observe(el);
-        });
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="section-eyebrow reveal">WHERE I CAN HELP</div>
+    <h2 class="section-title reveal">Three problems.<br>One kind of work.</h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="svc-num">01</div>
+        <div class="svc-problem">"You're active. But nothing is building."</div>
+        <div class="svc-title">Direction & Clarity</div>
+        <div class="svc-desc">Brand direction, content strategy, message house. For teams that are moving fast but haven't defined what they're building toward.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="svc-num">02</div>
+        <div class="svc-problem">"The platform isn't the strategy."</div>
+        <div class="svc-title">China & GBA Market Entry</div>
+        <div class="svc-desc">Market entry logic, platform selection, audience mapping. For brands that see the opportunity but haven't defined how to enter.</div>
+        <div class="svc-badge">FEATURED SPECIALTY</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="svc-num">03</div>
+        <div class="svc-problem">"You need a reset, not just an activity."</div>
+        <div class="svc-title">Team & Experience Design</div>
+        <div class="svc-desc">Strategy-led programme design for teams. For organisations where communication isn't the problem — alignment is.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Scroll to section function
-        function scrollToSection(id) {
-            const element = document.getElementById(id);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
+<!-- HOW I WORK -->
+<section class="howork">
+  <div class="howork-inner">
+    <div class="section-eyebrow reveal">HOW I WORK</div>
+    <h2 class="section-title reveal">Every engagement starts<br>the same way.</h2>
+    <div class="howork-steps reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Understand</div>
+        <div class="step-q">What is the real problem?</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Clarify</div>
+        <div class="step-q">What is holding progress back?</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Define</div>
+        <div class="step-q">Where to play. What matters most.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">Translate</div>
+        <div class="step-q">Direction teams can actually execute on.</div>
+      </div>
+    </div>
+    <div class="howork-note reveal">
+      <strong>Most engagements begin with a Clarity Sprint</strong> — a focused 90-minute session to define the real problem before designing the solution. I don't start with solutions. I start with the real question.
+    </div>
+  </div>
+</section>
 
-        // Modal functions
-        function openModal(type) {
-            if (type === 'strategy') {
-                document.getElementById('strategyModal').classList.add('active');
-            } else if (type === 'content') {
-                document.getElementById('contentModal').classList.add('active');
-            }
-        }
+<!-- CLARITY SPRINT -->
+<section class="sprint" id="sprint">
+  <div class="sprint-inner">
+    <div class="section-eyebrow">ENTRY POINT</div>
+    <h2 class="section-title">Clarity Sprint</h2>
+    <div class="sprint-grid">
+      <div class="sprint-left reveal">
+        <div class="sprint-price-block">
+          <div class="sprint-price">HKD 6,800<span>one-off</span></div>
+          <div class="sprint-duration">1 × 90-minute session</div>
+        </div>
+        <p class="sprint-desc">For teams with one critical question — direction unclear, priorities scattered, or brief undefined. I'll identify the real tension and give you a clear path forward.</p>
+        <button class="sprint-cta" onclick="openModal()">Book a Clarity Sprint →</button>
+      </div>
+      <div class="sprint-right reveal">
+        <div class="sprint-delivers-title">WHAT YOU RECEIVE</div>
+        <ul class="sprint-items">
+          <li>Strategic Clarity Document (2 pages)</li>
+          <li>Core tension identified</li>
+          <li>3 priority actions</li>
+          <li>1 key risk to address</li>
+          <li>1× async follow-up within 48 hours</li>
+        </ul>
+        <div class="sprint-not">Does not include: additional sessions, deck production, team workshops, or implementation support.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        function closeModal(type) {
-            if (type === 'strategy') {
-                document.getElementById('strategyModal').classList.remove('active');
-            } else if (type === 'content') {
-                document.getElementById('contentModal').classList.remove('active');
-            }
-        }
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-image">
+    <div class="about-image-overlay"></div>
+  </div>
+  <div class="about-content">
+    <div class="about-top reveal">
+      <img src="fiona.jpg" alt="Fiona Tsui" class="about-portrait">
+      <div class="about-id">
+        <div class="about-name">Fiona Tsui</div>
+        <div class="about-role">FOUNDER & PRINCIPAL CONSULTANT</div>
+      </div>
+    </div>
+    <div class="about-body reveal">
+      <p>I've spent over a decade working across brand strategy, advertising, digital, and large-scale events — advising organisations that needed clarity before they could move.</p>
+      <p><strong>Most people brief me on what they want. I work on what they actually need.</strong></p>
+      <p>I don't just hand you a deck and disappear. I stay until the direction is clear and the next step is real.</p>
+      <p>Clients have included organisations across finance, FMCG, hospitality, and cultural sectors in Hong Kong.</p>
+    </div>
+  </div>
+</section>
 
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const strategyModal = document.getElementById('strategyModal');
-            const contentModal = document.getElementById('contentModal');
-            if (event.target === strategyModal) {
-                strategyModal.classList.remove('active');
-            }
-            if (event.target === contentModal) {
-                contentModal.classList.remove('active');
-            }
-        }
-    </script>
+<!-- GBA -->
+<section class="gba">
+  <div class="gba-inner">
+    <div class="gba-left reveal">
+      <div class="gba-badge">FEATURED SPECIALTY</div>
+      <div class="gba-title">Greater Bay Area &<br>China Market Entry</div>
+      <p class="gba-desc">Entering GBA is not about opening every channel. It's about knowing where your brand should play first — and why.</p>
+    </div>
+    <button class="gba-btn reveal" onclick="window.location.href='/gba'">Explore GBA Strategy →</button>
+  </div>
+</section>
 
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="section-eyebrow">LET'S TALK</div>
+    <h2 class="contact-title reveal">Ready to find<br>the real question?</h2>
+    <p class="contact-sub reveal">Book a 30-minute conversation. I'll tell you where to start — and whether I'm the right person to help.</p>
+    <button class="btn-primary" onclick="openModal()" style="font-size:14px;padding:16px 40px;">Book a Clarity Sprint</button>
+    <span class="contact-email">Or email <a href="mailto:hello@flux-strategy.com">hello@flux-strategy.com</a></span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <div class="footer-logo">FLUX STRATEGY</div>
+      <div class="footer-tagline">Strategic clarity for a world in motion.</div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-title">SERVICES</div>
+        <a href="#services">Direction & Clarity</a>
+        <a href="/gba">China & GBA Market Entry</a>
+        <a href="#services">Team & Experience Design</a>
+        <a href="#sprint">Clarity Sprint</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">PAGES</div>
+        <a href="/gba">GBA Specialty</a>
+        <a href="/partner">Partner Referral</a>
+        <a href="/intake">Clarity Sprint Intake</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">INTERNAL</div>
+        <a href="https://app.flux-strategy.com" target="_blank">Content Engine Login</a>
+        <a href="/partner">Partner Page</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Flux Strategy. All rights reserved.</div>
+    <div class="footer-address">Rm 1505, 15/F., Yu Sung Boon Building, 107-111 Des Voeux Rd Central, Hong Kong &nbsp;·&nbsp; +852 9724 2867 &nbsp;·&nbsp; hello@flux-strategy.com</div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal-bar"></div>
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <h3>Book a Clarity Sprint</h3>
+    <p>90 minutes. I'll identify the real tension and give you a clear path forward.</p>
+    <form class="modal-form" onsubmit="handleSubmit(event)">
+      <input type="text" placeholder="Your name" required>
+      <input type="email" placeholder="Email address" required>
+      <input type="text" placeholder="Company / brand">
+      <textarea placeholder="What's the one question you most need answered?"></textarea>
+      <button type="submit" class="modal-submit">Send enquiry</button>
+    </form>
+  </div>
+</div>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Modal
+function openModal(){document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';}
+function closeModalOutside(e){if(e.target===document.getElementById('modal'))closeModal();}
+function handleSubmit(e){e.preventDefault();window.location.href='mailto:hello@flux-strategy.com?subject=Clarity Sprint Enquiry';}
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.1});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
