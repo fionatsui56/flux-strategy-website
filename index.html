@@ -45,15 +45,15 @@ nav.scrolled{
   backdrop-filter:blur(20px);
   border-color:var(--border);
 }
-.nav-logo{font-size:13px;font-weight:700;letter-spacing:3px;color:var(--text);text-decoration:none;}
-.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-logo{font-size:13px;font-weight:700;letter-spacing:3px;color:var(--text);text-decoration:none;flex-shrink:0;}
+.nav-links{display:flex;align-items:center;gap:32px;flex:1;justify-content:center;}
 .nav-links a{font-size:12px;font-weight:600;letter-spacing:0.5px;color:var(--muted);text-decoration:none;transition:color 0.2s;}
 .nav-links a:hover{color:var(--text);}
 .nav-cta{
   font-family:var(--font);font-size:12px;font-weight:700;
   padding:9px 22px;border:none;border-radius:30px;
   background:var(--grad);color:#0d1521;cursor:pointer;
-  transition:opacity 0.2s;white-space:nowrap;
+  transition:opacity 0.2s;white-space:nowrap;flex-shrink:0;
 }
 .nav-cta:hover{opacity:0.85;}
 
@@ -476,7 +476,7 @@ footer{
   <div class="hero-content">
     <div class="hero-eyebrow reveal">
       <div class="eyebrow-line"></div>
-      <div class="eyebrow-text">STRATEGIC CLARITY CONSULTANCY · HONG KONG</div>
+      <div class="eyebrow-text">HONG KONG</div>
     </div>
     <h1 class="reveal">
       Strategy that doesn't convert<br>
