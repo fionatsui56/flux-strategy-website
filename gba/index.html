@@ -229,12 +229,15 @@ footer {
 @media (max-width: 768px) {
   nav { padding: 14px 20px; gap: 8px; }
   .nav-logo { font-size: 12px; }
-  .hero { padding: 100px 24px 60px; }
+  .hero { padding: 100px 24px 60px; justify-content: flex-end; min-height: 85vh; }
   .enemy-section, .wrong-section, .delivers-section, .platforms-section, .moreless-section, .who-section, .cta-section { padding: 56px 24px; }
   .enemy-inner { grid-template-columns: 1fr; gap: 20px; }
   .delivers-grid { grid-template-columns: 1fr; }
   .moreless-grid { grid-template-columns: 1fr; }
-  footer { padding: 16px 24px; flex-direction: column; gap: 8px; text-align: center; }
+  footer { padding: 16px 24px; }
+  .footer-main { flex-direction: column; gap: 28px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-address { text-align: center; }
 }
 </style>
 </head>
@@ -306,6 +309,19 @@ footer {
         <div class="deliver-name" id="d3-name"></div>
         <ul class="deliver-items" id="d3-items"></ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrong-section" id="geo-section">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label" id="geo-label"></div>
+    <h2 class="section-title reveal" id="geo-title"></h2>
+    <div class="wrong-grid">
+      <div class="wrong-item reveal"><div class="wrong-num">01</div><div class="wrong-title" id="g1t"></div><div class="wrong-desc" id="g1d"></div></div>
+      <div class="wrong-item reveal"><div class="wrong-num">02</div><div class="wrong-title" id="g2t"></div><div class="wrong-desc" id="g2d"></div></div>
+      <div class="wrong-item reveal"><div class="wrong-num">03</div><div class="wrong-title" id="g3t"></div><div class="wrong-desc" id="g3d"></div></div>
+      <div class="wrong-item reveal"><div class="wrong-num">04</div><div class="wrong-title" id="g4t"></div><div class="wrong-desc" id="g4d"></div></div>
     </div>
   </div>
 </section>
@@ -438,6 +454,16 @@ var C = {
     d2Items: ['HK messaging adapted for GBA','Tone & language direction','Cultural nuance guidelines','Platform-specific voice adjustments','Content pillar framework'],
     d3Name: '90-Day Entry Roadmap',
     d3Items: ['Phase 1: Foundation & positioning','Phase 2: Platform activation','Phase 3: Optimise & scale','KPIs & success markers','Resource & budget guidance'],
+    geoLabel: 'CHINA GEO STRATEGY',
+    geoTitle: 'Before your campaign launches,<br>the answer is already being written.',
+    g1t: 'AI Visibility Audit',
+    g1d: 'We monitor your brand across DeepSeek, 豆包, 腾讯元宝, 通义千问 and 文心一言 — mapping exactly where you appear, where you don\'t, and why.',
+    g2t: 'Citation Gap Analysis',
+    g2d: 'AI answers draw from specific sources. We identify which sources are driving your visibility — and which gaps are costing you recommendations.',
+    g3t: 'Brand Voice Architecture',
+    g3d: 'We define how your brand should be described, positioned and recommended within AI-generated answers — before your competitors do.',
+    g4t: 'Content Direction',
+    g4d: 'We provide strategic direction on the content types and source ecosystems that improve AI recommendation presence. Execution is handled through our partner network.',
     platLabel: 'PLATFORM ROLE MAPPING',
     platTitle: 'Not every platform is right for every brand.<br>Start with the one that fits your first move.',
     platRoleHeader: ['If your brand needs', 'Start with'],
@@ -506,6 +532,16 @@ var C = {
     d2Items: ['香港訊息調整為大灣區版本','語氣與語言方向','文化細節指引','各平台聲音調整','內容支柱框架'],
     d3Name: '90天入場路線圖',
     d3Items: ['第一階段：基礎與定位','第二階段：平台啟動','第三階段：優化與擴展','關鍵績效指標','資源與預算指引'],
+    geoLabel: '中國 GEO 策略',
+    geoTitle: '在你的 campaign 上線之前，<br>AI 的答案已經在成形。',
+    g1t: 'AI 可見度審計',
+    g1d: '我們監測你的品牌在 DeepSeek、豆包、腾讯元宝、通义千问及文心一言的表現——清晰呈現你在哪裡出現、哪裡缺席，以及原因。',
+    g2t: '引用來源缺口分析',
+    g2d: 'AI 答案來自特定來源。我們識別哪些來源驅動你的曝光，以及哪些缺口正在令你失去推薦機會。',
+    g3t: '品牌聲音架構',
+    g3d: '我們定義你的品牌在 AI 生成答案中應如何被描述、定位及推薦——在競爭對手搶先之前。',
+    g4t: '內容方向建議',
+    g4d: '我們提供策略方向，指引哪類內容及來源生態系統能有效提升 AI 推薦排名。執行層面由我們的合作夥伴網絡負責。',
     platLabel: '平台角色定位',
     platTitle: '不是每個平台都適合每個品牌。<br>先從最配合你第一步的平台開始。',
     platRoleHeader: ['如果你的品牌需要', '建議先從這裡開始'],
@@ -587,6 +623,12 @@ function setLang(lang) {
   set('d1-name', c.d1Name); setList('d1-items', c.d1Items);
   set('d2-name', c.d2Name); setList('d2-items', c.d2Items);
   set('d3-name', c.d3Name); setList('d3-items', c.d3Items);
+  set('geo-label', c.geoLabel);
+  set('geo-title', c.geoTitle);
+  set('g1t', c.g1t); set('g1d', c.g1d);
+  set('g2t', c.g2t); set('g2d', c.g2d);
+  set('g3t', c.g3t); set('g3d', c.g3d);
+  set('g4t', c.g4t); set('g4d', c.g4d);
   set('plat-label', c.platLabel);
   set('plat-title', c.platTitle);
 
